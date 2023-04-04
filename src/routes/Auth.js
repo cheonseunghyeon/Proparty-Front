@@ -1,13 +1,27 @@
 import { authService } from "fbase";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, GithubAuthProvider, signInWithPopup } from "firebase/auth";
-import React, { useState } from "react";
-
+import React, { useEffect, useState } from "react";
 // 자동으로 임폴트 됨
 const Auth = () => {
     const [email,setEmail] = useState("");
     const [password,setPassword] = useState("");
     const [newAccount,setNewAccount] = useState(true);
     const [error,setError] = useState("");
+    const [bgImage, setBgImage] = useState("");
+
+     // 이미지 파일명을 랜덤으로 선택하는 함수
+    function getRandomImage() {
+        const images = ["/img/1.jpg","/img/2.jpg","/img/3.jpg","/img/4.jpg"];
+        const randomIndex = Math.floor(Math.random() * images.length);
+        return images[randomIndex];
+    }
+
+      // 컴포넌트가 마운트될 때 실행되는 함수
+    useEffect(() => {
+        const randomImage = getRandomImage();
+        setBgImage(randomImage);
+    }, []);
+
     const onChange = (event) => {
         // 발생한 이벤트의 이름과 값을 가져옴
         const {target: {name,value}} = event;
@@ -17,6 +31,7 @@ const Auth = () => {
             setPassword(value)
         }
     }
+
     // async - await 비동기적 처리를 위해서 await를 반환
     const onSubmit = async(event) => {
         event.preventDefault();
@@ -54,8 +69,16 @@ const Auth = () => {
         const data = await signInWithPopup(auth, provider);
         console.log(data);
     } 
+    const Image = "../img/1.jpg";
     return(
-        <div>
+        <div
+        style={{
+          backgroundImage: `url("img/1.jpg")`,
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          minHeight: "100vh",
+        }}
+        >
             <form onSubmit={onSubmit}>
                 <input 
                 name = "email"
