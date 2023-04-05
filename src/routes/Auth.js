@@ -1,6 +1,9 @@
 import { authService } from "fbase";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, GoogleAuthProvider, GithubAuthProvider, signInWithPopup } from "firebase/auth";
 import React, { useEffect, useState } from "react";
+import Img1 from "../img/Google.png"
+import Img2 from "../img/GitHub.png"
+import '../css/Auth.css'
 // 자동으로 임폴트 됨
 const Auth = () => {
     const [email,setEmail] = useState("");
@@ -25,9 +28,11 @@ const Auth = () => {
     const onChange = (event) => {
         // 발생한 이벤트의 이름과 값을 가져옴
         const {target: {name,value}} = event;
+        // 발생한 이벤트가 email이면 - value를 입력한 이미지로 변경
         if(name === "email"){
             setEmail(value)
         } else if(name === "password"){
+        // 발생한 이벤트가 password이면 - value를 입력한 이미지로 변경
             setPassword(value)
         }
     }
@@ -71,38 +76,56 @@ const Auth = () => {
     } 
     const Image = "../img/1.jpg";
     return(
-        <div
-        style={{
-          backgroundImage: `url("img/1.jpg")`,
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
-          minHeight: "100vh",
-        }}
-        >
-            <form onSubmit={onSubmit}>
-                <input 
-                name = "email"
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={onChange}
-                required/>
+        <div className="backColor">
+            <div className="backSet">
+                <h1>Login</h1>
+                <form onSubmit={onSubmit} className="setup">
+                    <div className="int-area">
+                        <input 
+                        name = "email"
+                        type="text"
+                        placeholder="Email"
+                        value={email}
+                        onChange={onChange}
+                        required/>                    
+                    </div>
+                    <div className="int-area">
+                        <input 
+                        name="password"
+                        type="password" 
+                        placeholder="Password"
+                        value={password} 
+                        onChange={onChange}
+                        required/>                     
+                    </div>
+                    <div className="btn-area">
+                        <input type="submit" value={newAccount ? "Create Account" : "Log In"}/>
+                        <div>
+                            <input type="button"onClick={toggleAccount} value={"Sign In"}/>
+                        </div>
+                        <p className="text">또는</p>
+                        <div>
+                            <button onClick={onSocialClick} name="google"><img src = {Img1}></img>구글 계정으로 로그인</button>
+                        </div>
+                        <div>
+                            <button onClick={onSocialClick} name="github"><img src = {Img2}></img>Githu로 로그인</button>
+                        </div>    
+                        </div>
+                    {error}
+                </form> 
+                 
+                 {/* 
+                 <span onClick={toggleAccount}>{newAccount ? "Create Account":"Sign In"}</span> 
+                <div className="Loginwith">
+                    <div>
+                        <button onClick={onSocialClick} name="google"><img src = {Img1}></img>구글 계정으로 로그인</button>
+                    </div>
+                    <div>
+                        <button onClick={onSocialClick} name="github"><img src = {Img2}></img>Githu로 로그인</button>
+                    </div>
+                </div>
+                  */}
 
-                <input 
-                name="password"
-                type="password" 
-                placeholder="Password"
-                value={password} 
-                onChange={onChange}
-                required/>
-                <input type="submit" value={newAccount ? "Create Account" : "Log In"}/>
-                {error}
-            </form>
-            // 
-            <span onClick={toggleAccount}>{newAccount ? "Create Account":"Sign In"}</span>
-            <div>
-                <button onClick={onSocialClick} name="google">Continue with Google</button>
-                <button onClick={onSocialClick} name="github">Continue with Github</button>
             </div>
         </div>
     )

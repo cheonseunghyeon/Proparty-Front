@@ -1,0 +1,148 @@
+*{
+  font-family: "PT";
+}
+.backColor{
+    background-image: url(../img/2.jpg);
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: cover;
+    background-blend-mode: multiply;
+    background-color: rgba(0, 0, 0, 0.5);
+    
+    /* 리액트는 body 역활을 수행하기 힘들어 전체 화면을 div로 잡는다 */
+    max-width:100%;
+    min-width:1880px;;
+    max-height:1400px;
+    min-height:1200px;
+    z-index:10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* 로그인 전체 박스 */
+  .backSet{
+    display: inline-flex;
+    width: 600px;
+    height: 800px;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    filter: brightness(100%);
+    text-align: center;
+    border: #fff solid 1px;
+    background-color: aliceblue;
+    border-radius: 10px;
+  }
+  .backSet h1 {
+    font-size: 40px; color: #0077be;
+    font-family:"ROBOTO";
+  }
+  .int-area {width: 400px;}
+  .int-area input {
+    width: 95%;
+    padding: 20px 10px 10px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 18px; color: rgba(0,0,0,0.8);
+    outline: none;
+  }
+  .btn-area{
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+  .btn-area input{
+    width: 100%;
+    height: 50px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: #1877f2;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 100px;
+  }
+  .btn-area button{
+    width: 100%;
+    height: 50px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    font-size: 15px;
+    font-family:"Happy";
+    color: black;
+    border: none;
+    border-radius: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* ------- 또는 ------ */
+  .text{
+    margin: 20px auto;
+    font-family:"Happy";
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+  .text::before{
+    content: '';
+    flex-grow: 2;
+    background-color: #999;
+    height: 1px;
+    margin-right: 5px;
+  }
+  .text::after{
+    content: '';
+    flex-grow: 2;
+    background-color: #999;
+    height: 1px;
+    margin-left: 5px;
+  }
+
+  @font-face {
+    font-family:"Happy";
+    src: url(../font/Happiness-Sans-Title.ttf);
+  }
+  @font-face {
+    font-family:"Roboto";
+    src: url(../font/RobotoSlab-Bold.ttf);
+  }
+  @font-face {
+    font-family:"PT";
+    src: url(../font/PTSerif-Italic.ttf);
+  }
+
+
+
+
+
+
+
+
+
+  .Loginwith{
+    display: flex;
+    width: 300px;
+    margin-left: 0px;
+    flex-direction: column;
+    padding-bottom: 10px;
+    text-align: center;
+    justify-content: center;
+  }
+  .Loginwith button {
+    width: 105%;
+    height: 40px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: black;
+    border: none;
+    border-radius: 100px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }

@@ -2,7 +2,7 @@ import AppRouter from "./components/AppRouter"
 import React, { useEffect, useState } from "react";
 import fbase  from "./fbase"
 import { authService } from "./fbase";
-
+import 'App.css'
 function App() {
   const [init,setInit] = useState(false);
   // firebase가 프로그램을 초기화 하길 기다려야 한다
@@ -30,11 +30,10 @@ function App() {
   }, [])
 
   return (
-    <>
+    <div>
     {/* init이 false이라는 것은 로그인이 됐다는 것 */}
     {init ? <AppRouter isLoggedIn ={isLoggedIn}/> : "초기화 중"}
-    <footer>$copy</footer>
-    </>
+    </div>
   );
 }
 
