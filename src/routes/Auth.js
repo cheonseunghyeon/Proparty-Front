@@ -76,7 +76,7 @@ const Auth = () => {
     } 
     const Image = "../img/1.jpg";
     return(
-        <div className="backColor">
+        <body className="backColor">
             <div className="backSet">
                 <h1>Login</h1>
                 <form onSubmit={onSubmit} className="setup">
@@ -85,6 +85,7 @@ const Auth = () => {
                         name = "email"
                         type="text"
                         placeholder="Email"
+                        maxLength="20"
                         value={email}
                         onChange={onChange}
                         required/>                    
@@ -93,6 +94,7 @@ const Auth = () => {
                         <input 
                         name="password"
                         type="password" 
+                        maxLength="15"
                         placeholder="Password"
                         value={password} 
                         onChange={onChange}
@@ -127,7 +129,7 @@ const Auth = () => {
                   */}
 
             </div>
-        </div>
+        </body>
     )
 }
 export default Auth;

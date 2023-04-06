@@ -1,7 +1,7 @@
 import { authService } from "fbase";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import '../css/Profile.css'
 // 자동으로 임폴트 됨
 
 // 로그아웃 기능 생성
@@ -14,9 +14,9 @@ const Profile = () => {
     }
     return (
 
-        <>
+        <div className="Pbody">
         <button onClick={onLogOutClick}>Log out</button>
-        </>
+        </div>
     )
 }
 export default Profile;

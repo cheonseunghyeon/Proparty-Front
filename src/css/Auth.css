@@ -23,8 +23,8 @@
   /* 로그인 전체 박스 */
   .backSet{
     display: inline-flex;
-    width: 600px;
-    height: 800px;
+    width: 550px;
+    height:750px;
     justify-content: center;
     flex-direction: column;
     align-items: center;
