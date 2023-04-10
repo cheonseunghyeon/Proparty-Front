@@ -3,15 +3,15 @@ import Navigation from "components/Navigation";
 import '../css/Home.css'
 import { Form } from "react-router-dom";
 import { dbService } from "fbase";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import { collection, onSnapshot, addDoc, getDocs } from "firebase/firestore";
 // 자동으로 임폴트 됨
-const Home = () => {
+const Home = ({userObj}) => {
+    console.log(userObj)
     const [nweet,setNweet]= useState("");
     const [nweets,setNweets] = useState([]);
     const getNweets = async ()=>{
         // 여기서 쿼리란 collection - 문서 를 말함
         const nweets = await getDocs(collection(dbService, "DBTable"));
-        console.log(nweets);
         nweets.forEach((doc)=>{
             // set 함수 선언 시 값 대신 함수를 전달 가능
             // 함수 전달 시 리액트는 이전 값에 접근 가능하게 해줌
@@ -25,14 +25,19 @@ const Home = () => {
     }
     useEffect(()=> {
         getNweets();
+        // 어떤 행동을 취했을 때 DB가 그것을 감지해서 사용 할 수 있도록
+
     },[])
+    // 콜랙션 = 문서들의 모음
+    // 문서를 생성
     const onSubmit = async(event) =>{
         event.preventDefault();
-        console.log(nweet);
         try {
             const docRef = await addDoc(collection(dbService, "DBTable"), {
-              nweet : nweet,
+              text : nweet,
+              creatorId: userObj.uid,
               createdAt: Date.now(),
+              
             });
             console.log("Document written with ID: ", docRef.id);
           } catch (error) {
@@ -48,7 +53,6 @@ const Home = () => {
         }= event;
         setNweet(value);
     }
-    console.log(nweets);
     return(
         <div className="Hbody">
         <form onSubmit={onSubmit}>
@@ -57,7 +61,7 @@ const Home = () => {
         </form>
         <div>
             {nweets.map(nweet => <div key={nweet.id}>
-                <h4>{nweet.nweet}</h4>
+                <h4>{nweet.text}</h4>
                 </div>)}
         </div>
         </div>

@@ -7,7 +7,7 @@ import Profile from "routes/Profile";
 import '../css/AppRouter.css'
 // 로그인 여부에 따라 render가 바뀜
 // Router 들만 보이게 함
-const AppRouter = ({isLoggedIn}) => {
+const AppRouter = ({isLoggedIn, userObj }) => {
     return(
         <>
         <div className="Mhead">
@@ -17,7 +17,7 @@ const AppRouter = ({isLoggedIn}) => {
             <Routes>
                 {isLoggedIn ?(
                     <>
-                    <Route path="/" element={<Home />}/>
+                    <Route path="/" element={<Home userObj={userObj} />}/>
                     <Route path="/profile" element={<Profile />}/>
                     </>
                 ) :(
