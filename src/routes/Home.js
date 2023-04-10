@@ -3,10 +3,9 @@ import Navigation from "components/Navigation";
 import '../css/Home.css'
 import { Form } from "react-router-dom";
 import { dbService } from "fbase";
-import { collection, onSnapshot, addDoc, getDocs } from "firebase/firestore";
+import { collection, onSnapshot, addDoc,query, orderBy, getDocs } from "firebase/firestore";
 // 자동으로 임폴트 됨
 const Home = ({userObj}) => {
-    console.log(userObj)
     const [nweet,setNweet]= useState("");
     const [nweets,setNweets] = useState([]);
     const getNweets = async ()=>{
@@ -23,11 +22,23 @@ const Home = ({userObj}) => {
             setNweets((prev) => [nweetObject, ...prev])
         })
     }
-    useEffect(()=> {
-        getNweets();
-        // 어떤 행동을 취했을 때 DB가 그것을 감지해서 사용 할 수 있도록
 
+    useEffect(()=> {
+        // 어떤 행동을 취했을 때 DB가 그것을 감지해서 사용 할 수 있도록
+        const q = query(
+            collection(dbService,"DBTable"),
+            orderBy("createdAt", "desc")
+        )
+        onSnapshot(q,(snapshot) => {
+            const DBArray = snapshot.docs.map((doc) => ({
+                ...doc.data(),
+                id: doc.id,
+                
+            }));
+            setNweets(DBArray)
+        });
     },[])
+
     // 콜랙션 = 문서들의 모음
     // 문서를 생성
     const onSubmit = async(event) =>{
@@ -68,3 +79,4 @@ const Home = ({userObj}) => {
     )
 }
 export default Home;
+
