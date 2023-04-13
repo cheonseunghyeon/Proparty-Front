@@ -51,22 +51,30 @@ const Home = ({userObj}) => {
         }= event;
         setNweet(value);
     }
-    return(
-        <div className="Hbody">
-
-        <form onSubmit={onSubmit}>
-            <input type="text" onChange ={onChange} value={nweet} placeholder="문장 입력?" maxLength={120}/>
-            <input type="submit" value="Button"/>
-        </form>
+    const onFileChange = (event) => {
+        const {
+          target: { files },
+        } = event;
+        const theFile = files[0];
+        const reader = new FileReader();
+        reader.onloadend = (finishedEvent) => {
+          console.log(finishedEvent);
+        };
+        reader.readAsDataURL(theFile);
+      };
+      return (
         <div>
-
-            {nweets.map( (User) => (
-            <Nweet key ={User.id} nweetObj={User} isOwner={User.creatorId === userObj.uid}/>
-            ))}
-
-        </div>
-        </div>
+          <form onSubmit={onSubmit}>
+    @@ -39,6 +50,7 @@ const Home = ({ userObj }) => {
+              placeholder="What's on your mind?"
+              maxLength={120}
+            />
+            <input type="file" accept="image/*" onChange={onFileChange} />
+            <input type="submit" value="Nweet" />
+          </form>
+          <div>
     )
+    }
 }
 export default Home;
 
