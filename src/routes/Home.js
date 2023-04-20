@@ -65,7 +65,7 @@ const Home = ({userObj}) => {
       return (
         <div>
           <form onSubmit={onSubmit}>
-    @@ -39,6 +50,7 @@ const Home = ({ userObj }) => {
+             ? const Home = ({ userObj }) => {
               placeholder="What's on your mind?"
               maxLength={120}
             />
