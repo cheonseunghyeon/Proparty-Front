@@ -6,6 +6,8 @@ import { dbService } from "fbase";
 import { collection, onSnapshot, addDoc,query, orderBy, getDocs } from "firebase/firestore";
 import Nweet from "../components/Nweet";
 // 자동으로 임폴트 됨
+// crud 구현
+
 const Home = ({userObj}) => {
     const [nweet,setNweet]= useState("");
     const [nweets,setNweets] = useState([]);
@@ -67,7 +69,7 @@ const Home = ({userObj}) => {
           <form onSubmit={onSubmit}>
              ? const Home = ({ userObj }) => {
               placeholder="What's on your mind?"
-              maxLength={120}
+              maxLength={100} size}
             />
             <input type="file" accept="image/*" onChange={onFileChange} />
             <input type="submit" value="Nweet" />
