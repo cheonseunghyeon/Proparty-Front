@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
+
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_API_KEY,
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
@@ -22,3 +24,5 @@ const firebaseConfig = {
   //firebase db 만들기
   export const dbService = getFirestore();
   
+  //firebase storage 
+  export const storageService = getStorage();
