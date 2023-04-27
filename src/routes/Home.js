@@ -5,7 +5,7 @@ import { Form } from "react-router-dom";
 import { dbService, storageService } from "fbase";
 import { collection, onSnapshot, addDoc,query, orderBy, getDocs } from "firebase/firestore";
 import Nweet from "../components/Nweet";
-import { ref, uploadString } from "@firebase/storage";
+import { getDownloadURL , ref, uploadString } from "@firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
 
 // 자동으로 임폴트 됨
@@ -15,7 +15,7 @@ const Home = ({userObj}) => {
     const [nweet,setNweet]= useState("");
     const [nweets,setNweets] = useState([]);
     // 이미지 파일 관리
-    const [attachment, setAttachment] = useState();
+    const [attachment, setAttachment] = useState("");
 
     useEffect(()=> {
         // 어떤 행동을 취했을 때 DB가 그것을 감지해서 사용 할 수 있도록
@@ -40,24 +40,27 @@ const Home = ({userObj}) => {
     // 문서를 생성
     const onSubmit = async(event) =>{
         event.preventDefault();
-        // try {
-        //     const docRef = await addDoc(collection(dbService, "DBTable"), {
-        //       text : nweet,
-        //       creatorId: userObj.uid,
-        //       createdAt: Date.now(),
-              
-        //     });
-        //     console.log("Document written with ID: ", docRef.id);
-        //   } catch (error) {
-        //     console.error("Error adding document: ", error);
-        //   }
-        //   setNweet("");
+        let attachmentUrl = ""
 
-        //이미지와 파일 을 저장하는 문서로 생성
-        const fileRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
-        // data_url은  파일 로드할 때 readAsDataURL에서 실행
-        const response = await uploadString(fileRef, attachment,"data_url");
-        console.log(response);
+        // 이미지 파일이 존재할 경우
+        if (attachment != ""){
+          //이미지와 파일 을 저장하는 문서로 생성
+          const fileRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
+
+          // data_url은  파일 로드할 때 readAsDataURL에서 실행
+          const response = await uploadString(fileRef, attachment,"data_url");
+          attachmentUrl = await getDownloadURL(fileRef, attachment,"data_url");
+        }
+
+        const DBTable = {
+              text : nweet,
+              creatorId: userObj.uid,
+              createdAt: Date.now(),
+              attachmentUrl,
+        }
+        const docRef = await addDoc(collection(dbService, "DBTable"), DBTable);
+        setNweet("");
+        setAttachment("");
     };
 
     const onChange = (event) => {
@@ -103,39 +106,44 @@ const Home = ({userObj}) => {
         // reader.readAsDataURL(theFile)
         reader.readAsDataURL(theFile);
       };
-      const onClear = () => setAttachment(null);
+      const onClear = () => setAttachment("");
       return (
 
         <div className="Hbody">
-          <form onSubmit={onSubmit}>
-            <input value={nweet} 
-            onChange={onChange} 
-            type="text" 
-            placeholder="what's on your mind?" 
-            maxLength={120}/>
-            
-            {/* 이미지 파일을 업로드하기 위한 input */}
-            <input type="file" accept="image/*" onChange={onFileChange}/>
-            <input type="submit" value= "입력"/>
-            {attachment && (
+          <div className="backbook">
+            <div className="bookdot">
+              <div className="bodydot">
+                <form onSubmit={onSubmit}>
+                <input value={nweet} 
+                onChange={onChange} 
+                type="text" 
+                placeholder="what's on your mind?" 
+                maxLength={120}/>
+                
+                {/* 이미지 파일을 업로드하기 위한 input */}
+                <input type="file" accept="image/*" onChange={onFileChange}/>
+                <input type="submit" value= "입력"/>
+                {attachment && (
+                  <div>
+                    <img src={attachment} width="50px" height="50px"/>
+                    <button onClick={onClear}>Clear</button>
+                  </div>
+              )}
+              </form>
               <div>
-                <img src={attachment} width="50px" height="50px"/>
-                <button onClick={onClear}>Clear</button>
+                {nweets.map( (User) => (
+                  // Nweet 컴포넌트를 호출 필요한 데이터를 props로 전달
+                <Nweet 
+                // id와 접속한 유저 정보 그리고 접속한 유저와 작성한 유저가 같은지 여부
+                  key ={User.id} 
+                  nweetObj={User} 
+                  isOwner={User.creatorId === userObj.uid}
+                />
+                ))}
               </div>
-          )}
-          </form>
-          <div>
-            {nweets.map( (User) => (
-              // Nweet 컴포넌트를 호출 필요한 데이터를 props로 전달
-            <Nweet 
-            // id와 접속한 유저 정보 그리고 접속한 유저와 작성한 유저가 같은지 여부
-              key ={User.id} 
-              nweetObj={User} 
-              isOwner={User.creatorId === userObj.uid}
-            />
-            ))}
+            </div>
           </div>
-
+         </div>
         </div>
     )
   }

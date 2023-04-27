@@ -4,6 +4,7 @@ import "../css/Navigation.css"
 const Navigation =()=> {
     return(
     <nav>
+        <h2>제목 미정</h2>
         <ul class ="nav-items">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/profile">My Profile</Link></li>

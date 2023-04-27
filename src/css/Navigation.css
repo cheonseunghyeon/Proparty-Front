@@ -10,6 +10,11 @@ nav {
     background-color: #fff;
     box-shadow: 0 2px 2px rgba(0,0,0,0.05), 0 1px 0 rgba(0,0,0,0.05);
 }
+h2{
+    display: inline-block;
+    margin: 15px;
+    color: lightblue;
+}
 .nav-items{
     float:right;
     margin-right: 20px;
@@ -19,6 +24,7 @@ nav {
 }
 .nav-items > li > a {
     /*텍스트 높이를 60px로 고정 해서 수직 중앙 정렬*/
+    text-decoration-line: none;
     line-height: 60px;
 
     padding: 0 30px;
