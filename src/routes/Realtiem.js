@@ -1,13 +1,10 @@
-import { dbService } from "fbase";
-import { doc, deleteDoc, updateDoc }from"firebase/firestore";
+const express = require('express')
+const socketio = require('socket.io')
+const http = require('http')
 
-//리터럴
-const NweetTextRef =doc(dbService, "nweets", `${nweetObj.id}`);
+const PORT = process.env.PORT || 5000
 
-// delete 부분
-await deleteDoc(NweetTextRef );
-
-//update 부분
-await updateDoc(NweetTextRef, {
-text: newNweet,
-});
+const app = express();
+const server = http.createServer(app)
+const io = socketio(server)
+server.listen(PORT,()=>console.log(`서버가 ${PORT} 에서 시작되었어요`))
