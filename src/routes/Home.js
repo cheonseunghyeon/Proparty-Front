@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Navigation from "components/Navigation";
 import '../css/Home.css'
-import { Form } from "react-router-dom";
+import '../css/Layout.css'
+import { Form, Link } from "react-router-dom";
 import { dbService, storageService } from "fbase";
 import { collection, onSnapshot, addDoc,query, orderBy, getDocs } from "firebase/firestore";
 import Nweet from "../components/Nweet";
 import { getDownloadURL , ref, uploadString } from "@firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
-
+import img from "./char.png"
+import img2 from "./back3.jpg"
+import img3 from "./profile.png"
 // 자동으로 임폴트 됨
 // crud 구현
 
@@ -108,43 +111,69 @@ const Home = ({userObj}) => {
       };
       const onClear = () => setAttachment("");
       return (
+        <>
+        <div class="bookcover">
+          <div class="bookdot">
+            <div class="page">
+              <div class="home">
 
-        <div className="Hbody">
-          <div className="backbook">
-            <div className="bookdot">
-              <div className="bodydot">
-                <form onSubmit={onSubmit}>
-                <input value={nweet} 
-                onChange={onChange} 
-                type="text" 
-                placeholder="what's on your mind?" 
-                maxLength={120}/>
-                
-                {/* 이미지 파일을 업로드하기 위한 input */}
-                <input type="file" accept="image/*" onChange={onFileChange}/>
-                <input type="submit" value= "입력"/>
-                {attachment && (
-                  <div>
-                    <img src={attachment} width="50px" height="50px"/>
-                    <button onClick={onClear}>Clear</button>
+                <div class="home_main">
+                  <div class="profile">
+                    <div class="profile_1">
+                      <img class="profile_image" src={img}/>
+                    </div>
+                    <div class="profile_2"> 프로필 작성 공간<br/>
+                    <br/>프로필을 설명할 수 있는 공간 입니다.</div>
+                    <div class="profile_3">* 주소 등을 기록하는 공간
+                      <div class="profile-dropdown">
+                        <div class="dropdown-btn">
+                          <div class="dropdown-title">Github</div>
+                          <div class="triangle-down"></div>
+                        </div>
+                        <div class="dropdown-content">
+                          <a href="https://programming-oddments.tistory.com/" target="_blank">Devlog</a>
+                          <a href="https://github.com/joseph-106" target="_blank">Github</a>
+                          <a href="https://www.instagram.com/ksj_106/" target="_blank">Instagram</a>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-              )}
-              </form>
-              <div>
-                {nweets.map( (User) => (
-                  // Nweet 컴포넌트를 호출 필요한 데이터를 props로 전달
-                <Nweet 
-                // id와 접속한 유저 정보 그리고 접속한 유저와 작성한 유저가 같은지 여부
-                  key ={User.id} 
-                  nweetObj={User} 
-                  isOwner={User.creatorId === userObj.uid}
-                />
-                ))}
+                  <div class="home_contents">
+                    <div class="updated_news_title2"><br/><strong>{userObj.displayName}의 미니 홈페이지</strong></div>
+                    <div class="updated_news_title"><br/><strong>Updated news</strong></div>
+                    <div class="updated_news_contents">
+                      <div class="updated_news_left">
+                        <span class="updated_news_left1"><span class="updated_news_red">&nbsp;Diary&nbsp;</span>2023-05-22</span>
+                        <span class="updated_news_left2"><span class="updated_news_blue">&nbsp;photo&nbsp;</span>테스트 용</span>
+                        <span class="updated_news_left3"><span class="updated_news_blue">&nbsp;photo&nbsp;</span>테스트 이미지</span>
+                        <span class="updated_news_left4"><span class="updated_news_red">&nbsp;Diary&nbsp;</span>2023-05-23</span>
+                      </div>
+                      <div class="updated_news_right">
+                        <div class="updated_news_right1">다이어리 <span class="updated_news_right_number">2/25</span> &emsp;&emsp;&emsp;&emsp;사진첩 <span class="updated_news_right_number">0/25</span></div>
+                        <div class="updated_news_right2">게시판 <span class="updated_news_right_number">2/25</span> &emsp;&emsp;&emsp;&emsp;&emsp;방명록 <span class="updated_news_right_number">0/25</span></div>
+                        <div class="updated_news_right3"></div>
+                      </div>
+                    </div>
+                    <div class="miniroom_title"><br/><strong>Miniroom</strong></div>
+                    <div class="miniroom_contents">
+                      <img class="miniroom_gif" src={img2} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ul class ="menu_bar">
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/profile">Profile</Link></li>
+                <li><Link to="/Diary">Diary</Link></li>
+                <li><Link to="/">Photo</Link></li>
+                <li><Link to="/Visitor">Visitor</Link></li>
+                <li><Link to="/Visitor">Chat</Link></li>
+              </ul>
               </div>
             </div>
           </div>
-         </div>
-        </div>
+        </>
+
     )
   }
 

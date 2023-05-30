@@ -1,7 +1,7 @@
 import AppRouter from "./components/AppRouter"
 import React, { useEffect, useState } from "react";
 import fbase  from "./fbase"
-import { authService } from "./fbase";
+import { authService} from "./fbase";
 import 'App.css'
 function App() {
   const [init,setInit] = useState(false);
@@ -25,13 +25,17 @@ function App() {
      if (user){
       setIsLoggedIn(true);
       setUserObj(user);
+      if (user.displayName === null) {
+        const name = user.email.split("@")[0];
+        user.displayName = name;
+        }
      }else{
       setIsLoggedIn(false);
      }
      setInit(true);
     });
   }, [])
-
+  // 
   return (
     <div>
     {/* init이 false이라는 것은 로그인이 됐다는 것 */}
@@ -39,5 +43,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

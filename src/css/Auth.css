@@ -113,7 +113,10 @@
     font-family:"PT";
     src: url(../font/PTSerif-Italic.ttf);
   }
-
+  @font-face {
+    font-family:"Pix";
+    src: url(../font/DungGeunMo.ttf);
+  }
 
 
 
