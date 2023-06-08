@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 import img from "./char.png"
 import img2 from "./back3.jpg"
 import img3 from "./profile.png"
-import img4 from "./a.png"
+import img4 from "./aaa.png"
 
 // 자동으로 임폴트 됨
 // crud 구현

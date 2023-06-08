@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import '../css/Profile.css'
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
+import img4 from "./ad.png"
+import "../css/styles2.css"
 // 자동으로 임폴트 됨
 
 // 로그아웃 기능 생성
@@ -47,17 +49,38 @@ const Profile = ({ userObj}) => {
     return (
 
         <div className="Pbody">
-            <form onSubmit={onsubmit}>
-                <input 
-                onChange={onchange}
-                type="text" 
-                placeholder="Display name"
-                value={newDisplayName}/>
-                <input type="submit" value={"Update Profile"}/>
-                <br/>
-                <input type="file" accept="image/*" />
+            <p className="PTitle">프로필 설정</p>
+            <img className="ProImg" src={img4}/><br/>
+        <form onSubmit={onsubmit} className="profileForm">
+            <input
+            type="submit"
+            value="Image Change"
+            className="formBtn2"
+            style={{
+                marginBottom: 10,
+            }}
+            />
+            <input
+            onChange={onchange}
+            type="text"
+            autoFocus
+            placeholder="Display name"
+            value={newDisplayName}
+            className="formInput"
+            />
+            <input
+            type="submit"
+            value="Update Profile"
+            className="formBtn"
+            style={{
+                marginTop: 10,
+            }}
+            />
             </form>
-            <button onClick={onLogOutClick}>Log out</button>
+            <br/>
+            <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
+                Log Out
+            </span>
         </div>
     )
 }

@@ -10,20 +10,12 @@ const Auth = () => {
     const [password,setPassword] = useState("");
     const [newAccount,setNewAccount] = useState(true);
     const [error,setError] = useState("");
-    const [bgImage, setBgImage] = useState("");
 
-     // 이미지 파일명을 랜덤으로 선택하는 함수
     function getRandomImage() {
         const images = ["/img/1.jpg","/img/2.jpg","/img/3.jpg","/img/4.jpg"];
         const randomIndex = Math.floor(Math.random() * images.length);
         return images[randomIndex];
     }
-
-      // 컴포넌트가 마운트될 때 실행되는 함수
-    useEffect(() => {
-        const randomImage = getRandomImage();
-        setBgImage(randomImage);
-    }, []);
 
     const onChange = (event) => {
         // 발생한 이벤트의 이름과 값을 가져옴
@@ -74,7 +66,6 @@ const Auth = () => {
         const data = await signInWithPopup(auth, provider);
         console.log(data);
     } 
-    const Image = "../img/1.jpg";
     return(
         <body className="backColor">
             <div className="backSet">
