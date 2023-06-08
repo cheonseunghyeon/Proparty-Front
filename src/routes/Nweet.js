@@ -14,6 +14,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
       await deleteObject(urlRef)
     }
   };
+  
   const toggleEditing = () => setEditing((prev) => !prev);
   const onSubmit = async (event) => {
     event.preventDefault();
