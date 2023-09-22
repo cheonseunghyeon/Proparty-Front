@@ -460,7 +460,7 @@ export const Project3 = () => (
         border-radius: 1.2rem;
       `}
     >
-      팜투마켓
+      인플AI
     </div>
     <div
       css={css`
@@ -696,7 +696,7 @@ export const Project6 = () => (
         border-radius: 1.2rem;
       `}
     >
-      챌린저스
+      PYRPG
     </div>
     <div
       css={css`

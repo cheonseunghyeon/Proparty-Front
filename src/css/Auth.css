@@ -4,8 +4,8 @@
 .backColor {
   background-image: url(../img/2.jpg);
   background-repeat: no-repeat;
-  background-position: top center;
-  background-size: cover;
+  background-position: center center; /* 이미지를 가운데 정렬 */
+  background-size: cover; /* 이미지를 화면 크기에 맞게 확대/축소 */
   background-blend-mode: multiply;
   background-color: rgba(0, 0, 0, 0.5);
 
@@ -13,11 +13,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* 다른 스타일 속성들 */
 }
 
 /* 로그인 전체 박스 */
 .backSet {
   display: inline-flex;
+  margin: 90px;
   width: 550px;
   height: 750px;
   justify-content: center;

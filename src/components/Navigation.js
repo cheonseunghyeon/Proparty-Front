@@ -6,16 +6,19 @@ const Navigation = ({ userObj }) => {
   console.log(userObj);
   return (
     <nav>
-      <Logo />
+      <Link to="/">
+        <Logo />
+      </Link>
+
       <ul class="nav-items">
         <li>
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/profile">팀 프로젝트</Link>
+          <Link to="/Publish">팀 프로젝트</Link>
         </li>
         <li>
-          <Link to="/Diary">블로그</Link>
+          <Link to="/Vlog">블로그</Link>
         </li>
         <li>
           <Link to="/">커뮤니티</Link>

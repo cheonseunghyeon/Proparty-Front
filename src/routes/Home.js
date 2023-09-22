@@ -32,7 +32,7 @@ import {
   Project6,
   Rowdiv,
   Title2,
-} from "./component/main/component";
+} from "./component/project/main/component";
 import { Container, Container2 } from "./component/emotion/component";
 // 자동으로 임폴트 됨
 // crud 구현
@@ -193,127 +193,6 @@ const Home = ({ userObj }) => {
           </svg>
         </Title2>
       </Container2>
-
-      <div class="bookcover">
-        <div class="bookdot">
-          <div class="page">
-            <div class="home">
-              <div class="home_main">
-                <div class="profile">
-                  <div class="profile_1">
-                    <img class="profile_image" src={img} />
-                  </div>
-                  <div class="profile_2">
-                    {" "}
-                    천승현 님의 프로필
-                    <br />
-                    <br />
-                    프로필을 설명할 수 있는 공간 입니다.
-                  </div>
-                  <div class="profile_3">
-                    * 주소 등을 기록하는 공간
-                    <div class="profile-dropdown">
-                      <div class="dropdown-btn">
-                        <div class="dropdown-title">Github</div>
-                        <div class="triangle-down"></div>
-                      </div>
-                      <div class="dropdown-content">
-                        <a
-                          href="https://programming-oddments.tistory.com/"
-                          target="_blank"
-                        >
-                          Devlog
-                        </a>
-                        <a href="https://github.com/joseph-106" target="_blank">
-                          Github
-                        </a>
-                        <a
-                          href="https://www.instagram.com/ksj_106/"
-                          target="_blank"
-                        >
-                          Instagram
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="home_contents">
-                  <div class="updated_news_title2">
-                    <br />
-                    <strong>{userObj.displayName}의 미니 홈페이지</strong>
-                  </div>
-                  <div class="updated_news_title">
-                    <br />
-                    <strong>Updated news</strong>
-                  </div>
-                  <div class="updated_news_contents">
-                    <div class="updated_news_left">
-                      <span class="updated_news_left1">
-                        <span class="updated_news_red">&nbsp;Diary&nbsp;</span>
-                        2023-05-22
-                      </span>
-                      <span class="updated_news_left2">
-                        <span class="updated_news_blue">&nbsp;photo&nbsp;</span>
-                        테스트 용
-                      </span>
-                      <span class="updated_news_left3">
-                        <span class="updated_news_blue">&nbsp;photo&nbsp;</span>
-                        테스트 이미지
-                      </span>
-                      <span class="updated_news_left4">
-                        <span class="updated_news_red">&nbsp;Diary&nbsp;</span>
-                        2023-05-23
-                      </span>
-                    </div>
-                    <div class="updated_news_right">
-                      <div class="updated_news_right1">
-                        다이어리{" "}
-                        <span class="updated_news_right_number">2/25</span>{" "}
-                        &emsp;&emsp;&emsp;&emsp;사진첩{" "}
-                        <span class="updated_news_right_number">0/25</span>
-                      </div>
-                      <div class="updated_news_right2">
-                        게시판{" "}
-                        <span class="updated_news_right_number">2/25</span>{" "}
-                        &emsp;&emsp;&emsp;&emsp;&emsp;방명록{" "}
-                        <span class="updated_news_right_number">0/25</span>
-                      </div>
-                      <div class="updated_news_right3"></div>
-                    </div>
-                  </div>
-                  <div class="miniroom_title">
-                    <br />
-                    <strong>Miniroom</strong>
-                  </div>
-                  <div class="miniroom_contents">
-                    <img class="miniroom_gif" src={img2} />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <ul class="menu_bar">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <Link to="/Diary">Diary</Link>
-              </li>
-              <li>
-                <Link to="/">Photo</Link>
-              </li>
-              <li>
-                <Link to="/Visitor">Visitor</Link>
-              </li>
-              <li>
-                <Link to="/Visitor">Chat</Link>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </Container>
   );
 };
