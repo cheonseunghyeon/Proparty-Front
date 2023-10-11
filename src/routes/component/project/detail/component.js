@@ -61,7 +61,7 @@ export const ContainerComponent = ({ children }) => {
   return (
     <div
       css={css`
-        width: 110rem;
+        width: 80rem;
         padding: 5.6rem 5.2rem;
         border-radius: 1.6rem;
         display: flex;
@@ -85,8 +85,8 @@ export const PublishImg = () => {
         src="/img/project1.png"
         alt="업로드 이미지"
         css={css`
-          width: 100rem;
-          height: 48rem;
+          width: 70rem;
+          height: 38rem;
           margin-right: 100px;
           border-radius: 1.2rem;
           cursor: pointer;
