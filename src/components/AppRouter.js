@@ -10,6 +10,9 @@ import "../css/AppRouter.css";
 import Home3 from "routes/Home3";
 import Publish from "routes/component/project/publish";
 import Detail from "routes/component/project/detail";
+import Projects from "routes/component/project/projects";
+import Team from "routes/component/project/Team";
+import Com from "routes/component/project/community";
 // 로그인 여부에 따라 render가 바뀜
 // Router 들만 보이게 함
 const AppRouter = ({ isLoggedIn, userObj }) => {
@@ -30,6 +33,9 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
               <Route path="/Diary" element={<Calendar />} />
               <Route path="/Publish" element={<Publish />} />
               <Route path="/Detail" element={<Detail />} />
+              <Route path="/Project" element={<Projects />} />
+              <Route path="/Team" element={<Team />} />
+              <Route path="/Com" element={<Com />} />
             </>
           ) : (
             <Route path="/" element={<Auth />} />

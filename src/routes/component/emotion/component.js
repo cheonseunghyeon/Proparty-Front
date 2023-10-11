@@ -33,7 +33,20 @@ export const Container2 = ({ children }) => (
     {children}
   </div>
 );
-
+export const Container3 = ({ children }) => (
+  <div
+    css={css`
+      width: 100%;
+      padding-bottom: 4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: white;
+    `}
+  >
+    {children}
+  </div>
+);
 export const Logo = () => (
   <img
     src="/img/logo.PNG"

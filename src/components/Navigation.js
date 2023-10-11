@@ -15,7 +15,7 @@ const Navigation = ({ userObj }) => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/Publish">팀 프로젝트</Link>
+          <Link to="/Project">팀 프로젝트</Link>
         </li>
         <li>
           <Link to="/Vlog">블로그</Link>

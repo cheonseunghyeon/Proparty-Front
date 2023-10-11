@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import React, { ChangeEvent } from "react";
+import { Link } from "react-router-dom";
 export const TagList = ({ children, small }) => (
   <div
     css={css`
@@ -144,7 +145,252 @@ export const Chart = () => (
     </div>
   </Rowdiv>
 );
+export const Chartss = () => (
+  <div
+    css={css`
+      width: 28rem;
+      display: flex;
+      flex-direction: column;
+      padding: 0.2rem;
+      padding-top: 2rem;
+      border-radius: 20px;
+      gap: 2rem;
+      border: 2px solid black;
+    `}
+  >
+    <Rowdiv>
+      <div>
+        <img
+          src="/img/chart1.jpg"
+          alt="검색"
+          css={css`
+            width: 24rem;
+            border-radius: 10px;
+          `}
+        />
+        <div
+          css={css`
+            width: 28rem;
+            display: flex;
+            flex-direction: column;
+            padding: 1.6rem;
+            gap: 2rem;
+          `}
+        >
+          <div
+            css={css`
+              display: flex;
+              flex-direction: row;
+              background-color: white;
+              padding: 0.8rem;
+              font-size: 1.6rem;
+              color: #282c34;
+              justify-content: center;
+              align-items: center;
+              gap: 1.6rem;
+              font-family: "Snow";
+              font-style: normal;
+              font-weight: 700;
+              border-radius: 1.2rem;
+            `}
+          >
+            <img
+              src="/img/icon1.png"
+              alt="검색"
+              css={css`
+                width: 4rem;
+                border-radius: 10px;
+              `}
+            />
+            FRONT-END
+          </div>
+          <div
+            css={css`
+              padding: 0.8rem;
+              font-size: 1.6rem;
+              color: #282c34;
+              gap: 0.8rem;
+              font-family: "JAM";
+              font-style: normal;
+              font-weight: 700;
+              border-radius: 1.2rem;
+            `}
+          >
+            천승현 (프론트엔드 개발자)
+          </div>
+          <div
+            css={css`
+              padding: 0.8rem;
+              font-size: 1.2rem;
+              color: #282c34;
+              font-family: "JAM";
+              font-style: normal;
+              font-weight: 700;
+              border-radius: 1.2rem;
+              line-height: 1.5;
+            `}
+          >
+            웹을 통해 아이디어를 현실로 만들어내는 프론트 엔드 개발자입니다.
+            사용자경험을 끌어올리고, 눈에 띄는 디자인을 만들어 드립니다
+            <div
+              css={css`
+                margin-top: 1.2rem;
+                color: #377dff;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 0.4rem;
+              `}
+            >
+              More
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M1.28308 11.0143L15.6281 11.0143L9.35508 17.2903C9.10973 17.524 8.97086 17.848 8.97086 18.1868C8.97086 18.5256 9.10973 18.8496 9.35508 19.0833V19.0833C9.58875 19.3287 9.91276 19.4675 10.2516 19.4675C10.5904 19.4675 10.9144 19.3287 11.1481 19.0833L19.4711 10.7583C19.9842 10.1717 19.9842 9.29592 19.4711 8.7093L11.1461 0.384304C10.9124 0.138947 10.5884 8.01086e-05 10.2496 8.01086e-05C9.91076 8.01086e-05 9.58675 0.138947 9.35308 0.384304H9.35308C9.10773 0.61797 8.96886 0.941983 8.96886 1.2808C8.96886 1.61962 9.10773 1.94364 9.35308 2.1773L15.6281 8.45231L1.28308 8.45231C0.93734 8.43135 0.59919 8.55956 0.354267 8.80449C0.109341 9.04941 -0.0188796 9.38756 0.00208282 9.73331V9.73331C-0.0188796 10.079 0.109341 10.4172 0.354263 10.6621C0.599189 10.907 0.937336 11.0353 1.28308 11.0143V11.0143Z"
+                  fill="#377DFF"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Rowdiv>
+  </div>
+);
 
+export const Chartss2 = () => (
+  <div
+    css={css`
+      width: 28rem;
+      display: flex;
+      flex-direction: column;
+      padding: 0.2rem;
+      padding-top: 2rem;
+      border-radius: 20px;
+      gap: 2rem;
+      border: 2px solid black;
+    `}
+  >
+    <Rowdiv>
+      <div
+        css={css`
+          align-items: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        `}
+      >
+        <img
+          src="/img/chart2.jpg"
+          alt="검색"
+          css={css`
+            width: 24rem;
+            border-radius: 10px;
+          `}
+        />
+        <div
+          css={css`
+            width: 28rem;
+            display: flex;
+            flex-direction: column;
+            padding: 1.6rem;
+            gap: 2rem;
+          `}
+        >
+          <div
+            css={css`
+              display: flex;
+              flex-direction: row;
+              background-color: white;
+              padding: 0.8rem;
+              font-size: 1.6rem;
+              color: #282c34;
+              justify-content: center;
+              align-items: center;
+              gap: 1.6rem;
+              font-family: "Snow";
+              font-style: normal;
+              font-weight: 700;
+              border-radius: 1.2rem;
+            `}
+          >
+            <img
+              src="/img/icon2.png"
+              alt="검색"
+              css={css`
+                width: 4rem;
+                border-radius: 10px;
+              `}
+            />
+            BACK-END
+          </div>
+          <div
+            css={css`
+              padding: 0.8rem;
+              font-size: 1.6rem;
+              color: #282c34;
+              gap: 0.8rem;
+              font-family: "JAM";
+              font-style: normal;
+              font-weight: 700;
+              border-radius: 1.2rem;
+            `}
+          >
+            김민수 (백엔드 개발자)
+          </div>
+          <div
+            css={css`
+              padding: 0.8rem;
+              font-size: 1.2rem;
+              color: #282c34;
+              font-family: "JAM";
+              font-style: normal;
+              font-weight: 700;
+              border-radius: 1.2rem;
+              line-height: 1.5;
+            `}
+          >
+            데이터의 힘으로 현실을 변화시키는 백엔드 개발자입니다. 확장성 있는
+            서버 아키텍처를 통해 웹 애플리케이션의 핵심을 지원합니다.
+            <div
+              css={css`
+                margin-top: 1.2rem;
+                color: #377dff;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 0.4rem;
+              `}
+            >
+              More
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15"
+                height="15"
+                viewBox="0 0 20 20"
+                fill="none"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M1.28308 11.0143L15.6281 11.0143L9.35508 17.2903C9.10973 17.524 8.97086 17.848 8.97086 18.1868C8.97086 18.5256 9.10973 18.8496 9.35508 19.0833V19.0833C9.58875 19.3287 9.91276 19.4675 10.2516 19.4675C10.5904 19.4675 10.9144 19.3287 11.1481 19.0833L19.4711 10.7583C19.9842 10.1717 19.9842 9.29592 19.4711 8.7093L11.1461 0.384304C10.9124 0.138947 10.5884 8.01086e-05 10.2496 8.01086e-05C9.91076 8.01086e-05 9.58675 0.138947 9.35308 0.384304H9.35308C9.10773 0.61797 8.96886 0.941983 8.96886 1.2808C8.96886 1.61962 9.10773 1.94364 9.35308 2.1773L15.6281 8.45231L1.28308 8.45231C0.93734 8.43135 0.59919 8.55956 0.354267 8.80449C0.109341 9.04941 -0.0188796 9.38756 0.00208282 9.73331V9.73331C-0.0188796 10.079 0.109341 10.4172 0.354263 10.6621C0.599189 10.907 0.937336 11.0353 1.28308 11.0143V11.0143Z"
+                  fill="#377DFF"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Rowdiv>
+  </div>
+);
 export const Chart2 = () => (
   <Rowdiv>
     <img
@@ -249,8 +495,110 @@ export const Chart2 = () => (
     </div>
   </Rowdiv>
 );
+export const Charts = () => (
+  <div
+    css={css`
+      background-color: white;
+      border: 3px solid gray;
+      border-radius: 10px;
+      padding: 1rem;
+    `}
+  >
+    <img
+      src="/img/chart1.jpg"
+      alt="검색"
+      css={css`
+        width: 12rem;
+        height: 12rem;
+        border-radius: 10px;
+      `}
+    />
+    <div
+      css={css`
+        width: 12rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1.6rem;
+        gap: 1.2rem;
+      `}
+    >
+      <div
+        css={css`
+          display: flex;
+          flex-direction: row;
+          background-color: white;
+          padding: 0.8rem;
+          font-size: 1rem;
+          color: #282c34;
+          justify-content: center;
+          align-items: center;
+          gap: 1.6rem;
+          font-family: "Snow";
+          font-style: normal;
+          font-weight: 700;
+          border-radius: 1.2rem;
+        `}
+      >
+        FRONT-END
+      </div>
+      <div
+        css={css`
+          padding: 0.8rem;
+          font-size: 1.6rem;
+          color: #282c34;
+          display: flex;
+          gap: 0.8rem;
+          font-family: "JAM";
+          font-style: normal;
+          font-weight: 700;
+          border-radius: 1.2rem;
+        `}
+      >
+        천승현
+      </div>
 
-export const Title2 = ({ children }) => (
+      <div
+        css={css`
+          font-size: 1.5rem;
+          color: #377dff;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 0.4rem;
+        `}
+      >
+        <Link
+          to="/Vlog"
+          css={css`
+            text-decoration: none;
+            color: inherit;
+          `}
+        >
+          마이페이지
+        </Link>
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15"
+          height="15"
+          viewBox="0 0 20 20"
+          fill="none"
+        >
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M1.28308 11.0143L15.6281 11.0143L9.35508 17.2903C9.10973 17.524 8.97086 17.848 8.97086 18.1868C8.97086 18.5256 9.10973 18.8496 9.35508 19.0833V19.0833C9.58875 19.3287 9.91276 19.4675 10.2516 19.4675C10.5904 19.4675 10.9144 19.3287 11.1481 19.0833L19.4711 10.7583C19.9842 10.1717 19.9842 9.29592 19.4711 8.7093L11.1461 0.384304C10.9124 0.138947 10.5884 8.01086e-05 10.2496 8.01086e-05C9.91076 8.01086e-05 9.58675 0.138947 9.35308 0.384304H9.35308C9.10773 0.61797 8.96886 0.941983 8.96886 1.2808C8.96886 1.61962 9.10773 1.94364 9.35308 2.1773L15.6281 8.45231L1.28308 8.45231C0.93734 8.43135 0.59919 8.55956 0.354267 8.80449C0.109341 9.04941 -0.0188796 9.38756 0.00208282 9.73331V9.73331C-0.0188796 10.079 0.109341 10.4172 0.354263 10.6621C0.599189 10.907 0.937336 11.0353 1.28308 11.0143V11.0143Z"
+            fill="#377DFF"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+);
+
+export const Title2 = ({ children, style }) => (
   <div
     css={css`
       font-size: 2rem;
@@ -264,13 +612,14 @@ export const Title2 = ({ children }) => (
       flex-direction: row;
       align-items: center;
       gap: 0.8rem;
+      ${style}
     `}
   >
     {children}
   </div>
 );
 
-export const Project1 = () => (
+export const Project1 = ({ style, img }) => (
   <div
     css={css`
       width: 24rem;
@@ -278,6 +627,8 @@ export const Project1 = () => (
       flex-direction: column;
       background-color: #f5f6fa;
       border-radius: 1.2rem;
+      overflow: hidden;
+      ${style}
     `}
   >
     <img
@@ -289,6 +640,7 @@ export const Project1 = () => (
         border-radius: 10px;
         display: flex;
         flex-direction: column;
+        ${img}
       `}
     />
     <div
@@ -349,7 +701,7 @@ export const Project1 = () => (
   </div>
 );
 
-export const Project2 = () => (
+export const Project2 = ({ style, img }) => (
   <div
     css={css`
       width: 24rem;
@@ -357,6 +709,8 @@ export const Project2 = () => (
       flex-direction: column;
       background-color: #f5f6fa;
       border-radius: 1.2rem;
+      ${style}
+      overflow: hidden;
     `}
   >
     <img
@@ -368,6 +722,7 @@ export const Project2 = () => (
         border-radius: 10px;
         display: flex;
         flex-direction: column;
+        ${img}
       `}
     />
     <div
@@ -428,7 +783,7 @@ export const Project2 = () => (
   </div>
 );
 
-export const Project3 = () => (
+export const Project3 = ({ style, img }) => (
   <div
     css={css`
       width: 24rem;
@@ -436,6 +791,8 @@ export const Project3 = () => (
       flex-direction: column;
       background-color: #f5f6fa;
       border-radius: 1.2rem;
+      ${style}
+      overflow: hidden;
     `}
   >
     <img
@@ -447,6 +804,7 @@ export const Project3 = () => (
         border-radius: 10px;
         display: flex;
         flex-direction: column;
+        ${img}
       `}
     />
     <div
@@ -507,7 +865,7 @@ export const Project3 = () => (
   </div>
 );
 
-export const Project4 = () => (
+export const Project4 = ({ style, img }) => (
   <div
     css={css`
       width: 24rem;
@@ -515,6 +873,8 @@ export const Project4 = () => (
       flex-direction: column;
       background-color: #f5f6fa;
       border-radius: 1.2rem;
+      ${style}
+      overflow: hidden;
     `}
   >
     <img
@@ -526,6 +886,7 @@ export const Project4 = () => (
         border-radius: 10px;
         display: flex;
         flex-direction: column;
+        ${img}
       `}
     />
     <div
@@ -585,7 +946,7 @@ export const Project4 = () => (
   </div>
 );
 
-export const Project5 = () => (
+export const Project5 = ({ style, img }) => (
   <div
     css={css`
       width: 24rem;
@@ -593,6 +954,8 @@ export const Project5 = () => (
       flex-direction: column;
       background-color: #f5f6fa;
       border-radius: 1.2rem;
+      ${style}
+      overflow: hidden;
     `}
   >
     <img
@@ -604,6 +967,7 @@ export const Project5 = () => (
         border-radius: 10px;
         display: flex;
         flex-direction: column;
+        ${img}
       `}
     />
     <div
@@ -617,7 +981,7 @@ export const Project5 = () => (
         border-radius: 1.2rem;
       `}
     >
-      떨어지기 전에 멈춰! 멈춰!
+      떨어지기 전에 멈춰!
     </div>
     <div
       css={css`
@@ -664,7 +1028,7 @@ export const Project5 = () => (
   </div>
 );
 
-export const Project6 = () => (
+export const Project6 = ({ style, img }) => (
   <div
     css={css`
       width: 24rem;
@@ -672,6 +1036,8 @@ export const Project6 = () => (
       flex-direction: column;
       background-color: #f5f6fa;
       border-radius: 1.2rem;
+      ${style}
+      overflow: hidden;
     `}
   >
     <img
@@ -683,6 +1049,7 @@ export const Project6 = () => (
         border-radius: 10px;
         display: flex;
         flex-direction: column;
+        ${img}
       `}
     />
     <div

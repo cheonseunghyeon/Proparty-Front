@@ -41,7 +41,7 @@ const Publish = () => {
         <LinkInputBox2 />
         <LinkInputBox2 />
       </ContainerComponent>
-      <Buttons>프로젝트 발행</Buttons>
+      <Buttons>프로젝트 카드 발행</Buttons>
     </Inner>
   );
 };
