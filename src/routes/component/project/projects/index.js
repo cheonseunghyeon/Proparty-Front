@@ -312,7 +312,7 @@ const Projects = () => {
               `}
             >
               <Title2>
-                프로젝트 소개 카드 더보기
+                프로젝트 소개 카드 작성하기
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="25"

@@ -138,6 +138,36 @@ export const TextInputBox3 = () => {
     />
   );
 };
+export const TextInputBox4 = () => {
+  return (
+    <input
+      css={css`
+        background: none;
+        color: #black;
+        &::placeholder {
+          font-size: 1.8rem;
+          color: #gray;
+        }
+      `}
+      placeholder="제목을 입력하세요"
+    />
+  );
+};
+export const TextInputBox5 = () => {
+  return (
+    <input
+      css={css`
+        background: none;
+        color: #black;
+        &::placeholder {
+          font-size: 1.4rem;
+          color: #gray;
+        }
+      `}
+      placeholder="프로젝트를 소개하는 핵심 내용을 요약해주세요"
+    />
+  );
+};
 export const InfoInput2 = () => (
   <input
     css={css`
@@ -195,6 +225,32 @@ export const Buttons = ({ children }) => {
         height: 9.6rem;
         background-color: #377dff;
         margin-bottom: 4rem;
+        border-radius: 2.8rem;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.4rem;
+
+        font-family: "JAM";
+        font-style: normal;
+        border-radius: 1.2rem;
+      `}
+    >
+      {children}
+    </div>
+  );
+};
+
+export const Buttons2 = ({ children }) => {
+  return (
+    <div
+      css={css`
+        width: 30rem;
+        height: 5.6rem;
+        background-color: #377dff;
+        margin-top: 4rem;
         border-radius: 2.8rem;
         color: #fff;
         display: flex;
