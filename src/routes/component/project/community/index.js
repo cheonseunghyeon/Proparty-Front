@@ -152,7 +152,7 @@ const Com = () => {
             </RowSubText>
             <SearchButton>
               <Link
-                to={"/Write"}
+                to={"/ComWrite"}
                 css={css`
                   text-decoration: none;
                   color: inherit;

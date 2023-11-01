@@ -216,7 +216,7 @@ const Team = () => {
             </RowSubText>
             <SearchButton>
               <Link
-                to={"/Write"}
+                to={"/TeamWrite"}
                 css={css`
                   text-decoration: none;
                   color: inherit;

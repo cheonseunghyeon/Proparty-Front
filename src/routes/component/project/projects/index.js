@@ -217,6 +217,19 @@ const Projects = () => {
                 gap: 2rem;
               `}
             >
+              <Link
+                to={`/Project/0`}
+                style={{ textDecorationLine: "none", color: "black" }}
+              >
+                <ProjectTeam
+                  title={"소울라이크 게임을 만들어보실분들을 구합니다."}
+                  stack={"모집완료"}
+                  body={
+                    "기본적으로 3D, 장르는 소울라이크이며 사용하려는 엔진은 언리얼엔진5 입니다."
+                  }
+                />
+              </Link>
+
               {filteredProjects.map((project) => (
                 <Link
                   to={`/Project/${project.no}`}
@@ -270,9 +283,9 @@ const Projects = () => {
                 margin: 3rem;
               `}
             >
-              <Link to="/Publish" style={{ textDecorationLine: "none" }}>
+              <Link to="/ProCard" style={{ textDecorationLine: "none" }}>
                 <Title2>
-                  프로젝트 소개 카드 작성하기
+                  프로젝트 소개 카드 보려가기
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"

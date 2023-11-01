@@ -18,13 +18,13 @@ import "react-quill/dist/quill.snow.css";
 import { Buttons2 } from "../publish/component";
 import comData from "../../../data/com.json";
 
-const Mains4 = () => {
+const Mains3 = () => {
   const { no } = useParams(); // `no` 파라미터를 가져옴
   const selectedTeamMember = comData.find(
     (member) => member.no === parseInt(no)
   );
 
-  const [selectedItems, setSelectedItems] = useState("팀 프로젝트");
+  const [selectedItems, setSelectedItems] = useState("지식 공유 포럼");
 
   const handleItemsClick = (item) => {
     setSelectedItems(item);
@@ -98,36 +98,37 @@ const Mains4 = () => {
           </LeftComponent>
         </ContainerLeftComponent>
         <ContainerMidComponent>
-          <div
-            css={css`
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
-              align-items: center;
+          {selectedTeamMember && (
+            <div
+              css={css`
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
 
-              gap: 1.6rem;
-              padding: 1rem;
-              border-radius: 10px;
-            `}
-          >
-            <div
-              css={css`
-                color: #000;
-                font-size: 2.2rem;
+                gap: 1rem;
+                padding: 1rem;
+                border-radius: 10px;
               `}
             >
-              [모집완료] 소울라이크 게임을 만들어보실분들을 구합니다.
+              <div
+                css={css`
+                  color: #000;
+                  font-size: 2.2rem;
+                `}
+              >
+                [{selectedTeamMember.stack}] {selectedTeamMember.title}
+              </div>
+              <div
+                css={css`
+                  color: #000;
+                  font-size: 1.6rem;
+                `}
+              >
+                {selectedTeamMember.body}
+              </div>
             </div>
-            <div
-              css={css`
-                color: #999999;
-                font-size: 1.4rem;
-              `}
-            >
-              기본적으로 3D, 장르는 소울라이크이며 사용하려는 엔진은 언리얼엔진5
-              입니다.
-            </div>
-          </div>
+          )}
           <div
             css={css`
               width: 100%;
@@ -229,4 +230,4 @@ const Mains4 = () => {
     </Inner>
   );
 };
-export default Mains4;
+export default Mains3;

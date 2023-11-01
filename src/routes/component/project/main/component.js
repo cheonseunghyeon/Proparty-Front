@@ -618,7 +618,26 @@ export const Title2 = ({ children, style }) => (
     {children}
   </div>
 );
-
+export const Title3 = ({ children, style }) => (
+  <div
+    css={css`
+      font-size: 2.6rem;
+      color: #333333;
+      font-family: "JAM";
+      font-style: normal;
+      font-weight: 700;
+      border-radius: 1.2rem;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0.8rem;
+      ${style}
+    `}
+  >
+    {children}
+  </div>
+);
 export const Project1 = ({ style, img }) => (
   <div
     css={css`
@@ -637,6 +656,7 @@ export const Project1 = ({ style, img }) => (
       css={css`
         width: 24rem;
         height: 15.5rem;
+        padding: 1rem;
         border-radius: 10px;
         display: flex;
         flex-direction: column;

@@ -8,9 +8,6 @@ import {
   ContainerRightComponent,
   Inner,
   LeftComponent,
-  ProjectDetailText,
-  ProjectDetailText2,
-  ProjectDetailTitle,
 } from "./component";
 import { Charts } from "../main/component";
 import { Link, useParams } from "react-router-dom";
@@ -99,10 +96,34 @@ const Mains2 = () => {
         </ContainerLeftComponent>
         <ContainerMidComponent>
           {selectedTeamMember && (
-            <div>
-              <h2>{selectedTeamMember.title}</h2>
-              <p>{selectedTeamMember.body}</p>
-              <p>{selectedTeamMember.stack}</p>
+            <div
+              css={css`
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                gap: 1rem;
+                padding: 1rem;
+                border-radius: 10px;
+              `}
+            >
+              <div
+                css={css`
+                  color: #000;
+                  font-size: 2.2rem;
+                `}
+              >
+                [{selectedTeamMember.stack}] {selectedTeamMember.title}
+              </div>
+              <div
+                css={css`
+                  color: #000;
+                  font-size: 1.6rem;
+                `}
+              >
+                {selectedTeamMember.body}
+              </div>
             </div>
           )}
           <div
@@ -119,7 +140,6 @@ const Mains2 = () => {
               padding: 50px;
             `}
           >
-            {" "}
             <div
               css={css`
                 width: 100%;
@@ -132,61 +152,8 @@ const Mains2 = () => {
                 gap: 2rem;
                 padding: 50px;
               `}
-            >
-              <ProjectDetailTitle>
-                소울라이크 게임을 만들어보실분들을 구합니다.
-              </ProjectDetailTitle>
-              <ProjectDetailText>
-                소울라이크 게임을 만들어보실분들을 구합니다.
-              </ProjectDetailText>
-              <ProjectDetailText>
-                퇴사 기념으로 게임한번 만들어 볼까 합니다.
-              </ProjectDetailText>
-              <ProjectDetailText2>
-                기본적으로 3D, 장르는 소울라이크 사용하려는 엔진은 언리얼엔진5
-                입니다.
-              </ProjectDetailText2>
-              <ProjectDetailText>모델러,</ProjectDetailText>
-              <ProjectDetailText>애니메이터,</ProjectDetailText>
-              <div
-                css={css`
-                  font-size: 1.4rem;
-                  color: black;
-                  font-family: "JAM";
-                  font-style: normal;
-                  font-weight: 300;
-                  gap: 1rem;
-                  padding-bottom: 2rem;
-                  border-bottom: 1px solid black;
-                `}
-              >
-                프로그래머를 모집하고 있습니다.
-              </div>
-              <div
-                css={css`
-                  font-size: 1.4rem;
-                  color: black;
-                  font-family: "JAM";
-                  font-style: normal;
-                  font-weight: 300;
-                  gap: 1rem;
-                `}
-              >
-                작성중인 기획안이 궁금하시면
-              </div>
-              <div
-                css={css`
-                  font-size: 1.4rem;
-                  color: black;
-                  font-family: "JAM";
-                  font-style: normal;
-                  font-weight: 300;
-                  gap: 1rem;
-                `}
-              >
-                연락주시길 바랍니다.
-              </div>
-            </div>
+              dangerouslySetInnerHTML={{ __html: selectedTeamMember.test }}
+            ></div>
             <div
               css={css`
                 width: 100%;

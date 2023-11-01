@@ -2,7 +2,6 @@
 import { css } from "@emotion/react";
 import React, { useState } from "react";
 import {
-  ButtonContainer,
   ContainerLeftComponent,
   ContainerMember,
   ContainerMidComponent,
@@ -10,36 +9,22 @@ import {
   Inner,
   LeftComponent,
   MainText,
-  ProjectTeam,
-  ProjectTeams,
-  RowContainer,
-  RowSubText,
-  RowTestText,
   RowText,
-  SearchButton,
-  SearchContainer,
-  SubText,
 } from "./component";
 import { Container2, Container3 } from "routes/component/emotion/component";
-import {
-  Chart,
-  Charts,
-  Project1,
-  Project2,
-  Project3,
-  Project4,
-  Project5,
-  Project6,
-  Title2,
-} from "../main/component";
+import { Charts } from "../../main/component";
 import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { Buttons2, TextInputBox4, TextInputBox5 } from "../publish/component";
-import projectsData from "../../../data/projectsData.json";
-const Write = () => {
-  const [selectedItem, setSelectedItem] = useState("팀 프로젝트");
-  const [selectedItems, setSelectedItems] = useState("팀 프로젝트");
+import {
+  Buttons2,
+  TextInputBox4,
+  TextInputBox5,
+} from "../../publish/component";
+import TeamData from "../../../../data/TeamData.json";
+const Write2 = () => {
+  const [selectedItem, setSelectedItem] = useState("팀원");
+  const [selectedItems, setSelectedItems] = useState("팀원");
   const [text, setText] = useState("");
 
   const handleChange = (value) => {
@@ -51,7 +36,7 @@ const Write = () => {
   const handleItemsClick = (item) => {
     setSelectedItems(item);
   };
-  const [selectedOption, setSelectedOption] = useState("모집중");
+  const [selectedOption, setSelectedOption] = useState("프론트엔드");
 
   const handleSelectChange = (e) => {
     setSelectedOption(e.target.value);
@@ -70,7 +55,7 @@ const Write = () => {
   };
   const handlePublish = () => {
     const newProject = {
-      no: projectsData.length + 1,
+      no: TeamData.length + 1,
       title: title,
       body: body,
       stack: selectedOption,
@@ -78,8 +63,8 @@ const Write = () => {
       test: text,
     };
 
-    projectsData.push(newProject);
-    console.log(projectsData);
+    TeamData.push(newProject);
+    console.log(TeamData);
     // Clear the input fields
     setTitle("");
     setBody("");
@@ -241,8 +226,10 @@ const Write = () => {
                 placeholder="프로젝트 설명"
               />
               <select value={selectedOption} onChange={handleSelectChange}>
-                <option value="모집중">모집 중</option>
-                <option value="모집완료">모집 완료</option>
+                <option value="프론트엔드">프론트엔드</option>
+                <option value="벡엔드">벡엔드</option>
+                <option value="디자인">디자인</option>
+                <option value="기타">기타</option>
               </select>
               <ReactQuill
                 value={text}
@@ -251,13 +238,13 @@ const Write = () => {
               />
             </div>
             <Link
-              to={"/Project"}
+              to={"/Team"}
               style={{
                 textDecorationLine: "none",
                 color: "black",
               }}
             >
-              <Buttons2 onClick={handlePublish}>프로젝트 발행</Buttons2>
+              <Buttons2 onClick={handlePublish}>팀원 발행</Buttons2>
             </Link>
           </Container3>
         </ContainerMidComponent>
@@ -268,4 +255,4 @@ const Write = () => {
     </Inner>
   );
 };
-export default Write;
+export default Write2;
