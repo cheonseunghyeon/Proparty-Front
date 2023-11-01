@@ -217,18 +217,20 @@ const Projects = () => {
                 gap: 2rem;
               `}
             >
-              <Link
-                to={`/Project/0`}
-                style={{ textDecorationLine: "none", color: "black" }}
-              >
-                <ProjectTeam
-                  title={"소울라이크 게임을 만들어보실분들을 구합니다."}
-                  stack={"모집완료"}
-                  body={
-                    "기본적으로 3D, 장르는 소울라이크이며 사용하려는 엔진은 언리얼엔진5 입니다."
-                  }
-                />
-              </Link>
+              {selectedItem !== "모집중" && (
+                <Link
+                  to={`/Project/0`}
+                  style={{ textDecorationLine: "none", color: "black" }}
+                >
+                  <ProjectTeam
+                    title={"소울라이크 게임을 만들어보실분들을 구합니다."}
+                    stack={"모집완료"}
+                    body={
+                      "기본적으로 3D, 장르는 소울라이크이며 사용하려는 엔진은 언리얼엔진5 입니다."
+                    }
+                  />
+                </Link>
+              )}
 
               {filteredProjects.map((project) => (
                 <Link
