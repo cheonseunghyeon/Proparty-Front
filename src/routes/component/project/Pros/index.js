@@ -3,16 +3,9 @@ import { css } from "@emotion/react";
 import React, { useState } from "react";
 import {
   ButtonContainer,
-  ContainerLeftComponent,
-  ContainerMember,
   ContainerMidComponent,
-  ContainerRightComponent,
   Inner,
-  LeftComponent,
   Project,
-  ProjectDetailText,
-  ProjectDetailText2,
-  ProjectDetailTitle,
   RowContainer,
   RowSubText,
   RowTestText,
@@ -22,9 +15,23 @@ import {
 import { Title2 } from "../main/component";
 import { Link } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
-import { Container2, Container3 } from "routes/component/emotion/component";
+import {
+  Container2,
+  Container3,
+  MyModal,
+} from "routes/component/emotion/component";
 import proData from "../../../data/proData.json";
 const Pros = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <Inner>
       <ContainerMidComponent>
@@ -34,18 +41,9 @@ const Pros = () => {
         </RowContainer>
         <RowTestText>
           <RowSubText></RowSubText>
-          <SearchButton>
-            <Link
-              to={"/Write"}
-              css={css`
-                text-decoration: none;
-                color: inherit;
-              `}
-            >
-              글쓰기
-            </Link>
-          </SearchButton>
+          <SearchButton onClick={openModal}>글쓰기</SearchButton>
         </RowTestText>
+        <MyModal isOpen={isModalOpen} closeModal={closeModal} />
       </ContainerMidComponent>
       <Container3>
         <div

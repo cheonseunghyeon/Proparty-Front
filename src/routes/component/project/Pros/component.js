@@ -424,7 +424,7 @@ export const ButtonContainer = ({ children }) => {
     </div>
   );
 };
-export const SearchButton = ({ children }) => {
+export const SearchButton = ({ onClick, children }) => {
   return (
     <div
       css={css`
@@ -436,7 +436,9 @@ export const SearchButton = ({ children }) => {
         color: white;
         background-color: #1f1f1f;
         font-size: 1.2rem;
+        cursor: pointer;
       `}
+      onClick={onClick}
     >
       {children}
     </div>
