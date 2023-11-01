@@ -79,6 +79,7 @@ const Write = () => {
                 borderBottom: "1px solid lightgray",
                 color: selectedItems === "팀 프로젝트" ? "#000" : "lightgray",
                 fontSize: selectedItems === "팀 프로젝트" ? "1.6rem" : "1.4rem",
+                cursor: "pointer",
               }}
             >
               <Link
@@ -98,6 +99,7 @@ const Write = () => {
                 borderBottom: "1px solid lightgray",
                 color: selectedItems === "팀원" ? "#000" : "lightgray",
                 fontSize: selectedItems === "팀원" ? "1.6rem" : "1.4rem",
+                cursor: "pointer",
               }}
             >
               <Link
@@ -138,6 +140,7 @@ const Write = () => {
             <MainText
               onClick={() => handleItemClick("전체")}
               style={{
+                cursor: "pointer",
                 borderBottom:
                   selectedItem === "전체" ? "3px solid black" : "none",
                 color: selectedItem === "전체" ? "black" : "lightgray",
@@ -149,6 +152,7 @@ const Write = () => {
             <MainText
               onClick={() => handleItemClick("모집중")}
               style={{
+                cursor: "pointer",
                 borderBottom:
                   selectedItem === "모집중" ? "3px solid black" : "none",
                 color: selectedItem === "모집중" ? "black" : "lightgray",
@@ -159,6 +163,7 @@ const Write = () => {
             <MainText
               onClick={() => handleItemClick("모집완료")}
               style={{
+                cursor: "pointer",
                 borderBottom:
                   selectedItem === "모집완료" ? "3px solid black" : "none",
                 color: selectedItem === "모집완료" ? "black" : "lightgray",

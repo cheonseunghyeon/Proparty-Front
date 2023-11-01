@@ -10,6 +10,9 @@ import {
   Inner,
   LeftComponent,
   MainText,
+  ProjectDetailText,
+  ProjectDetailText2,
+  ProjectDetailTitle,
   ProjectTeam,
   ProjectTeams,
   RowContainer,
@@ -69,7 +72,70 @@ const Mains = () => {
   return (
     <Inner>
       <ContainerMember>
-        <ContainerLeftComponent></ContainerLeftComponent>
+        <ContainerLeftComponent>
+          함께 성장해요
+          <LeftComponent>
+            <div
+              onClick={() => handleItemsClick("팀 프로젝트")}
+              style={{
+                paddingBottom: "2rem",
+                borderBottom: "1px solid lightgray",
+                color: selectedItems === "팀 프로젝트" ? "#000" : "lightgray",
+                fontSize: selectedItems === "팀 프로젝트" ? "1.6rem" : "1.4rem",
+              }}
+            >
+              <Link
+                to={"/Project"}
+                css={css`
+                  text-decoration: none;
+                  color: inherit;
+                `}
+              >
+                팀 프로젝트
+              </Link>
+            </div>
+            <div
+              onClick={() => handleItemsClick("팀원")}
+              style={{
+                paddingBottom: "2rem",
+                borderBottom: "1px solid lightgray",
+                color: selectedItems === "팀원" ? "#000" : "lightgray",
+                fontSize: selectedItems === "팀원" ? "1.6rem" : "1.4rem",
+              }}
+            >
+              <Link
+                to={"/Team"}
+                css={css`
+                  text-decoration: none;
+                  color: inherit;
+                `}
+              >
+                팀원
+              </Link>
+            </div>
+            <div
+              onClick={() => handleItemsClick("지식 공유 포럼")}
+              style={{
+                paddingBottom: "2rem",
+                borderBottom: "1px solid lightgray",
+                color:
+                  selectedItems === "지식 공유 포럼" ? "#000" : "lightgray",
+                fontSize:
+                  selectedItems === "지식 공유 포럼" ? "1.5rem" : "1.4rem",
+              }}
+            >
+              <Link
+                to={"/Com"}
+                css={css`
+                  text-decoration: none;
+                  color: inherit;
+                `}
+              >
+                지식 공유 포럼
+              </Link>
+            </div>
+          </LeftComponent>
+        </ContainerLeftComponent>
         <ContainerMidComponent>
           <div
             css={css`
@@ -99,75 +165,21 @@ const Mains = () => {
                 padding: 50px;
               `}
             >
-              {" "}
-              <div
-                css={css`
-                  font-size: 2rem;
-                  color: black;
-                  font-family: "JAM";
-                  font-style: normal;
-                  font-weight: 700;
-                  border-radius: 1.2rem;
-                  line-height: 1.5;
-                  display: flex;
-                  flex-direction: row;
-                  align-items: center;
-                  gap: 0.8rem;
-                `}
-              >
+              <ProjectDetailTitle>
                 소울라이크 게임을 만들어보실분들을 구합니다.
-              </div>
-              <div
-                css={css`
-                  font-size: 1.4rem;
-                  color: black;
-                  font-family: "JAM";
-                  font-style: normal;
-                  font-weight: 300;
-                  gap: 1rem;
-                `}
-              >
+              </ProjectDetailTitle>
+              <ProjectDetailText>
+                소울라이크 게임을 만들어보실분들을 구합니다.
+              </ProjectDetailText>
+              <ProjectDetailText>
                 퇴사 기념으로 게임한번 만들어 볼까 합니다.
-              </div>
-              <div
-                css={css`
-                  font-size: 1.4rem;
-                  color: black;
-                  font-family: "JAM";
-                  font-style: normal;
-                  font-weight: 300;
-                  gap: 1rem;
-                  padding-bottom: 2rem;
-                  border-bottom: 1px solid black;
-                `}
-              >
+              </ProjectDetailText>
+              <ProjectDetailText2>
                 기본적으로 3D, 장르는 소울라이크 사용하려는 엔진은 언리얼엔진5
                 입니다.
-              </div>
-              <div
-                css={css`
-                  font-size: 1.4rem;
-                  color: black;
-                  font-family: "JAM";
-                  font-style: normal;
-                  font-weight: 300;
-                  gap: 1rem;
-                `}
-              >
-                모델러,
-              </div>
-              <div
-                css={css`
-                  font-size: 1.4rem;
-                  color: black;
-                  font-family: "JAM";
-                  font-style: normal;
-                  font-weight: 300;
-                  gap: 1rem;
-                `}
-              >
-                애니메이터,
-              </div>
+              </ProjectDetailText2>
+              <ProjectDetailText>모델러,</ProjectDetailText>
+              <ProjectDetailText>애니메이터,</ProjectDetailText>
               <div
                 css={css`
                   font-size: 1.4rem;

@@ -21,7 +21,7 @@ const Navigation = ({ userObj }) => {
           <Link to="/Vlog">블로그</Link>
         </li>
         <li>
-          <Link to="/">커뮤니티</Link>
+          <Link to="/Com">커뮤니티</Link>
         </li>
         <li>
           <Link to="/profile">{userObj.displayName}의 프로필</Link>

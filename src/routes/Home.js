@@ -133,7 +133,9 @@ const Home = ({ userObj }) => {
   //   const onClear = () => setAttachment("");
   return (
     <Container>
-      <Main1 />
+      <Link to="/Write">
+        <Main1 />
+      </Link>
 
       <Rowdiv>
         <Chart />

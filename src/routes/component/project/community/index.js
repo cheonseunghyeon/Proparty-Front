@@ -37,7 +37,7 @@ import { Link } from "react-router-dom";
 const Com = () => {
   const [selectedItem, setSelectedItem] = useState("전체");
   const [selectedSearch, setSelectedSearch] = useState("최신순");
-  const [selectedItems, setSelectedItems] = useState("팀 프로젝트");
+  const [selectedItems, setSelectedItems] = useState("지식 공유 포럼");
   const handleItemClick = (item) => {
     setSelectedItem(item);
   };
@@ -149,7 +149,7 @@ const Com = () => {
             </RowSubText>
             <SearchButton>
               <Link
-                to={"/Publish"}
+                to={"/Write"}
                 css={css`
                   text-decoration: none;
                   color: inherit;

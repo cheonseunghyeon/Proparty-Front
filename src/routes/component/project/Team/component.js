@@ -343,7 +343,16 @@ export const ProjectTeam = ({ title, body, id }) => {
     </div>
   );
 };
-export const ProjectTeam2 = ({ title, body, id }) => {
+export const ProjectTeam2 = ({ title, body, id, stack }) => {
+  const stackColors = {
+    프론트엔드: "#ff82d9", // 프론트엔드 스택 배경색
+    벡엔드: "#377dff", // 벡엔드 스택 배경색
+    디자인: "#faed7d", // 디자인 스택 배경색
+    기타: "#86e57f", // 기타 스택 배경색
+  };
+
+  // 스택에 따른 배경색 선택
+  const backgroundColor = stackColors[stack] || "initial";
   return (
     <div
       css={css`
@@ -370,12 +379,12 @@ export const ProjectTeam2 = ({ title, body, id }) => {
             padding: 0.6rem;
             font-size: 1rem;
             color: white;
-            background-color: #ff82d9;
+            background-color: ${backgroundColor};
             margin-right: 1rem;
             padding-left: 0.5rem;
           `}
         >
-          프론트엔드
+          {stack}
         </div>
         {title}
       </div>

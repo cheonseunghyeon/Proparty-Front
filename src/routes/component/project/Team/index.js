@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ButtonContainer,
   ContainerLeftComponent,
@@ -10,7 +10,6 @@ import {
   Inner,
   LeftComponent,
   MainText,
-  ProjectTeam,
   ProjectTeam2,
   ProjectTeam3,
   ProjectTeam4,
@@ -22,27 +21,20 @@ import {
   SearchContainer,
   SubText,
 } from "./component";
-import { Container2, Container3 } from "routes/component/emotion/component";
-import {
-  Chart,
-  Chart2,
-  Charts,
-  Chartss,
-  Chartss2,
-  Project1,
-  Project2,
-  Project3,
-  Project4,
-  Project5,
-  Project6,
-  Title2,
-} from "../main/component";
+import { Container3 } from "routes/component/emotion/component";
+import { Charts, Chartss, Chartss2, Title2 } from "../main/component";
 import { Link } from "react-router-dom";
-
+import TeamData from "../../../data/TeamData.json";
 const Team = () => {
   const [selectedItem, setSelectedItem] = useState("전체");
   const [selectedSearch, setSelectedSearch] = useState("최신순");
-  const [selectedItems, setSelectedItems] = useState("팀 프로젝트");
+  const [selectedItems, setSelectedItems] = useState("팀원");
+  const [team, setTeam] = useState([]);
+
+  useEffect(() => {
+    setTeam(TeamData);
+  }, []);
+
   const handleItemClick = (item) => {
     setSelectedItem(item);
   };
@@ -207,7 +199,7 @@ const Team = () => {
             </RowSubText>
             <SearchButton>
               <Link
-                to={"/Publish"}
+                to={"/Write"}
                 css={css`
                   text-decoration: none;
                   color: inherit;
@@ -229,37 +221,15 @@ const Team = () => {
                 gap: 2rem;
               `}
             >
-              <ProjectTeam2
-                title={"[프론트엔드] 꿈과 열정이 가득한 프론트 엔드 개발자🔥 "}
-                body={
-                  "웹 세상의 화가로, 사용자 인터페이스(UI) 디자인과 개발을 담당합니다."
-                }
-                id={"kyr1185"}
-              />
-              <ProjectTeam3
-                title={
-                  "[벡엔드] Java를 주 언어로 사용하는 벡엔드 개발자 입니다"
-                }
-                body={
-                  "기본적으로 3D, 장르는 소울라이크이며 사용하려는 엔진은 언리얼엔진5 입니다."
-                }
-                id={"kyr1234"}
-              />
-              <ProjectTeam2
-                title={"[앱 개발자] Android Kotlin는 자신있는 앱 개발자"}
-                body={
-                  "웹 기술과 도구의 최신 동향을 파악하고 항상 학습하며 성장합니다."
-                }
-                id={"kyr1234"}
-              />
-
-              <ProjectTeam4
-                title={"[디자인] 🌎 글로벌한 디자인을 창작하는 디자이너"}
-                body={
-                  "창의적이고 시각적으로 풍부한 웹 디자인을 제공하는 웹 디자이너입니다"
-                }
-                id={"kyr1234"}
-              />
+              {team.map((team, index) => (
+                <ProjectTeam2
+                  key={team.no}
+                  title={team.title}
+                  body={team.body}
+                  id={team.id}
+                  stack={team.stack}
+                />
+              ))}
             </div>
             <div
               css={css`
