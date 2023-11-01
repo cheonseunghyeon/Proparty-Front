@@ -284,7 +284,15 @@ export const SearchButton = ({ children }) => {
     </div>
   );
 };
-export const ProjectTeam = ({ title, body, id }) => {
+export const ProjectTeam = ({ title, body, id, stack }) => {
+  const stackColors = {
+    모집완료: "#333333", // 프론트엔드 스택 배경색
+    모집중: "#377dff", // 벡엔드 스택 배경색
+    커뮤니티: "#377dff",
+  };
+
+  // 스택에 따른 배경색 선택
+  const backgroundColor = stackColors[stack] || "initial";
   return (
     <div
       css={css`
@@ -311,12 +319,12 @@ export const ProjectTeam = ({ title, body, id }) => {
             padding: 0.6rem;
             font-size: 1rem;
             color: white;
-            background-color: #377dff;
+            background-color: ${backgroundColor};
             margin-right: 1rem;
             padding-left: 0.5rem;
           `}
         >
-          모집중
+          {stack}
         </div>
         {title}
       </div>

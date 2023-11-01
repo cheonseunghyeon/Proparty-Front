@@ -20,7 +20,6 @@ import {
   SubText,
 } from "./component";
 import { Container2, Container3 } from "routes/component/emotion/component";
-import projectsData from "../../../data/projectsData.json";
 import {
   Charts,
   Project1,
@@ -29,6 +28,7 @@ import {
   Title2,
 } from "../main/component";
 import { Link } from "react-router-dom";
+import projectsData from "../../../data/projectsData.json";
 
 const Projects = () => {
   const [selectedItem, setSelectedItem] = useState("전체");
@@ -40,7 +40,17 @@ const Projects = () => {
     // 컴포넌트가 마운트될 때 JSON 파일에서 데이터를 불러옵니다
     setProjects(projectsData);
   }, []);
-
+  const filteredProjects = projects.filter((project) => {
+    if (selectedItem === "전체") {
+      return true; // 전체 선택 시 모든 프로젝트 반환
+    } else if (selectedItem === "모집중" && project.stack === "모집중") {
+      return true; // 모집중 선택 시 모집중인 프로젝트 반환
+    } else if (selectedItem === "모집완료" && project.stack === "모집완료") {
+      return true; // 모집완료 선택 시 모집완료인 프로젝트 반환
+    } else {
+      return false;
+    }
+  });
   const handleItemClick = (item) => {
     setSelectedItem(item);
   };
@@ -207,13 +217,20 @@ const Projects = () => {
                 gap: 2rem;
               `}
             >
-              {projects.map((project, index) => (
-                <ProjectTeam
-                  key={index}
-                  title={project.title}
-                  body={project.body}
-                  id={project.id}
-                />
+              {filteredProjects.map((project) => (
+                <Link
+                  to={`/Project/${project.no}`}
+                  key={project.no}
+                  style={{ textDecorationLine: "none", color: "black" }}
+                >
+                  <ProjectTeam
+                    key={project.no}
+                    title={project.title}
+                    body={project.body}
+                    id={project.id}
+                    stack={project.stack}
+                  />
+                </Link>
               ))}
             </div>
             <div

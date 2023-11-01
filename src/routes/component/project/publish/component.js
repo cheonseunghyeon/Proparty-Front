@@ -138,32 +138,39 @@ export const TextInputBox3 = () => {
     />
   );
 };
-export const TextInputBox4 = () => {
+export const TextInputBox4 = ({ value, onChange }) => {
+  // Destructure the props object
   return (
     <input
       css={css`
         background: none;
-        color: #black;
+        color: #000;
         &::placeholder {
           font-size: 1.8rem;
-          color: #gray;
+          color: gray;
         }
       `}
+      value={value}
+      onChange={onChange}
       placeholder="제목을 입력하세요"
     />
   );
 };
-export const TextInputBox5 = () => {
+
+export const TextInputBox5 = ({ value, onChange }) => {
+  // Destructure the props object
   return (
     <input
       css={css`
         background: none;
-        color: #black;
+        color: #000;
         &::placeholder {
           font-size: 1.4rem;
-          color: #gray;
+          color: gray;
         }
       `}
+      value={value}
+      onChange={onChange}
       placeholder="프로젝트를 소개하는 핵심 내용을 요약해주세요"
     />
   );
@@ -243,9 +250,9 @@ export const Buttons = ({ children }) => {
   );
 };
 
-export const Buttons2 = ({ children }) => {
+export const Buttons2 = ({ onClick, children }) => {
   return (
-    <div
+    <button
       css={css`
         width: 30rem;
         height: 5.6rem;
@@ -258,13 +265,14 @@ export const Buttons2 = ({ children }) => {
         align-items: center;
         justify-content: center;
         font-size: 2.4rem;
-
+        cursor: pointer;
         font-family: "JAM";
         font-style: normal;
         border-radius: 1.2rem;
       `}
+      onClick={onClick}
     >
       {children}
-    </div>
+    </button>
   );
 };

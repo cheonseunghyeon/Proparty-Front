@@ -34,7 +34,24 @@ const Team = () => {
   useEffect(() => {
     setTeam(TeamData);
   }, []);
-
+  const filteredProjects = team.filter((project) => {
+    if (selectedItem === "전체") {
+      return true; // 전체 선택 시 모든 프로젝트 반환
+    } else if (
+      selectedItem === "프론트엔드" &&
+      project.stack === "프론트엔드"
+    ) {
+      return true; // 모집중 선택 시 모집중인 프로젝트 반환
+    } else if (selectedItem === "벡엔드" && project.stack === "벡엔드") {
+      return true; // 모집완료 선택 시 모집완료인 프로젝트 반환
+    } else if (selectedItem === "디자인" && project.stack === "디자인") {
+      return true; // 모집완료 선택 시 모집완료인 프로젝트 반환
+    } else if (selectedItem === "기타" && project.stack === "기타") {
+      return true; // 모집완료 선택 시 모집완료인 프로젝트 반환
+    } else {
+      return false;
+    }
+  });
   const handleItemClick = (item) => {
     setSelectedItem(item);
   };
@@ -126,41 +143,41 @@ const Team = () => {
             </MainText>
 
             <MainText
-              onClick={() => handleItemClick("모집중")}
+              onClick={() => handleItemClick("프론트엔드")}
               style={{
                 borderBottom:
-                  selectedItem === "모집중" ? "3px solid black" : "none",
-                color: selectedItem === "모집중" ? "black" : "lightgray",
+                  selectedItem === "프론트엔드" ? "3px solid black" : "none",
+                color: selectedItem === "프론트엔드" ? "black" : "lightgray",
               }}
             >
               프론트엔드
             </MainText>
             <MainText
-              onClick={() => handleItemClick("모집완료")}
+              onClick={() => handleItemClick("벡엔드")}
               style={{
                 borderBottom:
-                  selectedItem === "모집완료" ? "3px solid black" : "none",
-                color: selectedItem === "모집완료" ? "black" : "lightgray",
+                  selectedItem === "벡엔드" ? "3px solid black" : "none",
+                color: selectedItem === "벡엔드" ? "black" : "lightgray",
               }}
             >
               벡엔드
             </MainText>
             <MainText
-              onClick={() => handleItemClick("모집완료")}
+              onClick={() => handleItemClick("디자인")}
               style={{
                 borderBottom:
-                  selectedItem === "모집완료" ? "3px solid black" : "none",
-                color: selectedItem === "모집완료" ? "black" : "lightgray",
+                  selectedItem === "디자인" ? "3px solid black" : "none",
+                color: selectedItem === "디자인" ? "black" : "lightgray",
               }}
             >
               디자인
             </MainText>
             <MainText
-              onClick={() => handleItemClick("모집완료")}
+              onClick={() => handleItemClick("기타")}
               style={{
                 borderBottom:
-                  selectedItem === "모집완료" ? "3px solid black" : "none",
-                color: selectedItem === "모집완료" ? "black" : "lightgray",
+                  selectedItem === "기타" ? "3px solid black" : "none",
+                color: selectedItem === "기타" ? "black" : "lightgray",
               }}
             >
               기타
@@ -221,14 +238,20 @@ const Team = () => {
                 gap: 2rem;
               `}
             >
-              {team.map((team, index) => (
-                <ProjectTeam2
+              {filteredProjects.map((team, index) => (
+                <Link
+                  to={`/Team/${team.no}`}
                   key={team.no}
-                  title={team.title}
-                  body={team.body}
-                  id={team.id}
-                  stack={team.stack}
-                />
+                  style={{ textDecorationLine: "none", color: "black" }}
+                >
+                  <ProjectTeam2
+                    key={team.no}
+                    title={team.title}
+                    body={team.body}
+                    id={team.id}
+                    stack={team.stack}
+                  />
+                </Link>
               ))}
             </div>
             <div

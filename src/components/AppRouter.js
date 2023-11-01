@@ -15,6 +15,8 @@ import Team from "routes/component/project/Team";
 import Com from "routes/component/project/community";
 import Write from "routes/component/project/write";
 import Mains from "routes/component/project/mains";
+import Mains2 from "routes/component/project/ProjectDe";
+import Mains3 from "routes/component/project/ComDe";
 // 로그인 여부에 따라 render가 바뀜
 // Router 들만 보이게 함
 const AppRouter = ({ isLoggedIn, userObj }) => {
@@ -36,8 +38,11 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
               <Route path="/Publish" element={<Publish />} />
               <Route path="/Detail" element={<Detail />} />
               <Route path="/Project" element={<Projects />} />
+              <Route path="/Project/:no" element={<Mains2 />} />
               <Route path="/Team" element={<Team />} />
+              <Route path="/Team/:no" element={<Mains />} />
               <Route path="/Com" element={<Com />} />
+              <Route path="/Com/:no" element={<Mains3 />} />
               <Route path="/Write" element={<Write />} />
               <Route path="/Mains" element={<Mains />} />
             </>

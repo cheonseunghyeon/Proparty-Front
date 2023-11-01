@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ButtonContainer,
   ContainerLeftComponent,
@@ -33,14 +33,17 @@ import {
   Title2,
 } from "../main/component";
 import { Link } from "react-router-dom";
+import comData from "../../../data/com.json";
 
 const Com = () => {
-  const [selectedItem, setSelectedItem] = useState("전체");
   const [selectedSearch, setSelectedSearch] = useState("최신순");
   const [selectedItems, setSelectedItems] = useState("지식 공유 포럼");
-  const handleItemClick = (item) => {
-    setSelectedItem(item);
-  };
+  const [com, setCom] = useState([]);
+
+  useEffect(() => {
+    // 컴포넌트가 마운트될 때 JSON 파일에서 데이터를 불러옵니다
+    setCom(comData);
+  }, []);
   const handleItemsClick = (item) => {
     setSelectedItems(item);
   };
@@ -171,28 +174,21 @@ const Com = () => {
                 gap: 2rem;
               `}
             >
-              <ProjectTeams
-                title={"커뮤니티 꿀팁"}
-                body={"테스트 중입니다"}
-                id={"kyr1234"}
-              />
-              <ProjectTeams
-                title={
-                  "오늘도 빛나는 하루를 마치는 그 날의 봄바람이 불어옵니다"
-                }
-                body={"테스트 중입니다"}
-                id={"kyr1234"}
-              />
-              <ProjectTeams
-                title={"커뮤니티 꿀팁"}
-                body={"테스트 중입니다"}
-                id={"kyr1234"}
-              />
-              <ProjectTeams
-                title={"커뮤니티 꿀팁"}
-                body={"테스트 중입니다"}
-                id={"kyr1234"}
-              />
+              {com.map((com, index) => (
+                <Link
+                  to={`/Com/${com.no}`}
+                  key={com.no}
+                  style={{ textDecorationLine: "none", color: "black" }}
+                >
+                  <ProjectTeam
+                    key={index}
+                    title={com.title}
+                    body={com.body}
+                    id={com.id}
+                    stack={com.stack}
+                  />
+                </Link>
+              ))}
             </div>
           </Container3>
         </ContainerMidComponent>

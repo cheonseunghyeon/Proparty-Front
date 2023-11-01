@@ -35,17 +35,10 @@ import {
 import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import {
-  Buttons,
-  Buttons2,
-  TextInputBox3,
-  TextInputBox4,
-  TextInputBox5,
-} from "../publish/component";
-
+import { Buttons2, TextInputBox4, TextInputBox5 } from "../publish/component";
+import projectsData from "../../../data/projectsData.json";
 const Write = () => {
   const [selectedItem, setSelectedItem] = useState("전체");
-  const [selectedSearch, setSelectedSearch] = useState("최신순");
   const [selectedItems, setSelectedItems] = useState("팀 프로젝트");
   const [text, setText] = useState("");
 
@@ -58,14 +51,40 @@ const Write = () => {
   const handleItemsClick = (item) => {
     setSelectedItems(item);
   };
-  const handleItemSearch = (item) => {
-    setSelectedSearch(item);
-  };
-  const [selectedOption, setSelectedOption] = useState("option1"); // 초기 선택 옵션
+  const [selectedOption, setSelectedOption] = useState("option1");
 
   const handleSelectChange = (e) => {
     setSelectedOption(e.target.value);
   };
+  const [title, setTitle] = useState(""); // State for title
+  const [body, setBody] = useState(""); // State for body
+
+  // Handler for title input
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+  // Handler for body input
+  const handleBodyChange = (e) => {
+    setBody(e.target.value);
+  };
+  const handlePublish = () => {
+    // Create a new project object
+    const newProject = {
+      no: projectsData.length + 1, // Assign a unique ID
+      title: title,
+      body: body,
+      stack: "모집중", // You can set the initial state as needed
+      id: "kyr1234", // You can set the user ID as needed
+    };
+
+    projectsData.push(newProject);
+    console.log(projectsData);
+    // Clear the input fields
+    setTitle("");
+    setBody("");
+  };
+
   return (
     <Inner>
       <ContainerMember>
@@ -185,8 +204,16 @@ const Write = () => {
                 gap: 2rem;
               `}
             >
-              <TextInputBox4 />
-              <TextInputBox5 />
+              <TextInputBox4
+                value={title}
+                onChange={handleTitleChange}
+                placeholder="프로젝트 제목"
+              />
+              <TextInputBox5
+                value={body}
+                onChange={handleBodyChange}
+                placeholder="프로젝트 설명"
+              />
               <select value={selectedOption} onChange={handleSelectChange}>
                 <option value="option1">모집 중</option>
                 <option value="option2">모집 완료</option>
@@ -197,7 +224,16 @@ const Write = () => {
                 style={{ height: "500px", width: "100%" }}
               />
             </div>
-            <Buttons2>프로젝트 발행</Buttons2>
+            <Link
+              to={"/Project"}
+              style={{
+                textDecorationLine: "none",
+                color: "black",
+                cursor: "pointer",
+              }}
+            >
+              <Buttons2 onClick={handlePublish}>프로젝트 발행</Buttons2>
+            </Link>
           </Container3>
         </ContainerMidComponent>
         <ContainerRightComponent>

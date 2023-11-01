@@ -16,15 +16,15 @@ import { Charts } from "../main/component";
 import { Link, useParams } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
 import { Buttons2 } from "../publish/component";
-import TeamData from "../../../data/TeamData.json";
+import comData from "../../../data/com.json";
 
-const Mains = () => {
+const Mains3 = () => {
   const { no } = useParams(); // `no` 파라미터를 가져옴
-  const selectedTeamMember = TeamData.find(
+  const selectedTeamMember = comData.find(
     (member) => member.no === parseInt(no)
   );
 
-  const [selectedItems, setSelectedItems] = useState("팀원");
+  const [selectedItems, setSelectedItems] = useState("지식 공유 포럼");
 
   const handleItemsClick = (item) => {
     setSelectedItems(item);
@@ -206,4 +206,4 @@ const Mains = () => {
     </Inner>
   );
 };
-export default Mains;
+export default Mains3;
