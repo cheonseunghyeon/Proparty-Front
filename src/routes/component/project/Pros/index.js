@@ -21,15 +21,17 @@ import {
   MyModal,
 } from "routes/component/emotion/component";
 import proData from "../../../data/proData.json";
+import { CallGPT } from "./api/gpt";
 const Pros = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+  const [isModal2Open, setIsModal2Open] = useState(false);
   const openModal = () => {
     setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+    setIsModal2Open(true);
   };
 
   return (

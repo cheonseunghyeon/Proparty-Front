@@ -239,6 +239,7 @@ export const Project = ({ title, description, imageSrc }) => {
           font-weight: 700;
           border-radius: 1.2rem;
           line-height: 1.5;
+          white-space: nowrap;
         `}
       >
         {description}

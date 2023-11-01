@@ -2,6 +2,8 @@
 import { css } from "@emotion/react";
 import React, { ChangeEvent, useState } from "react";
 import Modal from "react-modal";
+import { CallGPT } from "../project/Pros/api/gpt";
+import proData from "../../data/proData.json";
 export const Container = ({ children }) => (
   <div
     css={css`
@@ -173,7 +175,7 @@ export const Project = ({ title, description, imageSrc }) => {
     </div>
   );
 };
-export const InputSelectContainer = ({ placeholder, buttonholder }) => (
+export const InputSelectContainer = ({ placeholder, value, onChange }) => (
   <div
     css={css`
       display: flex;
@@ -193,11 +195,13 @@ export const InputSelectContainer = ({ placeholder, buttonholder }) => (
         ::placeholder { /* 이 부분을 추가하여 placeholder 스타일을 지정합니다 */
         color: #aaa;
       `}
+      value={value}
+      onChange={onChange}
       placeholder={placeholder}
     />
   </div>
 );
-export const InputSelectContainer2 = ({ placeholder, buttonholder }) => (
+export const InputSelectContainer2 = ({ placeholder, value, onChange }) => (
   <div
     css={css`
       display: flex;
@@ -223,6 +227,8 @@ export const InputSelectContainer2 = ({ placeholder, buttonholder }) => (
         font-weight: 700;
         color: #aaa;
       `}
+      value={value}
+      onChange={onChange}
       placeholder={placeholder}
     ></textarea>
   </div>
@@ -234,7 +240,7 @@ export const InputContainer = ({ placeholder }) => (
       flex-direction: column;
       padding: 1.2rem;
       background-color: #cfcfcf;
-      width: 29.6rem;
+      width: 22.6rem;
       border-radius: 20px;
       font-family: Inter;
       border: double 0px black;
@@ -256,7 +262,7 @@ export const BodyContainer = ({ children }) => (
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 1.2rem;
+      gap: 0.8rem;
       font-family: Inter;
       color: #afafaf;
       border-radius: 0 0 25px 25px;
@@ -273,6 +279,73 @@ export const BodyContainer = ({ children }) => (
   </div>
 );
 export const MyModal = ({ isOpen, closeModal }) => {
+  const [projectTitle, setProjectTitle] = useState(""); // 초기값은 빈 문자열
+  const [projectPeriod, setProjectPeriod] = useState(""); // 초기값은 빈 문자열
+  const [projectMembers, setProjectMembers] = useState(""); // 초기값은 빈 문자열
+  const [projectPurpose, setProjectPurpose] = useState("");
+
+  const [data, setData] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const projectInfo = `이 프로젝트의 이름은 ${projectTitle} 이야 
+  제작기간은 총 ${projectPeriod} 정도가 걸렸어 이 프로젝트에 참여한 사람들의 구성은 대략 ${projectMembers} 
+  정도이며 이 프로젝트의 목표이자 목적은 ${projectPurpose} 이야 지금까지 내가 전달한 내용을 바탕으로
+  우리가 만든 이 프로젝트를 남들에게 알릴 수 있는 매우 인상깊은 소개 문구를 만들어주면 좋겠어 이 소개문구는
+  반드시 한국어로 출력해줬으면 좋겠네 그리고 남들에게 깊은 인상이 남기는 그런 멋진 문구면 좋겠어
+  `;
+  const handlePublish = () => {
+    const newProject = {
+      title: projectTitle,
+      id: "kyr1234",
+      description: data,
+      imageSrc: "/img/test.PNG",
+    };
+
+    proData.push(newProject);
+    console.log(proData);
+
+    closeModal();
+  };
+  const handleClickApiCall = async () => {
+    try {
+      setIsLoading(true);
+      const message = await CallGPT({
+        prompt: `
+        ${projectInfo}
+        `,
+      });
+      setData(message);
+    } catch (error) {
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  const handleProjectTitleChange = (event) => {
+    setProjectTitle(event.target.value);
+  };
+
+  const handleProjectPeriodChange = (event) => {
+    setProjectPeriod(event.target.value);
+  };
+
+  const handleProjectMembersChange = (event) => {
+    setProjectMembers(event.target.value);
+  };
+
+  const handleProjectPurposeChange = (event) => {
+    setProjectPurpose(event.target.value);
+  };
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        setSelectedImage(e.target.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
   return (
     <Modal
       isOpen={isOpen}
@@ -284,7 +357,7 @@ export const MyModal = ({ isOpen, closeModal }) => {
         flex-direction: column;
         align-items: center;
         gap: 2rem;
-        margin-top: 5rem;
+        margin-top: 5.5rem;
         transition: transform 0.3s ease; /* 애니메이션 트랜지션 추가 */
         transform: translateY(${isOpen ? "0" : "100rem"});
       `}
@@ -294,7 +367,7 @@ export const MyModal = ({ isOpen, closeModal }) => {
           display: flex;
           flex-direction: row;
           align-items: center;
-          width: 60.4rem;
+          width: 55.4rem;
           justify-content: center;
         `}
       >
@@ -302,7 +375,7 @@ export const MyModal = ({ isOpen, closeModal }) => {
           css={css`
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 0.8rem;
             padding: 3.2rem 3.2rem 1rem 3.2rem;
             width: 80rem;
             background-color: #f5f6fa;
@@ -317,88 +390,200 @@ export const MyModal = ({ isOpen, closeModal }) => {
             line-height: 1.5;
           `}
         >
-          <div
-            css={css`
-              margin-left: 18rem;
-              font-size: 2rem;
-              margin-bottom: 1rem;
-            `}
-          >
-            프로젝트 소개 카드 작성
-          </div>
-          <div
-            css={css`
-              margin-left: 2.2rem;
-            `}
-          >
-            프로젝트 제목
-          </div>
-          <BodyContainer>
-            <InputSelectContainer placeholder="XYZ Project" buttonholder="" />
-          </BodyContainer>
-          <div
-            css={css`
-              margin-top: 1rem;
-              margin-left: 2.2rem;
-            `}
-          >
-            제작 기간
-          </div>
-          <BodyContainer>
-            <InputSelectContainer
-              placeholder="2023-03-12 ~ 2023-10-11"
-              buttonholder=""
-            />
-          </BodyContainer>
-          <div
-            css={css`
-              margin-top: 1rem;
-              margin-left: 2.2rem;
-            `}
-          >
-            제작 인원
-          </div>
-          <BodyContainer>
-            <InputSelectContainer
-              placeholder="프론트 3, 벡엔드 3"
-              buttonholder=""
-            />
-          </BodyContainer>
-          <div
-            css={css`
-              margin-top: 1rem;
-              margin-left: 2.2rem;
-            `}
-          >
-            목표 및 제작 목적
-          </div>
-          <BodyContainer>
-            <InputSelectContainer2
-              placeholder="다양한 사람들과 매칭되는 사이트"
-              buttonholder=""
-            />
-          </BodyContainer>
-          <button
-            onClick={closeModal}
-            css={css`
-              margin-top: 1rem;
-              background-color: #b9e2fa;
-              border: 0px;
-              padding: 10px;
-              width: 30rem;
-              border-radius: 0 0 25px 25px;
-              font-size: 1.2rem;
-              color: #333;
-              margin-left: 11rem;
-              font-family: "JAM";
-              font-style: normal;
-              font-weight: 700;
-              border-radius: 1.2rem;
-              line-height: 1.5;
-            `}
-          >
-            프로젝트 소개 카드 제작
-          </button>
+          {isLoading ? (
+            <div>LOADING...</div>
+          ) : data ? (
+            <div>
+              <div
+                css={css`
+                  display: flex;
+                  flex-direction: column;
+                `}
+              >
+                {selectedImage && (
+                  <img
+                    src={selectedImage}
+                    alt="Selected"
+                    css={css`
+                      max-width: 100%;
+                      max-height: 300px;
+                      margin-top: 1rem;
+                      margin-bottom: 1rem;
+                      border-radius: 20px;
+                    `}
+                  />
+                )}
+                <label
+                  htmlFor="fileInput"
+                  css={css`
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border: 0px solid black;
+                    padding: 0.6rem;
+                    font-size: 1rem;
+                    border-radius: 10px;
+                    background-color: antiquewhite;
+                    margin-top: 1rem;
+                    font-size: 1.2rem;
+                    color: gray;
+                    font-family: "JAM";
+                    font-style: normal;
+                    font-weight: 700;
+                    border-radius: 1.2rem;
+                    line-height: 1.5;
+                    cursor: pointer;
+                  `}
+                >
+                  파일 선택
+                </label>
+                <input
+                  type="file"
+                  id="fileInput"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  onChange={handleFileChange}
+                />
+              </div>
+              <textarea
+                css={css`
+                  width: 100%;
+                  height: 200px; /* 높이는 필요에 따라 조정 */
+                  margin-top: 1rem;
+                  font-size: 1.2rem;
+                  color: gray;
+                  font-family: "JAM";
+                  font-style: normal;
+                  font-weight: 700;
+                  border-radius: 1.2rem;
+                  line-height: 1.5;
+                `}
+                value={data}
+              />
+              <button
+                onClick={handlePublish}
+                css={css`
+                  margin-top: 1rem;
+                  background-color: #b9e2fa;
+                  border: 0px;
+                  padding: 10px;
+                  width: 30rem;
+                  border-radius: 0 0 25px 25px;
+                  font-size: 1.2rem;
+                  color: #333;
+                  margin-left: 9rem;
+                  margin-bottom: 1rem;
+                  font-family: "JAM";
+                  font-style: normal;
+                  font-weight: 700;
+                  border-radius: 1.2rem;
+                  line-height: 1.5;
+                  cursor: pointer;
+                `}
+              >
+                프로젝트 소개 카드 완료
+              </button>
+            </div>
+          ) : (
+            <>
+              <div
+                css={css`
+                  margin-left: 16rem;
+                  font-size: 2rem;
+                  margin-bottom: 1rem;
+                `}
+              >
+                프로젝트 소개 카드 작성
+              </div>
+              <div
+                css={css`
+                  margin-left: 0.8rem;
+                `}
+              >
+                프로젝트 제목
+              </div>
+              <BodyContainer>
+                <InputSelectContainer
+                  placeholder="XYZ Project"
+                  buttonholder=""
+                  value={projectTitle}
+                  onChange={handleProjectTitleChange}
+                />
+              </BodyContainer>
+              <div
+                css={css`
+                  margin-top: 1rem;
+                  margin-left: 0.8rem;
+                `}
+              >
+                제작 기간
+              </div>
+              <BodyContainer>
+                <InputSelectContainer
+                  placeholder="2023-03-12 ~ 2023-10-11"
+                  buttonholder=""
+                  value={projectPeriod}
+                  onChange={handleProjectPeriodChange}
+                />
+              </BodyContainer>
+              <div
+                css={css`
+                  margin-top: 1rem;
+                  margin-left: 0.8rem;
+                `}
+              >
+                제작 인원
+              </div>
+              <BodyContainer>
+                <InputSelectContainer
+                  placeholder="프론트 3, 벡엔드 3"
+                  buttonholder=""
+                  value={projectMembers}
+                  onChange={handleProjectMembersChange}
+                />
+              </BodyContainer>
+              <div
+                css={css`
+                  margin-top: 1rem;
+                  margin-left: 0.8rem;
+                `}
+              >
+                목표 및 제작 목적
+              </div>
+              <BodyContainer>
+                <InputSelectContainer2
+                  placeholder="다양한 사람들과 매칭되는 사이트"
+                  buttonholder=""
+                  value={projectPurpose}
+                  onChange={handleProjectPurposeChange}
+                />
+              </BodyContainer>
+              <button
+                onClick={handleClickApiCall}
+                css={css`
+                  margin-top: 1rem;
+                  background-color: #b9e2fa;
+                  border: 0px;
+                  padding: 10px;
+                  width: 30rem;
+                  border-radius: 0 0 25px 25px;
+                  font-size: 1.2rem;
+                  color: #333;
+                  margin-left: 9rem;
+                  margin-bottom: 1rem;
+                  font-family: "JAM";
+                  font-style: normal;
+                  font-weight: 700;
+                  border-radius: 1.2rem;
+                  line-height: 1.5;
+                  cursor: pointer;
+                `}
+              >
+                프로젝트 소개 카드 제작
+              </button>
+            </>
+          )}
         </div>
       </div>
     </Modal>
