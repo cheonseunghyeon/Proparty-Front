@@ -1,6 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ButtonContainer,
   ContainerMidComponent,
@@ -33,7 +33,32 @@ const Pros = () => {
     setIsModalOpen(false);
     setIsModal2Open(true);
   };
+  const [apiData, setApiData] = useState([]);
+  useEffect(() => {
+    // GET 요청을 보내기 위한 함수
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/Project/", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setApiData(data);
+          console.log(data); // API 응답 데이터 처리
+        } else {
+          console.error("API 요청 실패:", response.statusText);
+        }
+      } catch (error) {
+        console.error("API 요청 중 오류 발생:", error);
+      }
+    };
 
+    // 컴포넌트가 처음 렌더링될 때 한 번 실행
+    fetchData();
+  }, []);
   return (
     <Inner>
       <ContainerMidComponent>
@@ -57,7 +82,7 @@ const Pros = () => {
             margin-bottom: 5rem;
           `}
         >
-          {proData.map((project, index) => (
+          {apiData.map((project, index) => (
             <Project key={index} {...project} />
           ))}
         </div>

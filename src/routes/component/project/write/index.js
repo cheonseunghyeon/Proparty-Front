@@ -32,6 +32,7 @@ import {
   Project6,
   Title2,
 } from "../main/component";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
@@ -77,7 +78,17 @@ const Write = () => {
       id: "kyr1234",
       test: text,
     };
-
+    const apiUrl = "http://your-backend-api-url/api/postprojects/create/";
+    axios
+      .post(apiUrl, newProject)
+      .then((response) => {
+        // POST 요청이 성공하면 원하는 작업 수행
+        console.log("Post created:", response.data);
+      })
+      .catch((error) => {
+        // POST 요청 실패 시 에러 핸들링
+        console.error("Error creating post:", error);
+      });
     projectsData.push(newProject);
     console.log(projectsData);
     // Clear the input fields

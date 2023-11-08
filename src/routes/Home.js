@@ -62,6 +62,32 @@ const Home = ({ userObj }) => {
       setNweets(DBArray);
     });
   }, []);
+  const [apiData, setApiData] = useState([]);
+  useEffect(() => {
+    // GET 요청을 보내기 위한 함수
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/Project/", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setApiData(data);
+          console.log(data); // API 응답 데이터 처리
+        } else {
+          console.error("API 요청 실패:", response.statusText);
+        }
+      } catch (error) {
+        console.error("API 요청 중 오류 발생:", error);
+      }
+    };
+
+    // 컴포넌트가 처음 렌더링될 때 한 번 실행
+    fetchData();
+  }, []);
 
   // 콜랙션 = 문서들의 모음
   // 문서를 생성
@@ -90,49 +116,6 @@ const Home = ({ userObj }) => {
     setAttachment("");
   };
 
-  const onChange = (event) => {
-    // 이벤트 안에 있는 target의 value를 달라는 뜻
-    const {
-      target: { value },
-    } = event;
-    setNweet(value);
-  };
-
-  // // input type="file" 이 변할 때 호출
-  // const onFileChange = (event) => {
-  //   // 이때 중요한 점) 파일의 위치는
-  //   // event.target.files 에 위치
-  //   console.log(event.target.files);
-
-  //   // event 안의 target 안으로 이동해서 files을 가져오라는 뜻
-  //   // 즉 event.target.files과 동일 ES6 문법
-  //     const {
-  //       target: { files },
-  //     } = event;
-
-  //     const theFile = files[0];
-  //     // FileReader API 사용
-  //     // 비동기 데이터 읽기를 위해 읽을 파일을 가르키는 FILE 객체를 만든 후
-  //     // 그 객체를 통해 파일 내용을 읽어 사용자의 컴퓨터로 저장
-
-  //     const reader = new FileReader();
-
-  //     // 파일을 읽고 FileReader 이라는 객체를 생성
-
-  //     // 파일을 읽기 위해아래 onloadend 이벤트 실행 그후 이벤트가 끝났을 때
-  //     // finishedEvent 에는 객체에는 이미지 파일을 읽어서 텍스트 형태로 저장
-  //     reader.onloadend = (finishedEvent) => {
-  //       console.log(finishedEvent);
-  //       const {
-  //         currentTarget: {result},
-  //       } = finishedEvent;
-  //       // finishedEvent의 결과를 setAttachment로 설정
-  //       setAttachment(result);
-  //     };
-  //     // reader.readAsDataURL(theFile)
-  //     reader.readAsDataURL(theFile);
-  //   };
-  //   const onClear = () => setAttachment("");
   return (
     <Container>
       <Link to="/Write">
@@ -180,7 +163,7 @@ const Home = ({ userObj }) => {
             margin: 2rem;
           `}
         >
-          {proData.map((project, index) => (
+          {apiData.map((project, index) => (
             <Project key={index} {...project} />
           ))}
         </div>

@@ -73,7 +73,7 @@ export const Search = ({ children }) => (
   </div>
 );
 
-export const Project = ({ title, description, imageSrc }) => {
+export const Project = ({ title, description, imagesrc }) => {
   const [hovered, setHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -104,8 +104,8 @@ export const Project = ({ title, description, imageSrc }) => {
       onMouseLeave={handleMouseLeave}
     >
       <img
-        src={imageSrc}
-        alt={title}
+        src={imagesrc}
+        alt={imagesrc}
         css={css`
           width: 24rem;
           height: 15.5rem;

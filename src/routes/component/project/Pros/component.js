@@ -176,7 +176,7 @@ export const ProjectDetailText2 = ({ children }) => {
   );
 };
 
-export const Project = ({ title, description, imageSrc }) => {
+export const Project = ({ title, description, imagesrc }) => {
   const [hovered, setHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -207,7 +207,7 @@ export const Project = ({ title, description, imageSrc }) => {
       onMouseLeave={handleMouseLeave}
     >
       <img
-        src={imageSrc}
+        src={imagesrc}
         alt={title}
         css={css`
           width: 24rem;
