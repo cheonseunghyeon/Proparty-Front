@@ -75,10 +75,10 @@ const Write = () => {
       title: title,
       body: body,
       stack: selectedOption,
-      id: "kyr1234",
+      nickname: "kyr1234",
       test: text,
     };
-    const apiUrl = "http://your-backend-api-url/api/postprojects/create/";
+    const apiUrl = "http://localhost:8000/api/postprojects/create/";
     axios
       .post(apiUrl, newProject)
       .then((response) => {

@@ -22,6 +22,7 @@ import {
   TextInputBox5,
 } from "../../publish/component";
 import TeamData from "../../../../data/TeamData.json";
+import axios from "axios";
 const Write2 = () => {
   const [selectedItem, setSelectedItem] = useState("팀원");
   const [selectedItems, setSelectedItems] = useState("팀원");
@@ -62,7 +63,17 @@ const Write2 = () => {
       id: "kyr1234",
       test: text,
     };
-
+    const apiUrl = "http://localhost:8000/api/create_team/";
+    axios
+      .post(apiUrl, newProject)
+      .then((response) => {
+        // POST 요청이 성공하면 원하는 작업 수행
+        console.log("Post created:", response.data);
+      })
+      .catch((error) => {
+        // POST 요청 실패 시 에러 핸들링
+        console.error("Error creating post:", error);
+      });
     TeamData.push(newProject);
     console.log(TeamData);
     // Clear the input fields

@@ -44,6 +44,32 @@ const Com = () => {
     // 컴포넌트가 마운트될 때 JSON 파일에서 데이터를 불러옵니다
     setCom(comData);
   }, []);
+  const [apiData, setApiData] = useState([]);
+  useEffect(() => {
+    // GET 요청을 보내기 위한 함수
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/community/", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setApiData(data);
+          console.log(data); // API 응답 데이터 처리
+        } else {
+          console.error("API 요청 실패:", response.statusText);
+        }
+      } catch (error) {
+        console.error("API 요청 중 오류 발생:", error);
+      }
+    };
+
+    // 컴포넌트가 처음 렌더링될 때 한 번 실행
+    fetchData();
+  }, []);
   const handleItemsClick = (item) => {
     setSelectedItems(item);
   };
@@ -174,7 +200,7 @@ const Com = () => {
                 gap: 2rem;
               `}
             >
-              {com.map((com, index) => (
+              {apiData.map((com, index) => (
                 <Link
                   to={`/Com/${com.no}`}
                   key={com.no}
@@ -184,7 +210,7 @@ const Com = () => {
                     key={index}
                     title={com.title}
                     body={com.body}
-                    id={com.id}
+                    id={com.nickname}
                     stack={com.stack}
                   />
                 </Link>

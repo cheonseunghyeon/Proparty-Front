@@ -34,7 +34,33 @@ const Team = () => {
   useEffect(() => {
     setTeam(TeamData);
   }, []);
-  const filteredProjects = team.filter((project) => {
+  const [apiData, setApiData] = useState([]);
+  useEffect(() => {
+    // GET 요청을 보내기 위한 함수
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/api/team/", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.ok) {
+          const data = await response.json();
+          setApiData(data);
+          console.log(data); // API 응답 데이터 처리
+        } else {
+          console.error("API 요청 실패:", response.statusText);
+        }
+      } catch (error) {
+        console.error("API 요청 중 오류 발생:", error);
+      }
+    };
+
+    // 컴포넌트가 처음 렌더링될 때 한 번 실행
+    fetchData();
+  }, []);
+  const filteredProjects = apiData.filter((project) => {
     if (selectedItem === "전체") {
       return true; // 전체 선택 시 모든 프로젝트 반환
     } else if (
@@ -248,7 +274,7 @@ const Team = () => {
                     key={team.no}
                     title={team.title}
                     body={team.body}
-                    id={team.id}
+                    id={team.nickname}
                     stack={team.stack}
                   />
                 </Link>

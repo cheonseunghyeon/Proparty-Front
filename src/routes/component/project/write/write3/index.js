@@ -22,6 +22,7 @@ import {
   TextInputBox5,
 } from "../../publish/component";
 import comData from "../../../../data/com.json";
+import axios from "axios";
 const Write3 = () => {
   const [selectedItem, setSelectedItem] = useState("지식 공유 포럼");
   const [selectedItems, setSelectedItems] = useState("지식 공유 포럼");
@@ -62,7 +63,17 @@ const Write3 = () => {
       id: "kyr1234",
       test: text,
     };
-
+    const apiUrl = "http://localhost:8000/api/community/create/";
+    axios
+      .post(apiUrl, newProject)
+      .then((response) => {
+        // POST 요청이 성공하면 원하는 작업 수행
+        console.log("Post created:", response.data);
+      })
+      .catch((error) => {
+        // POST 요청 실패 시 에러 핸들링
+        console.error("Error creating post:", error);
+      });
     comData.push(newProject);
     console.log(comData);
     // Clear the input fields
