@@ -76,7 +76,7 @@ const Write = () => {
       body: body,
       stack: selectedOption,
       nickname: "kyr1234",
-      test: text,
+      description: text,
     };
     const apiUrl = "http://localhost:8000/api/postprojects/create/";
     axios

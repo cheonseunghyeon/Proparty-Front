@@ -174,7 +174,7 @@ const Mains2 = () => {
               padding: 50px;
             `}
           >
-            <div
+            {/* <div
               css={css`
                 width: 100%;
                 margin-top: 2rem;
@@ -187,7 +187,27 @@ const Mains2 = () => {
                 padding: 50px;
               `}
               dangerouslySetInnerHTML={{ __html: selectedTeamMember.test }}
-            ></div>
+            ></div> */}
+            <div
+              css={css`
+                width: 100%;
+                margin-top: 2rem;
+                padding: 0.5rem;
+                display: flex;
+                flex-direction: column;
+                background-color: white;
+                border-radius: 20px;
+                gap: 2rem;
+                padding: 50px;
+              `}
+            >
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: selectedTeamMember.description,
+                }}
+              />
+            </div>
+
             <div
               css={css`
                 width: 100%;
