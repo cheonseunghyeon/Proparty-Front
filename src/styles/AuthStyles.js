@@ -6,37 +6,53 @@ export const GlobalStyles = (
     styles={css`
       @font-face {
         font-family: "Happy";
-        src: url("../font/Happiness-Sans-Title.ttf") format("truetype");
+        src: url("/font/Happiness-Sans-Title.ttf") format("truetype");
       }
 
       @font-face {
         font-family: "Roboto";
-        src: url("../font/RobotoSlab-Bold.ttf") format("truetype");
+        src: url("/font/RobotoSlab-Bold.ttf") format("truetype");
       }
 
       @font-face {
         font-family: "PT";
-        src: url("../font/PTSerif-Italic.ttf") format("truetype");
+        src: url("/font/PTSerif-Italic.ttf") format("truetype");
       }
 
       @font-face {
         font-family: "Pix";
-        src: url("../font/DungGeunMo.ttf") format("truetype");
+        src: url("/font/DungGeunMo.ttf") format("truetype");
       }
 
       @font-face {
         font-family: "Snow";
-        src: url("../font/Yeongdeok.ttf") format("truetype");
+        src: url("/font/Yeongdeok.ttf") format("truetype");
       }
 
       @font-face {
         font-family: "JAM";
-        src: url("../font/Jamsil.ttf") format("truetype");
+        src: url("/font/Jamsil.ttf") format("truetype");
       }
 
       * {
         font-family: "PT";
         box-sizing: border-box;
+      }
+
+      html {
+        font-size: 100%; /* 기본 폰트 크기 */
+      }
+
+      @media (min-width: 1200px) {
+        html {
+          font-size: 90%; /* 큰 화면에서는 폰트 크기 감소 */
+        }
+      }
+
+      @media (max-width: 768px) {
+        html {
+          font-size: 110%; /* 작은 화면에서는 폰트 크기 증가 */
+        }
       }
 
       html,
@@ -65,40 +81,73 @@ export const BackColor = styled.div`
 
 export const BackSet = styled.div`
   display: inline-flex;
-  width: 90%;
-  max-width: 34.375rem;
+  width: 80%;
+  max-width: 34.375rem; /* max-width: 550px */
   padding: 3rem;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   filter: brightness(100%);
   text-align: center;
-  border: #fff solid 0.0625rem;
   background-color: aliceblue;
   border-radius: 0.625rem;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+    max-width: 28rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem;
+    max-width: 22rem;
+  }
 `;
 
 export const Title = styled.h1`
-  font-size: 2.5rem;
+  font-size: 2.5rem; /* 40px */
   color: #0077be;
   font-family: "Roboto";
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.75rem;
+  }
 `;
 
 export const IntArea = styled.div`
   width: 100%;
   max-width: 25rem;
+
+  @media (max-width: 768px) {
+    max-width: 22rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 18rem;
+  }
 `;
 
 export const Input = styled.input`
   width: 95%;
-  padding: 1.25rem 0.625rem 0.625rem;
+  padding: 1.25rem;
   background-color: transparent;
   border: none;
-  border-bottom: 0.0625rem solid #999;
+  border-bottom: 1px solid #999;
   font-size: 1.125rem;
   color: rgba(0, 0, 0, 0.8);
   outline: none;
+
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.875rem;
+  }
 `;
 
 export const BtnArea = styled.div`
@@ -118,6 +167,16 @@ export const SubmitButton = styled.input`
   font-size: 1.25rem;
   color: #fff;
   border-radius: 6.25rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.125rem;
+    height: 2.875rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1rem;
+    height: 2.75rem;
+  }
 `;
 
 export const Button = styled.button`
@@ -133,6 +192,16 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    height: 2.875rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.8125rem;
+    height: 2.75rem;
+  }
 `;
 
 export const Text = styled.p`
@@ -146,7 +215,7 @@ export const Text = styled.p`
     content: "";
     flex-grow: 2;
     background-color: #999;
-    height: 0.0625rem;
+    height: 1px;
     margin-right: 0.3125rem;
   }
 
@@ -154,7 +223,7 @@ export const Text = styled.p`
     content: "";
     flex-grow: 2;
     background-color: #999;
-    height: 0.0625rem;
+    height: 1px;
     margin-left: 0.3125rem;
   }
 `;
@@ -163,11 +232,18 @@ export const LoginWith = styled.div`
   display: flex;
   width: 100%;
   max-width: 18.75rem;
-  margin-left: 0px;
   flex-direction: column;
   padding-bottom: 0.625rem;
   text-align: center;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    max-width: 16rem;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 14rem;
+  }
 `;
 
 export const SocialButton = styled.button`
@@ -182,4 +258,14 @@ export const SocialButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 768px) {
+    font-size: 0.875rem;
+    height: 2.25rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
+    height: 2rem;
+  }
 `;
