@@ -17,25 +17,15 @@ import {
 import Nweet from "../components/Nweet";
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
 import { v4 as uuidv4 } from "uuid";
-import img from "./char.png";
-import img2 from "./back3.jpg";
-import img3 from "./profile.png";
 import {
   Chart,
   Chart2,
   Main1,
-  Project1,
-  Project2,
-  Project3,
-  Project4,
-  Project5,
-  Project6,
   Rowdiv,
   Title2,
   Title3,
 } from "./component/project/main/component";
 import { Container, Container2, Project } from "./component/emotion/component";
-import proData from "./data/proData.json";
 // 자동으로 임폴트 됨
 // crud 구현
 

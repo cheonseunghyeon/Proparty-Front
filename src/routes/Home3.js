@@ -15,9 +15,8 @@ import {
 import Nweet from "../components/Nweet";
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
 import { v4 as uuidv4 } from "uuid";
-import img from "./char.png";
-import img2 from "./back3.jpg";
-import img3 from "./profile.png";
+import img from "../img/profile.png";
+import img2 from "../img/back3.jpg";
 // 자동으로 임폴트 됨
 // crud 구현
 
