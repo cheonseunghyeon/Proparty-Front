@@ -67,7 +67,7 @@ export const BackSet = styled.div`
   display: inline-flex;
   width: 90%;
   max-width: 34.375rem;
-  padding: 6rem;
+  padding: 3rem;
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -76,6 +76,7 @@ export const BackSet = styled.div`
   border: #fff solid 0.0625rem;
   background-color: aliceblue;
   border-radius: 0.625rem;
+  gap: 1rem;
 `;
 
 export const Title = styled.h1`
@@ -101,8 +102,11 @@ export const Input = styled.input`
 `;
 
 export const BtnArea = styled.div`
+  display: flex;
+  flex-direction: column;
   margin-top: 1.875rem;
   margin-bottom: 0.625rem;
+  gap: 0.5rem;
 `;
 
 export const SubmitButton = styled.input`
