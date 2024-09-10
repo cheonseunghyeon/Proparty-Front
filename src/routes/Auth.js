@@ -77,7 +77,6 @@ const Auth = () => {
 
   return (
     <>
-      {GlobalStyles}
       <BackColor>
         <BackSet>
           <Title>Login</Title>

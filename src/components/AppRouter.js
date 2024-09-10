@@ -22,11 +22,14 @@ import Write3 from "routes/component/project/write/write3";
 import Mains4 from "routes/component/project/ComDe";
 import Pros from "routes/component/project/Pros";
 import Teams from "routes/component/project/Teams";
+import { GlobalStyles } from "styles/GlobalStyles";
+
 // 로그인 여부에 따라 render가 바뀜
 // Router 들만 보이게 함
 const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
     <>
+      {GlobalStyles}
       <div className="Mhead">
         {isLoggedIn && <Navigation userObj={userObj} />}
       </div>
