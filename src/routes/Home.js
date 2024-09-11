@@ -1,9 +1,6 @@
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import React, { useEffect, useState } from "react";
-import Navigation from "components/Navigation";
-import "../css/Home.css";
-import "../css/Layout.css";
+import { css } from "@emotion/react";
 import { Form, Link } from "react-router-dom";
 import { dbService, storageService } from "fbase";
 import {
@@ -12,9 +9,7 @@ import {
   addDoc,
   query,
   orderBy,
-  getDocs,
 } from "firebase/firestore";
-import Nweet from "../components/Nweet";
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -26,35 +21,34 @@ import {
   Title3,
 } from "./component/project/main/component";
 import { Container, Container2, Project } from "./component/emotion/component";
-// 자동으로 임폴트 됨
-// crud 구현
 
 const Home = ({ userObj }) => {
-  const [nweet, setNweet] = useState("");
-  const [nweets, setNweets] = useState([]);
-  // 이미지 파일 관리
-  const [attachment, setAttachment] = useState("");
+  const [nweet, setNweet] = useState(""); // 입력한 트윗 상태 관리
+  const [nweets, setNweets] = useState([]); // DB에서 가져온 트윗들 저장
+  const [attachment, setAttachment] = useState(""); // 이미지 파일 상태 관리
 
+  // Firestore에서 데이터를 가져오는 useEffect
   useEffect(() => {
-    // 어떤 행동을 취했을 때 DB가 그것을 감지해서 사용 할 수 있도록
+    // 'createdAt' 기준으로 내림차순 정렬
     const q = query(
       collection(dbService, "DBTable"),
       orderBy("createdAt", "desc")
     );
-    // onSnapshot 데이터 베이스에 무슨 일이 발생 했을 때 알람이 옴
-    // 새로운 스냅샷을 받을 때에는 배열을 may 으로 만듭니다.
+
+    // DB에 변경 사항이 있을 때마다 실행
     onSnapshot(q, (snapshot) => {
-      // DB의 map에 id와 data를 저장
       const DBArray = snapshot.docs.map((doc) => ({
         ...doc.data(),
         id: doc.id,
       }));
-      setNweets(DBArray);
+      setNweets(DBArray); // 가져온 트윗들을 상태에 저장
     });
   }, []);
-  const [apiData, setApiData] = useState([]);
+
+  const [apiData, setApiData] = useState([]); // API 데이터 상태 관리
+
+  // API에서 데이터를 가져오는 useEffect
   useEffect(() => {
-    // GET 요청을 보내기 위한 함수
     const fetchData = async () => {
       try {
         const response = await fetch("http://localhost:8000/api/Project/", {
@@ -65,8 +59,8 @@ const Home = ({ userObj }) => {
         });
         if (response.ok) {
           const data = await response.json();
-          setApiData(data);
-          console.log(data); // API 응답 데이터 처리
+          setApiData(data); // API 데이터 저장
+          console.log(data); // 데이터 콘솔 출력
         } else {
           console.error("API 요청 실패:", response.statusText);
         }
@@ -75,56 +69,50 @@ const Home = ({ userObj }) => {
       }
     };
 
-    // 컴포넌트가 처음 렌더링될 때 한 번 실행
-    fetchData();
+    fetchData(); // 컴포넌트가 처음 렌더링될 때 데이터 가져오기
   }, []);
 
-  // 콜랙션 = 문서들의 모음
-  // 문서를 생성
+  // 폼 제출 처리 함수
   const onSubmit = async (event) => {
-    event.preventDefault();
-    let attachmentUrl = "";
+    event.preventDefault(); // 기본 폼 제출 방지
+    let attachmentUrl = ""; // 첨부 파일 URL 초기화
 
-    // 이미지 파일이 존재할 경우
-    if (attachment != "") {
-      //이미지와 파일 을 저장하는 문서로 생성
-      const fileRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
-
-      // data_url은  파일 로드할 때 readAsDataURL에서 실행
-      const response = await uploadString(fileRef, attachment, "data_url");
-      attachmentUrl = await getDownloadURL(fileRef, attachment, "data_url");
+    // 첨부 파일이 있을 경우
+    if (attachment !== "") {
+      const fileRef = ref(storageService, `${userObj.uid}/${uuidv4()}`); // Firebase Storage 참조 생성
+      await uploadString(fileRef, attachment, "data_url");
+      attachmentUrl = await getDownloadURL(fileRef); // 업로드 후 다운로드 URL 가져오기
     }
 
+    // Firestore에 저장할 데이터 객체
     const DBTable = {
       text: nweet,
       creatorId: userObj.uid,
       createdAt: Date.now(),
       attachmentUrl,
     };
-    const docRef = await addDoc(collection(dbService, "DBTable"), DBTable);
-    setNweet("");
-    setAttachment("");
+
+    await addDoc(collection(dbService, "DBTable"), DBTable); // Firestore에 데이터 추가
+    setNweet(""); // 입력 필드 초기화
+    setAttachment(""); // 첨부 파일 초기화
   };
 
   return (
     <Container>
+      {/* Write 페이지로 링크 */}
       <Link to="/Write">
         <Main1 />
       </Link>
 
+      {/* 차트 섹션 */}
       <Rowdiv>
         <Chart />
         <Chart2 />
       </Rowdiv>
-      <Link
-        to={"/TeamCard"}
-        css={css`
-          text-decoration: none;
-          color: inherit;
-        `}
-      >
+
+      {/* 팀원 소개 페이지로 링크 */}
+      <Link to="/TeamCard">
         <Title2>
-          {" "}
           팀원 소개 더 보기
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -134,8 +122,8 @@ const Home = ({ userObj }) => {
             fill="none"
           >
             <path
-              fill-rule="evenodd"
-              clip-rule="evenodd"
+              fillRule="evenodd"
+              clipRule="evenodd"
               d="M1.28308 11.0143L15.6281 11.0143L9.35508 17.2903C9.10973 17.524 8.97086 17.848 8.97086 18.1868C8.97086 18.5256 9.10973 18.8496 9.35508 19.0833V19.0833C9.58875 19.3287 9.91276 19.4675 10.2516 19.4675C10.5904 19.4675 10.9144 19.3287 11.1481 19.0833L19.4711 10.7583C19.9842 10.1717 19.9842 9.29592 19.4711 8.7093L11.1461 0.384304C10.9124 0.138947 10.5884 8.01086e-05 10.2496 8.01086e-05C9.91076 8.01086e-05 9.58675 0.138947 9.35308 0.384304H9.35308C9.10773 0.61797 8.96886 0.941983 8.96886 1.2808C8.96886 1.61962 9.10773 1.94364 9.35308 2.1773L15.6281 8.45231L1.28308 8.45231C0.93734 8.43135 0.59919 8.55956 0.354267 8.80449C0.109341 9.04941 -0.0188796 9.38756 0.00208282 9.73331V9.73331C-0.0188796 10.079 0.109341 10.4172 0.354263 10.6621C0.599189 10.907 0.937336 11.0353 1.28308 11.0143V11.0143Z"
               fill="#377DFF"
             />
@@ -143,6 +131,7 @@ const Home = ({ userObj }) => {
         </Title2>
       </Link>
 
+      {/* 인기 프로젝트 섹션 */}
       <Container2>
         <Title3>주목할 만한 인기 프로젝트</Title3>
         <div
@@ -157,15 +146,10 @@ const Home = ({ userObj }) => {
             <Project key={index} {...project} />
           ))}
         </div>
-        <Link
-          to={"/ProCard"}
-          css={css`
-            text-decoration: none;
-            color: inherit;
-          `}
-        >
+
+        {/* 프로젝트 더 보기 페이지로 링크 */}
+        <Link to="/ProCard">
           <Title2>
-            {" "}
             프로젝트 더 보기
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -175,9 +159,9 @@ const Home = ({ userObj }) => {
               fill="none"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M1.28308 11.0143L15.6281 11.0143L9.35508 17.2903C9.10973 17.524 8.97086 17.848 8.97086 18.1868C8.97086 18.5256 9.10973 18.8496 9.35508 19.0833V19.0833C9.58875 19.3287 9.91276 19.4675 10.2516 19.4675C10.5904 19.4675 10.9144 19.3287 11.1481 19.0833L19.4711 10.7583C19.9842 10.1717 19.9842 9.29592 19.4711 8.7093L11.1461 0.384304C10.9124 0.138947 10.5884 8.01086e-05 10.2496 8.01086e-05C9.91076 8.01086e-05 9.58675 0.138947 9.35308 0.384304H9.35308C9.10773 0.61797 8.96886 0.941983 8.96886 1.2808C8.96886 1.61962 9.10773 1.94364 9.35308 2.1773L15.6281 8.45231L1.28308 8.45231C0.93734 8.43135 0.59919 8.55956 0.354267 8.80449C0.109341 9.04941 -0.0188796 9.38756 0.00208282 9.73331V9.73331C-0.0188796 10.079 0.109341 10.4172 0.354263 10.6621C0.599189 10.907 0.937336 11.0353 1.28308 11.0143V11.0143Z"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M1.28308 11.0143L15.6281 11.0143L9.35508 17.2903C9.10973 17.524 8.97086 17.848 8.97086 18.1868C8.97086 18.5256 9.10973 18.8496 9.35508 19.0833V19.0833C9.58875 19.3287 9.91276 19.4675 10.2516 19.4675C10.5904 19.4675 10.9144 19.3287 11.1481 19.0833L19.4711 10.7583C19.9842 10.1717 19.9842 9.29592 19.4711 8.7093L11.1461 0.384304C10.9124 0.138947 10.5884 8.01086e-05 10.2496 8.01086e-05C9.91076 8.01086e-05 9.58675 0.138947 9.35308 0.384304H9.35308C9.10773 0.61797 8.96886 0.941983 8.96886 1.2808C8.96886 1.61962 9.10773 1.94364 9.35308 2.1773L15.6281 8.45231L1.28308 8.45231C0.93734 8.43135 0.59919 8.55956 0.354267 8.80449C0.109341 9.04941 -0.0188796 9.38756 0.00208282 9.73331V9.73331C-0.0188796 10.079 0.109341 10.4172 0.354263 10.6621C0.599189 10.907 0.937336 11.0353 1.28308 11.0143Z"
                 fill="#377DFF"
               />
             </svg>

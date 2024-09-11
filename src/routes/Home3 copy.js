@@ -45,9 +45,6 @@ import {
   UpdatedNewsRed,
   UpdatedNewsBlue,
   UpdatedNewsRightNumber,
-  UpdatedNewsRightItem,
-  UpdatedNewsLeftItem,
-  HomeContents,
 } from "../styles/MypageStyles";
 // 자동으로 임폴트 됨
 // crud 구현
@@ -196,60 +193,58 @@ const Home3 = ({ userObj }) => {
                     </ProfileDropdown>
                   </Profile3>
                 </Profile>
-                <HomeContents>
-                  <UpdatedNewsTitle2>
+                <div class="home_contents">
+                  <div class="updated_news_title2">
                     <br />
                     <strong>{userObj.displayName}의 미니 홈페이지</strong>
-                  </UpdatedNewsTitle2>
-
-                  <UpdatedNewsTitle>
+                  </div>
+                  <div class="updated_news_title">
                     <br />
                     <strong>Updated news</strong>
-                  </UpdatedNewsTitle>
-
-                  <UpdatedNewsContents>
-                    <UpdatedNewsLeft>
-                      <UpdatedNewsLeftItem>
-                        <UpdatedNewsRed>&nbsp;Diary&nbsp;</UpdatedNewsRed>{" "}
+                  </div>
+                  <div class="updated_news_contents">
+                    <div class="updated_news_left">
+                      <span class="updated_news_left1">
+                        <span class="updated_news_red">&nbsp;Diary&nbsp;</span>
                         2023-05-22
-                      </UpdatedNewsLeftItem>
-                      <UpdatedNewsLeftItem>
-                        <UpdatedNewsBlue>&nbsp;photo&nbsp;</UpdatedNewsBlue>{" "}
+                      </span>
+                      <span class="updated_news_left2">
+                        <span class="updated_news_blue">&nbsp;photo&nbsp;</span>
                         테스트 용
-                      </UpdatedNewsLeftItem>
-                      <UpdatedNewsLeftItem>
-                        <UpdatedNewsBlue>&nbsp;photo&nbsp;</UpdatedNewsBlue>{" "}
+                      </span>
+                      <span class="updated_news_left3">
+                        <span class="updated_news_blue">&nbsp;photo&nbsp;</span>
                         테스트 이미지
-                      </UpdatedNewsLeftItem>
-                      <UpdatedNewsLeftItem>
-                        <UpdatedNewsRed>&nbsp;Diary&nbsp;</UpdatedNewsRed>{" "}
+                      </span>
+                      <span class="updated_news_left4">
+                        <span class="updated_news_red">&nbsp;Diary&nbsp;</span>
                         2023-05-23
-                      </UpdatedNewsLeftItem>
-                    </UpdatedNewsLeft>
-                    <UpdatedNewsRight>
-                      <UpdatedNewsRightItem>
+                      </span>
+                    </div>
+                    <div class="updated_news_right">
+                      <div class="updated_news_right1">
                         다이어리{" "}
-                        <UpdatedNewsRightNumber>2/25</UpdatedNewsRightNumber>
+                        <span class="updated_news_right_number">2/25</span>{" "}
                         &emsp;&emsp;&emsp;&emsp;사진첩{" "}
-                        <UpdatedNewsRightNumber>0/25</UpdatedNewsRightNumber>
-                      </UpdatedNewsRightItem>
-                      <UpdatedNewsRightItem>
+                        <span class="updated_news_right_number">0/25</span>
+                      </div>
+                      <div class="updated_news_right2">
                         게시판{" "}
-                        <UpdatedNewsRightNumber>2/25</UpdatedNewsRightNumber>
+                        <span class="updated_news_right_number">2/25</span>{" "}
                         &emsp;&emsp;&emsp;&emsp;&emsp;방명록{" "}
-                        <UpdatedNewsRightNumber>0/25</UpdatedNewsRightNumber>
-                      </UpdatedNewsRightItem>
-                    </UpdatedNewsRight>
-                  </UpdatedNewsContents>
-
-                  <MiniroomTitle>
+                        <span class="updated_news_right_number">0/25</span>
+                      </div>
+                      <div class="updated_news_right3"></div>
+                    </div>
+                  </div>
+                  <div class="miniroom_title">
                     <br />
                     <strong>Miniroom</strong>
-                  </MiniroomTitle>
-                  <div>
-                    <MiniroomGif src={img2} />
                   </div>
-                </HomeContents>
+                  <div class="miniroom_contents">
+                    <img class="miniroom_gif" src={img2} />
+                  </div>
+                </div>
               </HomeMain>
             </Home>
 

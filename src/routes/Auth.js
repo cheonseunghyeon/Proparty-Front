@@ -11,7 +11,6 @@ import React, { useState } from "react";
 import Img1 from "../img/Google.png";
 import Img2 from "../img/GitHub.png";
 import {
-  GlobalStyles,
   BackColor,
   BackSet,
   Title,

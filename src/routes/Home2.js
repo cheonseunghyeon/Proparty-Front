@@ -65,6 +65,7 @@ const Home = ({ userObj }) => {
       createdAt: Date.now(),
       attachmentUrl,
     };
+
     const docRef = await addDoc(collection(dbService, "DBTable"), DBTable);
     setNweet("");
     setAttachment("");
@@ -145,14 +146,14 @@ const Home = ({ userObj }) => {
                         >
                           Devlog
                         </a>
-                        <a href="https://github.com/joseph-106" target="_blank">
-                          Github
-                        </a>
                         <a
-                          href="https://www.instagram.com/ksj_106/"
+                          href="https://github.com/cheonseunghyeon"
                           target="_blank"
                         >
-                          Instagram
+                          Github
+                        </a>
+                        <a href="https://kyr5191.tistory.com/" target="_blank">
+                          tistory
                         </a>
                       </div>
                     </div>

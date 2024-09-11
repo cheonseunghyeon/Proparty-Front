@@ -4,6 +4,7 @@ import React, { ChangeEvent, useState } from "react";
 import Modal from "react-modal";
 import { CallGPT } from "../project/Pros/api/gpt";
 import proData from "../../data/proData.json";
+
 export const Container = ({ children }) => (
   <div
     css={css`
