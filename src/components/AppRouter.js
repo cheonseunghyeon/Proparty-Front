@@ -5,9 +5,9 @@ import Home from "../routes/Home";
 import Navigation from "./Navigation";
 import Profile from "routes/Profile";
 import Calendar from "routes/Calender";
-import Home2 from "../routes/Home2";
+import Visitor from "../routes/Visitor";
 import "../css/AppRouter.css";
-import Home3 from "routes/Home3";
+import Mypage from "routes/Mypage";
 import Publish from "routes/component/project/publish";
 import Detail from "routes/component/project/detail";
 import Projects from "routes/component/project/projects";
@@ -39,9 +39,9 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
             <>
               {/* props로 전달 */}
               <Route path="/" element={<Home userObj={userObj} />} />
-              <Route path="/Vlog" element={<Home3 userObj={userObj} />} />
+              <Route path="/Vlog" element={<Mypage userObj={userObj} />} />
               <Route path="/profile" element={<Profile userObj={userObj} />} />
-              <Route path="/Visitor" element={<Home2 userObj={userObj} />} />
+              <Route path="/Visitor" element={<Visitor userObj={userObj} />} />
               <Route path="/Diary" element={<Calendar />} />
               <Route path="/Publish" element={<Publish />} />
               <Route path="/Detail" element={<Detail />} />

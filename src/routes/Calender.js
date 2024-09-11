@@ -1,65 +1,91 @@
 import React, { useState } from "react";
 import Calendar from "react-calendar";
-import "../css/Home.css";
-import "../css/Layout.css";
 import { Form, Link } from "react-router-dom";
 import "react-calendar/dist/Calendar.css";
 import img from "../img/profile.png";
+
+import {
+  BookCover,
+  BookDot,
+  Page,
+  Home,
+  HomeMain,
+  Profile,
+  Profile1,
+  ProfileImage,
+  Profile2,
+  Profile3,
+  ProfileDropdown,
+  DropdownBtn,
+  DropdownContent,
+  TriangleDown,
+  UpdatedNewsTitle,
+  UpdatedNewsContents,
+  MiniroomTitle,
+  MenuBar,
+  MenuBarLiA,
+  DiaryEditor,
+} from "../styles/MypageStyles";
 
 function MyApp() {
   const [value, onChange] = useState(new Date());
 
   return (
     <>
-      <div class="bookcover">
-        <div class="bookdot">
-          <div class="page">
-            <div class="home">
-              <div class="home_main">
-                <div class="profile">
-                  <div class="profile_1">
-                    <img class="profile_image" src={img} />
-                  </div>
-                  <div class="profile_2">
-                    {" "}
+      <BookCover>
+        <BookDot>
+          <Page>
+            <Home>
+              <HomeMain>
+                <Profile>
+                  <Profile1>
+                    <ProfileImage src={img} />
+                  </Profile1>
+                  <Profile2>
                     프로필 작성 공간
                     <br />
                     <br />
                     프로필을 설명할 수 있는 공간 입니다.
-                  </div>
-                  <div class="profile_3">
+                  </Profile2>
+                  <Profile3>
                     * 주소 등을 기록하는 공간
-                    <div class="profile-dropdown">
-                      <div class="dropdown-btn">
-                        <div class="dropdown-title">Github</div>
-                        <div class="triangle-down"></div>
-                      </div>
-                      <div class="dropdown-content">
+                    <ProfileDropdown>
+                      <DropdownBtn>
+                        <div>Github</div>
+                        <TriangleDown />
+                      </DropdownBtn>
+                      <DropdownContent>
                         <a
                           href="https://programming-oddments.tistory.com/"
                           target="_blank"
+                          rel="noopener noreferrer"
                         >
                           Devlog
                         </a>
-                        <a href="https://github.com/joseph-106" target="_blank">
+                        <a
+                          href="https://github.com/joseph-106"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
                           Github
                         </a>
                         <a
                           href="https://www.instagram.com/ksj_106/"
                           target="_blank"
+                          rel="noopener noreferrer"
                         >
                           Instagram
                         </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="home_contents">
-                  <div class="updated_news_title">
-                    <br />
+                      </DropdownContent>
+                    </ProfileDropdown>
+                  </Profile3>
+                </Profile>
+
+                <div>
+                  <UpdatedNewsTitle>
                     <strong>Calendar</strong>
-                  </div>
-                  <div class="updated_news_contents">
+                  </UpdatedNewsTitle>
+                  <UpdatedNewsContents>
                     <section>
                       <Calendar
                         className={"DiaryEditor"}
@@ -67,11 +93,11 @@ function MyApp() {
                         value={value}
                       />
                     </section>
-                  </div>
-                  <div class="miniroom_title">
-                    <br />
+                  </UpdatedNewsContents>
+
+                  <MiniroomTitle>
                     <strong>Diary</strong>
-                  </div>
+                  </MiniroomTitle>
                   <div>
                     <input type={"date"} />
                     <input type="button" value={"확인"} />
@@ -79,32 +105,46 @@ function MyApp() {
                     <textarea placeholder="오늘은 어땠나요?" />
                   </div>
                 </div>
-              </div>
-            </div>
-            <ul class="menu_bar">
+              </HomeMain>
+            </Home>
+
+            <MenuBar>
               <li>
-                <Link to="/">Home</Link>
+                <MenuBarLiA as={Link} to="/Vlog">
+                  Home
+                </MenuBarLiA>
               </li>
               <li>
-                <Link to="/profile">Profile</Link>
+                <MenuBarLiA as={Link} to="/profile">
+                  Profile
+                </MenuBarLiA>
               </li>
               <li>
-                <Link to="/Diary">Diary</Link>
+                <MenuBarLiA as={Link} to="/Diary">
+                  Diary
+                </MenuBarLiA>
               </li>
               <li>
-                <Link to="/">Photo</Link>
+                <MenuBarLiA as={Link} to="/">
+                  Photo
+                </MenuBarLiA>
               </li>
               <li>
-                <Link to="/">Visitor</Link>
+                <MenuBarLiA as={Link} to="/">
+                  Visitor
+                </MenuBarLiA>
               </li>
               <li>
-                <Link to="/Visitor">Chat</Link>
+                <MenuBarLiA as={Link} to="/Visitor">
+                  Chat
+                </MenuBarLiA>
               </li>
-            </ul>
-          </div>
-        </div>
-      </div>
+            </MenuBar>
+          </Page>
+        </BookDot>
+      </BookCover>
     </>
   );
 }
+
 export default MyApp;

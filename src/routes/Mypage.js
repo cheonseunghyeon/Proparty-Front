@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Navigation from "components/Navigation";
-import "../css/Home.css";
-import "../css/Layout.css";
 import { Form, Link } from "react-router-dom";
 import { dbService, storageService } from "fbase";
 import {
@@ -45,11 +42,14 @@ import {
   UpdatedNewsRed,
   UpdatedNewsBlue,
   UpdatedNewsRightNumber,
+  UpdatedNewsRightItem,
+  UpdatedNewsLeftItem,
+  HomeContents,
 } from "../styles/MypageStyles";
 // 자동으로 임폴트 됨
 // crud 구현
 
-const Home3 = ({ userObj }) => {
+const Mypage = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
   const [nweets, setNweets] = useState([]);
   // 이미지 파일 관리
@@ -193,58 +193,60 @@ const Home3 = ({ userObj }) => {
                     </ProfileDropdown>
                   </Profile3>
                 </Profile>
-                <div class="home_contents">
-                  <div class="updated_news_title2">
+                <HomeContents>
+                  <UpdatedNewsTitle2>
                     <br />
                     <strong>{userObj.displayName}의 미니 홈페이지</strong>
-                  </div>
-                  <div class="updated_news_title">
+                  </UpdatedNewsTitle2>
+
+                  <UpdatedNewsTitle>
                     <br />
                     <strong>Updated news</strong>
-                  </div>
-                  <div class="updated_news_contents">
-                    <div class="updated_news_left">
-                      <span class="updated_news_left1">
-                        <span class="updated_news_red">&nbsp;Diary&nbsp;</span>
+                  </UpdatedNewsTitle>
+
+                  <UpdatedNewsContents>
+                    <UpdatedNewsLeft>
+                      <UpdatedNewsLeftItem>
+                        <UpdatedNewsRed>&nbsp;Diary&nbsp;</UpdatedNewsRed>{" "}
                         2023-05-22
-                      </span>
-                      <span class="updated_news_left2">
-                        <span class="updated_news_blue">&nbsp;photo&nbsp;</span>
+                      </UpdatedNewsLeftItem>
+                      <UpdatedNewsLeftItem>
+                        <UpdatedNewsBlue>&nbsp;photo&nbsp;</UpdatedNewsBlue>{" "}
                         테스트 용
-                      </span>
-                      <span class="updated_news_left3">
-                        <span class="updated_news_blue">&nbsp;photo&nbsp;</span>
+                      </UpdatedNewsLeftItem>
+                      <UpdatedNewsLeftItem>
+                        <UpdatedNewsBlue>&nbsp;photo&nbsp;</UpdatedNewsBlue>{" "}
                         테스트 이미지
-                      </span>
-                      <span class="updated_news_left4">
-                        <span class="updated_news_red">&nbsp;Diary&nbsp;</span>
+                      </UpdatedNewsLeftItem>
+                      <UpdatedNewsLeftItem>
+                        <UpdatedNewsRed>&nbsp;Diary&nbsp;</UpdatedNewsRed>{" "}
                         2023-05-23
-                      </span>
-                    </div>
-                    <div class="updated_news_right">
-                      <div class="updated_news_right1">
+                      </UpdatedNewsLeftItem>
+                    </UpdatedNewsLeft>
+                    <UpdatedNewsRight>
+                      <UpdatedNewsRightItem>
                         다이어리{" "}
-                        <span class="updated_news_right_number">2/25</span>{" "}
+                        <UpdatedNewsRightNumber>2/25</UpdatedNewsRightNumber>
                         &emsp;&emsp;&emsp;&emsp;사진첩{" "}
-                        <span class="updated_news_right_number">0/25</span>
-                      </div>
-                      <div class="updated_news_right2">
+                        <UpdatedNewsRightNumber>0/25</UpdatedNewsRightNumber>
+                      </UpdatedNewsRightItem>
+                      <UpdatedNewsRightItem>
                         게시판{" "}
-                        <span class="updated_news_right_number">2/25</span>{" "}
+                        <UpdatedNewsRightNumber>2/25</UpdatedNewsRightNumber>
                         &emsp;&emsp;&emsp;&emsp;&emsp;방명록{" "}
-                        <span class="updated_news_right_number">0/25</span>
-                      </div>
-                      <div class="updated_news_right3"></div>
-                    </div>
-                  </div>
-                  <div class="miniroom_title">
+                        <UpdatedNewsRightNumber>0/25</UpdatedNewsRightNumber>
+                      </UpdatedNewsRightItem>
+                    </UpdatedNewsRight>
+                  </UpdatedNewsContents>
+
+                  <MiniroomTitle>
                     <br />
                     <strong>Miniroom</strong>
+                  </MiniroomTitle>
+                  <div>
+                    <MiniroomGif src={img2} />
                   </div>
-                  <div class="miniroom_contents">
-                    <img class="miniroom_gif" src={img2} />
-                  </div>
-                </div>
+                </HomeContents>
               </HomeMain>
             </Home>
 
@@ -287,4 +289,4 @@ const Home3 = ({ userObj }) => {
   );
 };
 
-export default Home3;
+export default Mypage;
