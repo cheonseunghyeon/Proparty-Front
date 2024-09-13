@@ -9,7 +9,7 @@ import {
   orderBy,
   getDocs,
 } from "firebase/firestore";
-import Nweet from "../components/Nweet";
+import Nweet from "./Nweet";
 import { getDownloadURL, ref, uploadString } from "@firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import {
