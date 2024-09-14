@@ -2,7 +2,6 @@
 import { css } from "@emotion/react";
 import React, { useState } from "react";
 import {
-  ButtonContainer,
   ContainerLeftComponent,
   ContainerMember,
   ContainerMidComponent,
@@ -10,28 +9,10 @@ import {
   Inner,
   LeftComponent,
   MainText,
-  ProjectTeam,
-  ProjectTeams,
-  RowContainer,
-  RowSubText,
-  RowTestText,
   RowText,
-  SearchButton,
-  SearchContainer,
-  SubText,
 } from "./component";
-import { Container2, Container3 } from "routes/component/emotion/component";
-import {
-  Chart,
-  Charts,
-  Project1,
-  Project2,
-  Project3,
-  Project4,
-  Project5,
-  Project6,
-  Title2,
-} from "../main/component";
+import { Container3 } from "routes/component/emotion/component";
+import { Charts } from "../main/component";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";

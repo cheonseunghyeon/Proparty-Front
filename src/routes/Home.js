@@ -99,18 +99,15 @@ const Home = ({ userObj }) => {
 
   return (
     <Container>
-      {/* Write 페이지로 링크 */}
       <Link to="/Write">
         <Main1 />
       </Link>
 
-      {/* 차트 섹션 */}
       <Rowdiv>
         <Chart />
         <Chart2 />
       </Rowdiv>
 
-      {/* 팀원 소개 페이지로 링크 */}
       <Link to="/TeamCard">
         <Title2>
           팀원 소개 더 보기
@@ -131,7 +128,6 @@ const Home = ({ userObj }) => {
         </Title2>
       </Link>
 
-      {/* 인기 프로젝트 섹션 */}
       <Container2>
         <Title3>주목할 만한 인기 프로젝트</Title3>
         <div
@@ -147,7 +143,6 @@ const Home = ({ userObj }) => {
           ))}
         </div>
 
-        {/* 프로젝트 더 보기 페이지로 링크 */}
         <Link to="/ProCard">
           <Title2>
             프로젝트 더 보기
