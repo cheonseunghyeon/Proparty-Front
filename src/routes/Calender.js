@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Calendar from "react-calendar";
 import { Form, Link } from "react-router-dom";
 import "react-calendar/dist/Calendar.css";
-import img from "../img/profile.png";
 
 import {
   BookCover,
@@ -39,7 +38,7 @@ function MyApp() {
               <HomeMain>
                 <Profile>
                   <Profile1>
-                    <ProfileImage src={img} />
+                    <ProfileImage src="/img/profile.png" />
                   </Profile1>
                   <Profile2>
                     프로필 작성 공간

@@ -2,46 +2,21 @@
 import { css } from "@emotion/react";
 import React, { useState } from "react";
 import {
-  ButtonContainer,
   ContainerLeftComponent,
   ContainerMember,
   ContainerMidComponent,
   ContainerRightComponent,
-  Inner,
   LeftComponent,
   MainText,
-  ProjectTeam,
-  ProjectTeams,
-  RowContainer,
-  RowSubText,
-  RowTestText,
   RowText,
-  SearchButton,
-  SearchContainer,
-  SubText,
 } from "./component";
+import { Inner } from "styles/common/CommonStyles";
 import { Container2, Container3 } from "routes/component/emotion/component";
-import {
-  Chart,
-  Charts,
-  Project1,
-  Project2,
-  Project3,
-  Project4,
-  Project5,
-  Project6,
-  Title2,
-} from "../main/component";
+import { Charts } from "../main/component";
 import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import {
-  Buttons,
-  Buttons2,
-  TextInputBox3,
-  TextInputBox4,
-  TextInputBox5,
-} from "../publish/component";
+import { Buttons2, TextInputBox4, TextInputBox5 } from "../publish/component";
 
 const Write = () => {
   const [selectedItem, setSelectedItem] = useState("전체");

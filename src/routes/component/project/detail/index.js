@@ -1,18 +1,15 @@
 import React from "react";
 import {
-  Buttons,
   ContainerComponent,
   GridBox,
   Header1,
   Header2,
   Header3,
-  Inner,
-  LinkInputBox2,
   PublishImg,
   TextInputBox,
-  TextInputBox2,
   TextInputBox3,
 } from "./component";
+import { Inner } from "styles/common/CommonStyles";
 
 const Detail = () => {
   return (

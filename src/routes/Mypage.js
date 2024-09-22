@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { dbService } from "fbase";
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
-import img from "../img/profile.png";
-import img2 from "../img/back3.jpg";
 
 import {
   BookCover,
@@ -54,7 +52,7 @@ const Mypage = ({ userObj }) => {
             <HomeMain>
               <Profile>
                 <Profile1>
-                  <ProfileImage src={img} />
+                  <ProfileImage src="/img/profile.png" />
                 </Profile1>
                 <Profile2>
                   프로필 작성 공간
@@ -146,7 +144,7 @@ const Mypage = ({ userObj }) => {
                   <strong>Miniroom</strong>
                 </MiniroomTitle>
                 <div>
-                  <MiniroomGif src={img2} />
+                  <MiniroomGif src="../img/back3.jpg" />
                 </div>
               </HomeContents>
             </HomeMain>

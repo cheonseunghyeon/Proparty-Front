@@ -6,7 +6,6 @@ import {
   ContainerMember,
   ContainerMidComponent,
   ContainerRightComponent,
-  Inner,
   LeftComponent,
 } from "./component";
 import { Charts } from "../main/component";
@@ -15,7 +14,7 @@ import "react-quill/dist/quill.snow.css";
 import { Buttons2 } from "../publish/component";
 import projectsData from "../../../data/projectsData.json";
 import axios from "axios";
-import { SearchButton } from "../projects/component";
+import { Inner } from "styles/common/CommonStyles";
 
 const Mains2 = () => {
   const { no } = useParams(); // `no` 파라미터를 가져옴

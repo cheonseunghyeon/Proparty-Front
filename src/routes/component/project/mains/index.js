@@ -6,17 +6,14 @@ import {
   ContainerMember,
   ContainerMidComponent,
   ContainerRightComponent,
-  Inner,
   LeftComponent,
-  ProjectDetailText,
-  ProjectDetailText2,
-  ProjectDetailTitle,
 } from "./component";
 import { Charts } from "../main/component";
 import { Link, useParams } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
 import { Buttons2 } from "../publish/component";
 import TeamData from "../../../data/TeamData.json";
+import { Inner } from "styles/common/CommonStyles";
 
 const Mains = () => {
   const { no } = useParams(); // `no` 파라미터를 가져옴

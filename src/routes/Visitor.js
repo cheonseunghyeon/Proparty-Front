@@ -43,7 +43,6 @@ import {
   UpdatedNewsLeftItem,
   HomeContents,
 } from "../styles/pages/MypageStyles";
-import img4 from "../img/profile.png";
 
 // 자동으로 임폴트 됨
 // crud 구현
@@ -151,7 +150,7 @@ const Visitor = ({ userObj }) => {
             <HomeMain>
               <Profile>
                 <Profile1>
-                  <ProfileImage src={img4} />
+                  <ProfileImage src="/img/profile.png" />
                 </Profile1>
                 <Profile2>
                   프로필 작성 공간
@@ -239,7 +238,7 @@ const Visitor = ({ userObj }) => {
                   <strong>Miniroom</strong>
                 </MiniroomTitle>
                 <div>
-                  <MiniroomGif src={img4} />
+                  <MiniroomGif src="/img/profile.png" />
                 </div>
               </HomeContents>
             </HomeMain>

@@ -8,8 +8,6 @@ import {
   signInWithPopup,
 } from "firebase/auth";
 import React, { useState } from "react";
-import Img1 from "../img/Google.png";
-import Img2 from "../img/GitHub.png";
 import {
   BackColor,
   BackSet,
@@ -114,10 +112,10 @@ const Auth = () => {
             <Text>또는</Text>
             <LoginWith>
               <SocialButton onClick={onSocialClick} name="google">
-                <img src={Img1} alt="Google" /> 구글 계정으로 로그인
+                <img src="/img/Google.png" alt="Google" /> 구글 계정으로 로그인
               </SocialButton>
               <SocialButton onClick={onSocialClick} name="github">
-                <img src={Img2} alt="GitHub" /> GitHub로 로그인
+                <img src="/img/GitHub.png" alt="GitHub" /> GitHub로 로그인
               </SocialButton>
             </LoginWith>
           </form>

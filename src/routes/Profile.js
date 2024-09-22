@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
-import img4 from "../img/profile.png";
 import "../css/styles2.css";
 import { ProfileBody } from "styles/pages/ProfilepageStyle";
 // 자동으로 임폴트 됨
@@ -47,7 +46,7 @@ const Profile = ({ userObj }) => {
   return (
     <ProfileBody>
       <p className="PTitle">프로필 설정</p>
-      <img className="ProImg" src={img4} />
+      <img className="ProImg" src="/img/profile.png" />
       <br />
       <form onSubmit={onsubmit} className="profileForm">
         <input

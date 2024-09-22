@@ -6,7 +6,6 @@ import {
   ContainerMember,
   ContainerMidComponent,
   ContainerRightComponent,
-  Inner,
   LeftComponent,
   ProjectDetailText,
   ProjectDetailText2,
@@ -17,7 +16,7 @@ import { Link, useParams } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
 import { Buttons2 } from "../publish/component";
 import comData from "../../../data/com.json";
-
+import { Inner } from "styles/common/CommonStyles";
 const Mains4 = () => {
   const { no } = useParams(); // `no` 파라미터를 가져옴
   const selectedTeamMember = comData.find(
