@@ -1,11 +1,11 @@
 import { authService, dbService } from "fbase";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/Profile.css";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { updateProfile } from "firebase/auth";
 import img4 from "../img/profile.png";
 import "../css/styles2.css";
+import { ProfileBody } from "styles/pages/ProfilepageStyle";
 // 자동으로 임폴트 됨
 
 // 로그아웃 기능 생성
@@ -45,7 +45,7 @@ const Profile = ({ userObj }) => {
   };
 
   return (
-    <div className="Pbody">
+    <ProfileBody>
       <p className="PTitle">프로필 설정</p>
       <img className="ProImg" src={img4} />
       <br />
@@ -79,7 +79,7 @@ const Profile = ({ userObj }) => {
       <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
         Log Out
       </span>
-    </div>
+    </ProfileBody>
   );
 };
 export default Profile;

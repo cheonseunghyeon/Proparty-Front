@@ -35,7 +35,7 @@ import {
   UpdatedNewsRightItem,
   UpdatedNewsLeftItem,
   HomeContents,
-} from "../styles/MypageStyles";
+} from "../styles/pages/MypageStyles";
 
 const Mypage = ({ userObj }) => {
   useEffect(() => {

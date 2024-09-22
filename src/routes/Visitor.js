@@ -42,7 +42,7 @@ import {
   UpdatedNewsRightItem,
   UpdatedNewsLeftItem,
   HomeContents,
-} from "../styles/MypageStyles";
+} from "../styles/pages/MypageStyles";
 import img4 from "../img/profile.png";
 
 // 자동으로 임폴트 됨

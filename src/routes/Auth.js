@@ -22,7 +22,7 @@ import {
   Text,
   LoginWith,
   SocialButton,
-} from "../styles/AuthStyles";
+} from "../styles/pages/AuthpageStyles";
 
 const Auth = () => {
   const [email, setEmail] = useState("");

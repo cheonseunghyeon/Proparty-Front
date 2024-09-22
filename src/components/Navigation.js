@@ -1,33 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../css/Navigation.css";
 import { Logo, Search } from "routes/component/emotion/component";
+import {
+  Nav,
+  NavItems,
+  NavItem,
+  NavLink,
+} from "styles/layout/NavigationStyles";
+
 const Navigation = ({ userObj }) => {
   console.log(userObj);
   return (
-    <nav>
+    <Nav>
       <Link to="/">
         <Logo />
       </Link>
-
-      <ul class="nav-items">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/Project">팀 프로젝트</Link>
-        </li>
-        <li>
-          <Link to="/Vlog">블로그</Link>
-        </li>
-        <li>
-          <Link to="/Com">커뮤니티</Link>
-        </li>
-        <li>
-          <Link to="/profile">{userObj.displayName}의 프로필</Link>
-        </li>
-      </ul>
-    </nav>
+      <NavItems>
+        <NavItem>
+          <NavLink to="/">Home</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/Project">팀 프로젝트</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/Vlog">블로그</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/Com">커뮤니티</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/profile">{userObj.displayName}의 프로필</NavLink>
+        </NavItem>
+      </NavItems>
+    </Nav>
   );
 };
+
 export default Navigation;

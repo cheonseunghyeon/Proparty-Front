@@ -25,7 +25,7 @@ import {
   MenuBar,
   MenuBarLiA,
   DiaryEditor,
-} from "../styles/MypageStyles";
+} from "../styles/pages/MypageStyles";
 
 function MyApp() {
   const [value, onChange] = useState(new Date());

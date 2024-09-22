@@ -6,7 +6,6 @@ import Navigation from "./Navigation";
 import Profile from "routes/Profile";
 import Calendar from "routes/Calender";
 import Visitor from "../routes/Visitor";
-import "../css/AppRouter.css";
 import Mypage from "routes/Mypage";
 import Publish from "routes/component/project/publish";
 import Detail from "routes/component/project/detail";
@@ -23,6 +22,7 @@ import Mains4 from "routes/component/project/ComDe";
 import Pros from "routes/component/project/Pros";
 import Teams from "routes/component/project/Teams";
 import { GlobalStyles } from "styles/GlobalStyles";
+import { RouterBody, RouterHead } from "styles/layout/AppRouterStyles";
 
 // 로그인 여부에 따라 render가 바뀜
 // Router 들만 보이게 함
@@ -30,10 +30,8 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
   return (
     <>
       {GlobalStyles}
-      <div className="Mhead">
-        {isLoggedIn && <Navigation userObj={userObj} />}
-      </div>
-      <div className="Mbody">
+      <RouterHead>{isLoggedIn && <Navigation userObj={userObj} />}</RouterHead>
+      <RouterBody>
         <Routes>
           {isLoggedIn ? (
             <>
@@ -63,7 +61,7 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
             <Route path="/" element={<Auth />} />
           )}
         </Routes>
-      </div>
+      </RouterBody>
     </>
   );
 };
