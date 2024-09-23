@@ -14,12 +14,16 @@ import "react-quill/dist/quill.snow.css";
 import { Buttons2 } from "../publish/component";
 import TeamData from "../../../data/TeamData.json";
 import { Inner } from "styles/common/CommonStyles";
+import DOMPurify from "dompurify";
 
 const Mains = () => {
   const { no } = useParams(); // `no` 파라미터를 가져옴
   const selectedTeamMember = TeamData.find(
     (member) => member.no === parseInt(no)
   );
+  const sanitizedHTML = selectedTeamMember
+    ? DOMPurify.sanitize(selectedTeamMember.test)
+    : "";
 
   const [selectedItems, setSelectedItems] = useState("팀원");
 
@@ -164,7 +168,7 @@ const Mains = () => {
                   border-radius: 20px;
                   gap: 2rem;
                 `}
-                dangerouslySetInnerHTML={{ __html: selectedTeamMember.test }}
+                dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
               ></div>
             </div>
             <div
