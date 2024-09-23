@@ -7,12 +7,9 @@ import {
   ContainerMember,
   ContainerMidComponent,
   ContainerRightComponent,
-  Inner,
   LeftComponent,
   MainText,
   ProjectTeam2,
-  ProjectTeam3,
-  ProjectTeam4,
   RowContainer,
   RowSubText,
   RowTestText,
@@ -25,6 +22,7 @@ import { Container3 } from "routes/component/emotion/component";
 import { Charts, Chartss, Chartss2, Title2 } from "../main/component";
 import { Link } from "react-router-dom";
 import TeamData from "../../../data/TeamData.json";
+import { Inner } from "styles/common/CommonStyles";
 const Team = () => {
   const [selectedItem, setSelectedItem] = useState("전체");
   const [selectedSearch, setSelectedSearch] = useState("최신순");

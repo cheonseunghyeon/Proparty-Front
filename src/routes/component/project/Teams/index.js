@@ -3,34 +3,18 @@ import { css } from "@emotion/react";
 import React, { useState } from "react";
 import {
   ButtonContainer,
-  Charts,
   ContainerMidComponent,
   Inner,
-  Project,
   RowContainer,
   RowSubText,
   RowTestText,
   SearchButton,
   SearchContainer,
 } from "./component";
-import {
-  Chart,
-  Chart2,
-  Chartss,
-  Chartss2,
-  Chartss3,
-  Title2,
-} from "../main/component";
+import { Chartss, Chartss2, Chartss3, Title2 } from "../main/component";
 import { Link } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
-import {
-  Container2,
-  Container3,
-  MyModal,
-} from "routes/component/emotion/component";
-import proData from "../../../data/proData.json";
-import { CallGPT } from "./api/gpt";
-import teamsData from "../../../data/teamsData.json";
+import { Container3, MyModal } from "routes/component/emotion/component";
 const Teams = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModal2Open, setIsModal2Open] = useState(false);

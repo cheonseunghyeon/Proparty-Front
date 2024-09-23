@@ -7,7 +7,6 @@ import {
   ContainerMember,
   ContainerMidComponent,
   ContainerRightComponent,
-  Inner,
   LeftComponent,
   MainText,
   ProjectTeam,
@@ -29,7 +28,7 @@ import {
 } from "../main/component";
 import { Link } from "react-router-dom";
 import projectsData from "../../../data/projectsData.json";
-
+import { Inner } from "styles/common/CommonStyles";
 const Projects = () => {
   const [selectedItem, setSelectedItem] = useState("전체");
   const [selectedSearch, setSelectedSearch] = useState("최신순");

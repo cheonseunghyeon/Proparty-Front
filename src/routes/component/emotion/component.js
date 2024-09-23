@@ -2,7 +2,7 @@
 import { css } from "@emotion/react";
 import React, { ChangeEvent, useState } from "react";
 import Modal from "react-modal";
-import { CallGPT } from "../project/Pros/api/gpt";
+import { CallGPT } from "../../../util/api/gpt";
 import proData from "../../data/proData.json";
 
 export const Container = ({ children }) => (

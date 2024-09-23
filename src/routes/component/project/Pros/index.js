@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import {
   ButtonContainer,
   ContainerMidComponent,
-  Inner,
   Project,
   RowContainer,
   RowSubText,
@@ -21,7 +20,8 @@ import {
   MyModal,
 } from "routes/component/emotion/component";
 import proData from "../../../data/proData.json";
-import { CallGPT } from "./api/gpt";
+import { CallGPT } from "../../../../util/api/gpt";
+import { Inner } from "styles/common/CommonStyles";
 const Pros = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModal2Open, setIsModal2Open] = useState(false);

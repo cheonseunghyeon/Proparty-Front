@@ -5,15 +5,13 @@ import {
   GridBox,
   Header1,
   Header2,
-  Inner,
   LinkInputBox2,
   PublishImg,
   TextInputBox,
   TextInputBox2,
   TextInputBox3,
 } from "./component";
-import Button from "common/Button";
-
+import { Inner } from "styles/common/CommonStyles";
 const Publish = () => {
   return (
     <Inner>
