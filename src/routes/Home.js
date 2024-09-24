@@ -19,7 +19,7 @@ import {
   Rowdiv,
   Title2,
   Title3,
-} from "./component/project/main/component";
+} from "./component/pages/main/component";
 import { Container, Container2, Project } from "./component/emotion/component";
 
 const Home = ({ userObj }) => {

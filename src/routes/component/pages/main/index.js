@@ -12,7 +12,7 @@ import {
 } from "./component";
 import { Inner } from "styles/common/CommonStyles";
 import { Container2, Container3 } from "routes/component/emotion/component";
-import { Charts } from "../main/component";
+import { Charts } from "./component";
 import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
