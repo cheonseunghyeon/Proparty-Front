@@ -11,7 +11,7 @@ import {
   MainText,
   RowText,
 } from "./component";
-import { Container2, Container3 } from "routes/component/emotion/component";
+import { Container2, Container3 } from "components/component/emotion/component";
 import { Charts } from "../../main/component";
 import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";
@@ -21,11 +21,11 @@ import {
   TextInputBox4,
   TextInputBox5,
 } from "../../publish/component";
-import comData from "../../../../data/com.json";
+import TeamData from "../../../../data/TeamData.json";
 import axios from "axios";
-const Write3 = () => {
-  const [selectedItem, setSelectedItem] = useState("지식 공유 포럼");
-  const [selectedItems, setSelectedItems] = useState("지식 공유 포럼");
+const Write2 = () => {
+  const [selectedItem, setSelectedItem] = useState("팀원");
+  const [selectedItems, setSelectedItems] = useState("팀원");
   const [text, setText] = useState("");
 
   const handleChange = (value) => {
@@ -37,7 +37,7 @@ const Write3 = () => {
   const handleItemsClick = (item) => {
     setSelectedItems(item);
   };
-  const [selectedOption, setSelectedOption] = useState("option1");
+  const [selectedOption, setSelectedOption] = useState("프론트엔드");
 
   const handleSelectChange = (e) => {
     setSelectedOption(e.target.value);
@@ -56,14 +56,14 @@ const Write3 = () => {
   };
   const handlePublish = () => {
     const newProject = {
-      no: comData.length + 1,
+      no: TeamData.length + 1,
       title: title,
       body: body,
-      stack: "커뮤니티",
+      stack: selectedOption,
       id: "kyr1234",
       test: text,
     };
-    const apiUrl = "http://localhost:8000/api/community/create/";
+    const apiUrl = "http://localhost:8000/api/create_team/";
     axios
       .post(apiUrl, newProject)
       .then((response) => {
@@ -74,8 +74,8 @@ const Write3 = () => {
         // POST 요청 실패 시 에러 핸들링
         console.error("Error creating post:", error);
       });
-    comData.push(newProject);
-    console.log(comData);
+    TeamData.push(newProject);
+    console.log(TeamData);
     // Clear the input fields
     setTitle("");
     setBody("");
@@ -236,6 +236,12 @@ const Write3 = () => {
                 onChange={handleBodyChange}
                 placeholder="프로젝트 설명"
               />
+              <select value={selectedOption} onChange={handleSelectChange}>
+                <option value="프론트엔드">프론트엔드</option>
+                <option value="벡엔드">벡엔드</option>
+                <option value="디자인">디자인</option>
+                <option value="기타">기타</option>
+              </select>
               <ReactQuill
                 value={text}
                 onChange={handleChange}
@@ -260,4 +266,4 @@ const Write3 = () => {
     </Inner>
   );
 };
-export default Write3;
+export default Write2;

@@ -14,7 +14,7 @@ import {
 import { Chartss, Chartss2, Chartss3, Title2 } from "../main/component";
 import { Link } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
-import { Container3, MyModal } from "routes/component/emotion/component";
+import { Container3, MyModal } from "components/component/emotion/component";
 const Teams = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isModal2Open, setIsModal2Open] = useState(false);

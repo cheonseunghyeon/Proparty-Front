@@ -16,7 +16,7 @@ import {
   SearchContainer,
   SubText,
 } from "./component";
-import { Container3 } from "routes/component/emotion/component";
+import { Container3 } from "components/component/emotion/component";
 import { Charts } from "../main/component";
 import { Link } from "react-router-dom";
 import comData from "../../../data/com.json";

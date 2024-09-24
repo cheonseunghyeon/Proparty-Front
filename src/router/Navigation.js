@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Logo, Search } from "routes/component/emotion/component";
+import { Logo, Search } from "components/component/emotion/component";
 import {
   Nav,
   NavItems,

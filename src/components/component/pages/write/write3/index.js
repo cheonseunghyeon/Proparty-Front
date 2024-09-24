@@ -11,17 +11,21 @@ import {
   MainText,
   RowText,
 } from "./component";
-import { Container3 } from "routes/component/emotion/component";
-import { Charts } from "../main/component";
-import axios from "axios";
+import { Container2, Container3 } from "components/component/emotion/component";
+import { Charts } from "../../main/component";
 import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { Buttons2, TextInputBox4, TextInputBox5 } from "../publish/component";
-import projectsData from "../../../data/projectsData.json";
-const Write = () => {
-  const [selectedItem, setSelectedItem] = useState("팀 프로젝트");
-  const [selectedItems, setSelectedItems] = useState("팀 프로젝트");
+import {
+  Buttons2,
+  TextInputBox4,
+  TextInputBox5,
+} from "../../publish/component";
+import comData from "../../../../data/com.json";
+import axios from "axios";
+const Write3 = () => {
+  const [selectedItem, setSelectedItem] = useState("지식 공유 포럼");
+  const [selectedItems, setSelectedItems] = useState("지식 공유 포럼");
   const [text, setText] = useState("");
 
   const handleChange = (value) => {
@@ -33,7 +37,7 @@ const Write = () => {
   const handleItemsClick = (item) => {
     setSelectedItems(item);
   };
-  const [selectedOption, setSelectedOption] = useState("모집중");
+  const [selectedOption, setSelectedOption] = useState("option1");
 
   const handleSelectChange = (e) => {
     setSelectedOption(e.target.value);
@@ -52,14 +56,14 @@ const Write = () => {
   };
   const handlePublish = () => {
     const newProject = {
-      no: projectsData.length + 1,
+      no: comData.length + 1,
       title: title,
       body: body,
-      stack: selectedOption,
-      nickname: "kyr1234",
-      description: text,
+      stack: "커뮤니티",
+      id: "kyr1234",
+      test: text,
     };
-    const apiUrl = "http://localhost:8000/api/postprojects/create/";
+    const apiUrl = "http://localhost:8000/api/community/create/";
     axios
       .post(apiUrl, newProject)
       .then((response) => {
@@ -70,8 +74,8 @@ const Write = () => {
         // POST 요청 실패 시 에러 핸들링
         console.error("Error creating post:", error);
       });
-    projectsData.push(newProject);
-    console.log(projectsData);
+    comData.push(newProject);
+    console.log(comData);
     // Clear the input fields
     setTitle("");
     setBody("");
@@ -232,10 +236,6 @@ const Write = () => {
                 onChange={handleBodyChange}
                 placeholder="프로젝트 설명"
               />
-              <select value={selectedOption} onChange={handleSelectChange}>
-                <option value="모집중">모집 중</option>
-                <option value="모집완료">모집 완료</option>
-              </select>
               <ReactQuill
                 value={text}
                 onChange={handleChange}
@@ -243,13 +243,13 @@ const Write = () => {
               />
             </div>
             <Link
-              to={"/Project"}
+              to={"/Team"}
               style={{
                 textDecorationLine: "none",
                 color: "black",
               }}
             >
-              <Buttons2 onClick={handlePublish}>프로젝트 발행</Buttons2>
+              <Buttons2 onClick={handlePublish}>팀원 발행</Buttons2>
             </Link>
           </Container3>
         </ContainerMidComponent>
@@ -260,4 +260,4 @@ const Write = () => {
     </Inner>
   );
 };
-export default Write;
+export default Write3;

@@ -18,7 +18,7 @@ import {
   Container2,
   Container3,
   MyModal,
-} from "routes/component/emotion/component";
+} from "components/component/emotion/component";
 import proData from "../../../data/proData.json";
 import { CallGPT } from "../../../../util/api/gpt";
 import { Inner } from "styles/common/CommonStyles";

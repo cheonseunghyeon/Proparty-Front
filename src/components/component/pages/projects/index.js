@@ -9,7 +9,7 @@ import {
   ContainerRightComponent,
   LeftComponent,
   MainText,
-  ProjectTeam2,
+  ProjectTeam,
   RowContainer,
   RowSubText,
   RowTestText,
@@ -18,31 +18,42 @@ import {
   SearchContainer,
   SubText,
 } from "./component";
-import { Container3 } from "routes/component/emotion/component";
-import { Charts, Chartss, Chartss2, Title2 } from "../main/component";
+import { Container2, Container3 } from "components/component/emotion/component";
+import {
+  Charts,
+  Project1,
+  Project4,
+  Project6,
+  Title2,
+} from "../main/component";
 import { Link } from "react-router-dom";
-import TeamData from "../../../data/TeamData.json";
+import projectsData from "../../../data/projectsData.json";
 import { Inner } from "styles/common/CommonStyles";
-const Team = () => {
+const Projects = () => {
   const [selectedItem, setSelectedItem] = useState("전체");
   const [selectedSearch, setSelectedSearch] = useState("최신순");
-  const [selectedItems, setSelectedItems] = useState("팀원");
-  const [team, setTeam] = useState([]);
+  const [selectedItems, setSelectedItems] = useState("팀 프로젝트");
+  const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    setTeam(TeamData);
+    // 컴포넌트가 마운트될 때 JSON 파일에서 데이터를 불러옵니다
+    setProjects(projectsData);
   }, []);
+
   const [apiData, setApiData] = useState([]);
   useEffect(() => {
     // GET 요청을 보내기 위한 함수
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:8000/api/team/", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        const response = await fetch(
+          "http://localhost:8000/api/postprojects/list/",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
         if (response.ok) {
           const data = await response.json();
           setApiData(data);
@@ -61,16 +72,9 @@ const Team = () => {
   const filteredProjects = apiData.filter((project) => {
     if (selectedItem === "전체") {
       return true; // 전체 선택 시 모든 프로젝트 반환
-    } else if (
-      selectedItem === "프론트엔드" &&
-      project.stack === "프론트엔드"
-    ) {
+    } else if (selectedItem === "모집중" && project.stack === "모집중") {
       return true; // 모집중 선택 시 모집중인 프로젝트 반환
-    } else if (selectedItem === "벡엔드" && project.stack === "벡엔드") {
-      return true; // 모집완료 선택 시 모집완료인 프로젝트 반환
-    } else if (selectedItem === "디자인" && project.stack === "디자인") {
-      return true; // 모집완료 선택 시 모집완료인 프로젝트 반환
-    } else if (selectedItem === "기타" && project.stack === "기타") {
+    } else if (selectedItem === "모집완료" && project.stack === "모집완료") {
       return true; // 모집완료 선택 시 모집완료인 프로젝트 반환
     } else {
       return false;
@@ -167,44 +171,24 @@ const Team = () => {
             </MainText>
 
             <MainText
-              onClick={() => handleItemClick("프론트엔드")}
+              onClick={() => handleItemClick("모집중")}
               style={{
                 borderBottom:
-                  selectedItem === "프론트엔드" ? "3px solid black" : "none",
-                color: selectedItem === "프론트엔드" ? "black" : "lightgray",
+                  selectedItem === "모집중" ? "3px solid black" : "none",
+                color: selectedItem === "모집중" ? "black" : "lightgray",
               }}
             >
-              프론트엔드
+              모집중
             </MainText>
             <MainText
-              onClick={() => handleItemClick("벡엔드")}
+              onClick={() => handleItemClick("모집완료")}
               style={{
                 borderBottom:
-                  selectedItem === "벡엔드" ? "3px solid black" : "none",
-                color: selectedItem === "벡엔드" ? "black" : "lightgray",
+                  selectedItem === "모집완료" ? "3px solid black" : "none",
+                color: selectedItem === "모집완료" ? "black" : "lightgray",
               }}
             >
-              벡엔드
-            </MainText>
-            <MainText
-              onClick={() => handleItemClick("디자인")}
-              style={{
-                borderBottom:
-                  selectedItem === "디자인" ? "3px solid black" : "none",
-                color: selectedItem === "디자인" ? "black" : "lightgray",
-              }}
-            >
-              디자인
-            </MainText>
-            <MainText
-              onClick={() => handleItemClick("기타")}
-              style={{
-                borderBottom:
-                  selectedItem === "기타" ? "3px solid black" : "none",
-                color: selectedItem === "기타" ? "black" : "lightgray",
-              }}
-            >
-              기타
+              모집완료
             </MainText>
           </RowText>
           <RowContainer>
@@ -240,7 +224,7 @@ const Team = () => {
             </RowSubText>
             <SearchButton>
               <Link
-                to={"/TeamWrite"}
+                to={"/Write"}
                 css={css`
                   text-decoration: none;
                   color: inherit;
@@ -262,18 +246,33 @@ const Team = () => {
                 gap: 2rem;
               `}
             >
-              {filteredProjects.map((team, index) => (
+              {selectedItem !== "모집중" && (
                 <Link
-                  to={`/Team/${team.no}`}
-                  key={team.no}
+                  to={`/Project/0`}
                   style={{ textDecorationLine: "none", color: "black" }}
                 >
-                  <ProjectTeam2
-                    key={team.no}
-                    title={team.title}
-                    body={team.body}
-                    id={team.nickname}
-                    stack={team.stack}
+                  <ProjectTeam
+                    title={"소울라이크 게임을 만들어보실분들을 구합니다."}
+                    stack={"모집완료"}
+                    body={
+                      "기본적으로 3D, 장르는 소울라이크이며 사용하려는 엔진은 언리얼엔진5 입니다."
+                    }
+                  />
+                </Link>
+              )}
+
+              {filteredProjects.map((project) => (
+                <Link
+                  to={`/Project/${project.no}`}
+                  key={project.no}
+                  style={{ textDecorationLine: "none", color: "black" }}
+                >
+                  <ProjectTeam
+                    key={project.no}
+                    title={project.title}
+                    body={project.body}
+                    id={project.nickname}
+                    stack={project.stack}
                   />
                 </Link>
               ))}
@@ -283,7 +282,7 @@ const Team = () => {
                 margin: 3rem;
               `}
             >
-              <Title2 style={{ color: "black" }}>팀원 소개 카드</Title2>
+              <Title2 style={{ color: "black" }}>프로젝트 소개 카드</Title2>
             </div>
 
             <div
@@ -295,17 +294,29 @@ const Team = () => {
                 gap: 1.2rem;
               `}
             >
-              <Chartss />
-              <Chartss2 />
+              <Project1
+                style={{ width: "20rem", height: "26rem" }}
+                img={{ width: "20rem", height: "15rem" }}
+              />
+
+              <Project4
+                style={{ width: "20rem", height: "26rem" }}
+                img={{ width: "20rem", height: "15rem" }}
+              />
+
+              <Project6
+                style={{ width: "20rem", height: "26rem" }}
+                img={{ width: "20rem", height: "15rem" }}
+              />
             </div>
             <div
               css={css`
                 margin: 3rem;
               `}
             >
-              <Link to="/TeamCard" style={{ textDecorationLine: "none" }}>
+              <Link to="/ProCard" style={{ textDecorationLine: "none" }}>
                 <Title2>
-                  팀원 소개 카드 보려가기
+                  프로젝트 소개 카드 보려가기
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="25"
@@ -332,4 +343,4 @@ const Team = () => {
     </Inner>
   );
 };
-export default Team;
+export default Projects;

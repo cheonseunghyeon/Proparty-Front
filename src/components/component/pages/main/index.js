@@ -11,7 +11,7 @@ import {
   RowText,
 } from "./component";
 import { Inner } from "styles/common/CommonStyles";
-import { Container2, Container3 } from "routes/component/emotion/component";
+import { Container2, Container3 } from "components/component/emotion/component";
 import { Charts } from "./component";
 import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";
