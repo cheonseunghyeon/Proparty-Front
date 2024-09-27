@@ -10,13 +10,14 @@ export const BackColor = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
+  background-color: rgba(1, 1, 1, 0.5);
 `;
 
 export const BackSet = styled.div`
   display: inline-flex;
   width: 80%;
-  max-width: 34.375rem; /* max-width: 550px */
-  padding: 3rem;
+  max-width: 42.375rem; /* max-width: 550px */
+  padding: 7rem 3rem;
   justify-content: center;
   flex-direction: column;
   align-items: center;
@@ -27,16 +28,20 @@ export const BackSet = styled.div`
   gap: 1rem;
 
   @media (max-width: 768px) {
-    padding: 2rem;
-    max-width: 28rem;
+    padding: 3.5rem 2rem;
+    max-width: 26rem;
   }
 
   @media (max-width: 480px) {
-    padding: 1.5rem;
+    padding: 2.5rem 1.5rem;
     max-width: 22rem;
   }
 `;
-
+export const Form = styled.form`
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+`;
 export const Title = styled.h1`
   font-size: 2.5rem; /* 40px */
   color: #0077be;

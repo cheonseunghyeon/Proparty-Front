@@ -53,7 +53,9 @@ export const GlobalStyles = (
           font-size: 110%;
         }
       }
-
+      a {
+        text-decoration: none;
+      }
       html,
       body {
         margin: 0;

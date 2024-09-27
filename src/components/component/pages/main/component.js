@@ -741,6 +741,7 @@ export const Title2 = ({ children, style }) => (
       flex-direction: row;
       align-items: center;
       gap: 0.8rem;
+      text-decoration: none !important;
       ${style}
     `}
   >

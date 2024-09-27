@@ -7,7 +7,6 @@ export const RouterHead = styled.div`
 `;
 
 export const RouterBody = styled.div`
-  width: 120rem;
   height: auto;
   display: flex;
   flex-direction: column;

@@ -20,6 +20,7 @@ import {
   Text,
   LoginWith,
   SocialButton,
+  Form,
 } from "../styles/pages/AuthpageStyles";
 
 const Auth = () => {
@@ -73,56 +74,54 @@ const Auth = () => {
   };
 
   return (
-    <>
-      <BackColor>
-        <BackSet>
-          <Title>Login</Title>
-          <form onSubmit={onSubmit}>
-            <IntArea>
-              <Input
-                name="email"
-                type="text"
-                placeholder="Email"
-                maxLength="20"
-                value={email}
-                onChange={onChange}
-                required
-              />
-            </IntArea>
-            <IntArea>
-              <Input
-                name="password"
-                type="password"
-                maxLength="15"
-                placeholder="Password"
-                value={password}
-                onChange={onChange}
-                required
-              />
-            </IntArea>
-            <BtnArea>
-              <SubmitButton
-                type="submit"
-                value={newAccount ? "Create Account" : "Log In"}
-              />
-              <Button type="button" onClick={toggleAccount}>
-                {newAccount ? "Sign In" : "Create Account"}
-              </Button>
-            </BtnArea>
-            <Text>또는</Text>
-            <LoginWith>
-              <SocialButton onClick={onSocialClick} name="google">
-                <img src="/img/Google.png" alt="Google" /> 구글 계정으로 로그인
-              </SocialButton>
-              <SocialButton onClick={onSocialClick} name="github">
-                <img src="/img/GitHub.png" alt="GitHub" /> GitHub로 로그인
-              </SocialButton>
-            </LoginWith>
-          </form>
-          {error && <p>{error}</p>}
-        </BackSet>
-      </BackColor>
-    </>
+    <BackColor>
+      <BackSet>
+        <Title>Login</Title>
+        <Form onSubmit={onSubmit}>
+          <IntArea>
+            <Input
+              name="email"
+              type="text"
+              placeholder="Email"
+              maxLength="20"
+              value={email}
+              onChange={onChange}
+              required
+            />
+          </IntArea>
+          <IntArea>
+            <Input
+              name="password"
+              type="password"
+              maxLength="15"
+              placeholder="Password"
+              value={password}
+              onChange={onChange}
+              required
+            />
+          </IntArea>
+          <BtnArea>
+            <SubmitButton
+              type="submit"
+              value={newAccount ? "Create Account" : "Log In"}
+            />
+            <Button type="button" onClick={toggleAccount}>
+              {newAccount ? "Sign In" : "Create Account"}
+            </Button>
+          </BtnArea>
+          <Text>또는</Text>
+          <LoginWith>
+            <SocialButton onClick={onSocialClick} name="google">
+              <img src="/img/Google.png" alt="Google" /> 구글 계정으로 로그인
+            </SocialButton>
+            <SocialButton onClick={onSocialClick} name="github">
+              <img src="/img/GitHub.png" alt="GitHub" /> GitHub로 로그인
+            </SocialButton>
+          </LoginWith>
+        </Form>
+        {error && <p>{error}</p>}
+      </BackSet>
+    </BackColor>
   );
 };
 
