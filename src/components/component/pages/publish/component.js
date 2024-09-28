@@ -10,7 +10,6 @@ export const Inner = ({ children }) => (
       flex-direction: column;
       align-items: center;
       gap: 9.6rem;
-      background-color: #f5f6fa;
     `}
   >
     {children}

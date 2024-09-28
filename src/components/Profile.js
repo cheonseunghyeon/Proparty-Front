@@ -2,10 +2,27 @@ import { authService, dbService } from "fbase";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import { Link } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
 import "../css/styles2.css";
-import { ProfileBody } from "styles/pages/ProfilepageStyle";
-// 자동으로 임폴트 됨
+import {
+  FormButton,
+  FormInput,
+  LogOutButton,
+  ProfileBody,
+  ProfileContainer,
+  ProfileForm,
+  ProfileImage,
+} from "styles/pages/ProfilepageStyle";
+import {
+  BookCover,
+  BookDot,
+  HomeContents,
+  MenuBar,
+  MenuBarLiA,
+  MiniroomTitle,
+  Page,
+} from "styles/pages/MypageStyles";
 
 // 로그아웃 기능 생성
 // 최신 버전은 useNavigate 라는 Hook을 통해서 url 변경 가능
@@ -44,41 +61,60 @@ const Profile = ({ userObj }) => {
   };
 
   return (
-    <ProfileBody>
-      <p className="PTitle">프로필 설정</p>
-      <img className="ProImg" src="/img/profile.png" />
-      <br />
-      <form onSubmit={onsubmit} className="profileForm">
-        <input
-          type="submit"
-          value="Image Change"
-          className="formBtn2"
-          style={{
-            marginBottom: 10,
-          }}
-        />
-        <input
-          onChange={onchange}
-          type="text"
-          autoFocus
-          placeholder="Display name"
-          value={newDisplayName}
-          className="formInput"
-        />
-        <input
-          type="submit"
-          value="Update Profile"
-          className="formBtn"
-          style={{
-            marginTop: 10,
-          }}
-        />
-      </form>
-      <br />
-      <span className="formBtn cancelBtn logOut" onClick={onLogOutClick}>
-        Log Out
-      </span>
-    </ProfileBody>
+    <BookCover>
+      <BookDot>
+        <Page>
+          <HomeContents>
+            <MiniroomTitle>
+              <br />
+              <strong>profile</strong>
+            </MiniroomTitle>
+            <ProfileContainer>
+              <ProfileImage className="ProImg" src="/img/profile.png" />
+              <ProfileForm onSubmit={onsubmit}>
+                <FormButton
+                  type="submit"
+                  value="Image Change"
+                  className="formBtn2"
+                />
+                <FormInput
+                  onChange={onchange}
+                  type="text"
+                  autoFocus
+                  placeholder="Display name"
+                  value={newDisplayName}
+                  className="formInput"
+                />
+                <FormButton
+                  type="submit"
+                  value="Update Profile"
+                  className="formBtn"
+                />
+              </ProfileForm>
+              <LogOutButton onClick={onLogOutClick}>Log Out</LogOutButton>
+            </ProfileContainer>
+          </HomeContents>
+
+          <MenuBar>
+            <MenuBarLiA as={Link} to="/Vlog">
+              Home
+            </MenuBarLiA>
+
+            <MenuBarLiA as={Link} to="/profile">
+              Profile
+            </MenuBarLiA>
+
+            <MenuBarLiA as={Link} to="/Diary">
+              Diary
+            </MenuBarLiA>
+
+            <MenuBarLiA as={Link} to="/Visitor">
+              Visitor
+            </MenuBarLiA>
+          </MenuBar>
+        </Page>
+      </BookDot>
+    </BookCover>
   );
 };
 export default Profile;

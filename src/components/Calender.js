@@ -106,38 +106,22 @@ function MyApp() {
                 </div>
               </HomeMain>
             </Home>
-
             <MenuBar>
-              <li>
-                <MenuBarLiA as={Link} to="/Vlog">
-                  Home
-                </MenuBarLiA>
-              </li>
-              <li>
-                <MenuBarLiA as={Link} to="/profile">
-                  Profile
-                </MenuBarLiA>
-              </li>
-              <li>
-                <MenuBarLiA as={Link} to="/Diary">
-                  Diary
-                </MenuBarLiA>
-              </li>
-              <li>
-                <MenuBarLiA as={Link} to="/">
-                  Photo
-                </MenuBarLiA>
-              </li>
-              <li>
-                <MenuBarLiA as={Link} to="/">
-                  Visitor
-                </MenuBarLiA>
-              </li>
-              <li>
-                <MenuBarLiA as={Link} to="/Visitor">
-                  Chat
-                </MenuBarLiA>
-              </li>
+              <MenuBarLiA as={Link} to="/Vlog">
+                Home
+              </MenuBarLiA>
+
+              <MenuBarLiA as={Link} to="/profile">
+                Profile
+              </MenuBarLiA>
+
+              <MenuBarLiA as={Link} to="/Diary">
+                Diary
+              </MenuBarLiA>
+
+              <MenuBarLiA as={Link} to="/Vlog">
+                Visitor
+              </MenuBarLiA>
             </MenuBar>
           </Page>
         </BookDot>

@@ -12,16 +12,12 @@ import {
   RowText,
 } from "./component";
 import { Container2, Container3 } from "components/component/emotion/component";
-import { Charts } from "../../main/component";
+import { Charts } from "../main/component";
 import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import {
-  Buttons2,
-  TextInputBox4,
-  TextInputBox5,
-} from "../../publish/component";
-import TeamData from "../../../../data/TeamData.json";
+import { Buttons2, TextInputBox4, TextInputBox5 } from "../publish/component";
+import TeamData from "../../../data/TeamData.json";
 import axios from "axios";
 const Write2 = () => {
   const [selectedItem, setSelectedItem] = useState("팀원");

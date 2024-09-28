@@ -104,14 +104,18 @@ export const MiniroomGif = styled.img`
 
 export const BookCover = styled.div`
   background-color: skyblue;
-  border-radius: 9px;
-  border: 1px solid #738186;
-  width: 960px;
-  height: 660px;
-  margin: 100px auto;
-  position: relative;
+  border-radius: 0.5625rem;
+  border: 0.0625rem solid #738186;
+  width: 60rem;
+  height: 41.25rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
-
 export const BookDot = styled.div`
   position: absolute;
   top: 10px;

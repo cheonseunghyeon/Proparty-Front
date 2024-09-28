@@ -22,14 +22,12 @@ const Navigation = ({ userObj }) => {
         <NavItem>
           <NavLink to="/Project">팀 프로젝트</NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink to="/Vlog">블로그</NavLink>
-        </NavItem>
+
         <NavItem>
           <NavLink to="/Com">커뮤니티</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/profile">{userObj.displayName}의 프로필</NavLink>
+          <NavLink to="/Vlog">{userObj.displayName}의 프로필</NavLink>
         </NavItem>
       </NavItems>
     </Nav>

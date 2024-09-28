@@ -12,17 +12,13 @@ import {
   RowText,
 } from "./component";
 import { Container2, Container3 } from "components/component/emotion/component";
-import { Charts } from "../../main/component";
+import { Charts } from "../main/component";
 import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import {
-  Buttons2,
-  TextInputBox4,
-  TextInputBox5,
-} from "../../publish/component";
-import comData from "../../../../data/com.json";
+import comData from "../../../data/com.json";
 import axios from "axios";
+import { Buttons2, TextInputBox4, TextInputBox5 } from "../publish/component";
 const Write3 = () => {
   const [selectedItem, setSelectedItem] = useState("지식 공유 포럼");
   const [selectedItems, setSelectedItems] = useState("지식 공유 포럼");
