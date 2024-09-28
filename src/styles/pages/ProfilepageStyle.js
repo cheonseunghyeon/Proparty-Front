@@ -21,6 +21,8 @@ export const ProfileImage = styled.img`
 
 export const ProfileForm = styled.form`
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   width: 100%;
   max-width: 18.75rem;
@@ -33,6 +35,20 @@ export const FormInput = styled.input`
   border-radius: 0.3125rem;
   font-size: 0.875rem;
 `;
+export const ImageButton = styled.input`
+  display: flex;
+  margin: 0.625rem auto;
+  padding: 0.625rem;
+  background-color: lightgreen;
+  color: white;
+  border: none;
+  border-radius: 6.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  &:hover {
+    background-color: #0056b3;
+  }
+`;
 
 export const FormButton = styled.input`
   margin-top: 0.625rem;
@@ -40,7 +56,7 @@ export const FormButton = styled.input`
   background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 0.3125rem;
+  border-radius: 6.25rem;
   cursor: pointer;
   font-size: 0.875rem;
   &:hover {

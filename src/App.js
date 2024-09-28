@@ -39,7 +39,11 @@ function App() {
     <div>
       {/* init이 false이라는 것은 로그인이 됐다는 것 */}
       {init ? (
-        <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} />
+        <AppRouter
+          isLoggedIn={isLoggedIn}
+          userObj={userObj}
+          setUserObj={setUserObj}
+        />
       ) : (
         "초기화 중"
       )}

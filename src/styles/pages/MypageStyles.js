@@ -106,8 +106,8 @@ export const BookCover = styled.div`
   background-color: skyblue;
   border-radius: 0.5625rem;
   border: 0.0625rem solid #738186;
-  width: 60rem;
-  height: 41.25rem;
+  width: 72rem;
+  height: 48rem;
   position: absolute;
   top: 50%;
   left: 50%;

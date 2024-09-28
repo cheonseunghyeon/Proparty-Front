@@ -26,7 +26,7 @@ import { RouterBody, RouterHead } from "styles/layout/AppRouterStyles";
 
 // 로그인 여부에 따라 render가 바뀜
 // Router 들만 보이게 함
-const AppRouter = ({ isLoggedIn, userObj }) => {
+const AppRouter = ({ isLoggedIn, userObj, setUserObj }) => {
   return (
     <>
       {GlobalStyles}
@@ -38,7 +38,10 @@ const AppRouter = ({ isLoggedIn, userObj }) => {
               {/* props로 전달 */}
               <Route path="/" element={<Home userObj={userObj} />} />
               <Route path="/Vlog" element={<Mypage userObj={userObj} />} />
-              <Route path="/profile" element={<Profile userObj={userObj} />} />
+              <Route
+                path="/profile"
+                element={<Profile userObj={userObj} setUserObj={setUserObj} />}
+              />
               <Route path="/Visitor" element={<Visitor userObj={userObj} />} />
               <Route path="/Diary" element={<Calendar />} />
               <Route path="/Publish" element={<Publish />} />

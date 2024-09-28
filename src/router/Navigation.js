@@ -9,7 +9,6 @@ import {
 } from "styles/layout/NavigationStyles";
 
 const Navigation = ({ userObj }) => {
-  console.log(userObj);
   return (
     <Nav>
       <Link to="/">

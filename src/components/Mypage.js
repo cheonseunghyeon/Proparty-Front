@@ -96,7 +96,7 @@ const Mypage = ({ userObj }) => {
               <HomeContents>
                 <UpdatedNewsTitle2>
                   <br />
-                  <strong>{userObj.displayName}의 미니 홈페이지</strong>
+                  <strong>{userObj.displayName} 님의 마이페이지</strong>
                 </UpdatedNewsTitle2>
 
                 <UpdatedNewsTitle>
@@ -160,7 +160,7 @@ const Mypage = ({ userObj }) => {
             <MenuBarLiA as={Link} to="/Diary">
               Diary
             </MenuBarLiA>
-            <MenuBarLiA as={Link} to="/Vlog">
+            <MenuBarLiA as={Link} to="/Visitor">
               Visitor
             </MenuBarLiA>
           </MenuBar>

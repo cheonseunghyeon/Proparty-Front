@@ -8,6 +8,7 @@ import "../css/styles2.css";
 import {
   FormButton,
   FormInput,
+  ImageButton,
   LogOutButton,
   ProfileBody,
   ProfileContainer,
@@ -26,19 +27,22 @@ import {
 
 // 로그아웃 기능 생성
 // 최신 버전은 useNavigate 라는 Hook을 통해서 url 변경 가능
-const Profile = ({ userObj }) => {
+const Profile = ({ userObj, setUserObj }) => {
   const navigate = useNavigate();
   const [newDisplayName, setnewDisplayName] = useState(userObj.displayName);
+
   const onLogOutClick = () => {
     authService.signOut();
     navigate("/");
   };
+
   const getMyNweets = async () => {
     const q = query(
       collection(dbService, "DBTable"),
       where("creatorId", "==", userObj.uid),
       orderBy("createdAt")
     );
+
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach((doc) => {
       console.log(doc.id, " => ", doc.data());
@@ -47,12 +51,24 @@ const Profile = ({ userObj }) => {
   useEffect(() => {
     getMyNweets();
   }, []);
+
   const onsubmit = async (event) => {
     event.preventDefault();
     if (userObj.displayName !== newDisplayName) {
-      await updateProfile(userObj, { displayName: newDisplayName });
+      try {
+        await updateProfile(userObj, { displayName: newDisplayName });
+
+        setUserObj((prev) => ({ ...prev, displayName: newDisplayName }));
+
+        navigate("/");
+      } catch (error) {
+        console.error("프로필 업데이트 오류:", error);
+      }
+    } else {
+      navigate("/");
     }
   };
+
   const onchange = (event) => {
     const {
       target: { value },
@@ -72,7 +88,7 @@ const Profile = ({ userObj }) => {
             <ProfileContainer>
               <ProfileImage className="ProImg" src="/img/profile.png" />
               <ProfileForm onSubmit={onsubmit}>
-                <FormButton
+                <ImageButton
                   type="submit"
                   value="Image Change"
                   className="formBtn2"
