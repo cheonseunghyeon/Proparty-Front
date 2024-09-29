@@ -116,4 +116,4 @@ const Pros = () => {
     </Inner>
   );
 };
-export default Pros;
+export default React.memo(Pros);

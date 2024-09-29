@@ -167,4 +167,4 @@ const Home = ({ userObj }) => {
   );
 };
 
-export default Home;
+export default React.memo(Home);

@@ -119,7 +119,7 @@ function MyApp() {
                 Diary
               </MenuBarLiA>
 
-              <MenuBarLiA as={Link} to="/Vlog">
+              <MenuBarLiA as={Link} to="/Visitor">
                 Visitor
               </MenuBarLiA>
             </MenuBar>
@@ -130,4 +130,4 @@ function MyApp() {
   );
 }
 
-export default MyApp;
+export default React.memo(MyApp);

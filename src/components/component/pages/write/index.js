@@ -260,4 +260,4 @@ const Write = () => {
     </Inner>
   );
 };
-export default Write;
+export default React.memo(Write);

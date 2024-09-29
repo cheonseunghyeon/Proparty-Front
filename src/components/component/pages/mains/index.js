@@ -190,4 +190,4 @@ const Mains = () => {
     </Inner>
   );
 };
-export default Mains;
+export default React.memo(Mains);

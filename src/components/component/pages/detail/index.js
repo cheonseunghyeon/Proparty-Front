@@ -43,4 +43,4 @@ const Detail = () => {
     </Inner>
   );
 };
-export default Detail;
+export default React.memo(Detail);

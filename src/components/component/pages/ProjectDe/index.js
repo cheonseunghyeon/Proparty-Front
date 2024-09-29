@@ -226,4 +226,4 @@ const Mains2 = () => {
     </Inner>
   );
 };
-export default Mains2;
+export default React.memo(Mains2);

@@ -33,4 +33,4 @@ const Navigation = ({ userObj }) => {
   );
 };
 
-export default Navigation;
+export default React.memo(Navigation);

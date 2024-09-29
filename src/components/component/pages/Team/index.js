@@ -332,4 +332,4 @@ const Team = () => {
     </Inner>
   );
 };
-export default Team;
+export default React.memo(Team);

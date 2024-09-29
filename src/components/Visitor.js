@@ -263,4 +263,4 @@ const Visitor = ({ userObj }) => {
   );
 };
 
-export default Visitor;
+export default React.memo(Visitor);

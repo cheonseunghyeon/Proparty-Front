@@ -133,4 +133,4 @@ const Profile = ({ userObj, setUserObj }) => {
     </BookCover>
   );
 };
-export default Profile;
+export default React.memo(Profile);

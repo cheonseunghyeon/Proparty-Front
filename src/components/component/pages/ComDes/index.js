@@ -229,4 +229,4 @@ const Mains3 = () => {
     </Inner>
   );
 };
-export default Mains3;
+export default React.memo(Mains3);

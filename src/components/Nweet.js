@@ -11,10 +11,10 @@ const Nweet = ({ nweetObj, isOwner }) => {
     if (ok) {
       await dbService.doc(`nweets/${nweetObj.id}`).delete();
       const urlRef = ref(storageService, nweetObj.attachmentUrl);
-      await deleteObject(urlRef)
+      await deleteObject(urlRef);
     }
   };
-  
+
   const toggleEditing = () => setEditing((prev) => !prev);
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -61,4 +61,4 @@ const Nweet = ({ nweetObj, isOwner }) => {
   );
 };
 
-export default Nweet;
+export default React.memo(Nweet);

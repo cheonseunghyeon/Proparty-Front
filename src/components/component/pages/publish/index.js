@@ -43,4 +43,4 @@ const Publish = () => {
     </Inner>
   );
 };
-export default Publish;
+export default React.memo(Publish);

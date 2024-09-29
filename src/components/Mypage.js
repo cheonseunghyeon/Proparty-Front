@@ -170,4 +170,4 @@ const Mypage = ({ userObj }) => {
   );
 };
 
-export default Mypage;
+export default React.memo(Mypage);
