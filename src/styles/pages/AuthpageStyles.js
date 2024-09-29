@@ -16,7 +16,7 @@ export const BackColor = styled.div`
 export const BackSet = styled.div`
   display: inline-flex;
   width: 80%;
-  max-width: 42.375rem; /* max-width: 550px */
+  max-width: 38.375rem; /* max-width: 550px */
   padding: 7rem 3rem;
   justify-content: center;
   flex-direction: column;
@@ -58,7 +58,6 @@ export const Title = styled.h1`
 
 export const IntArea = styled.div`
   width: 100%;
-  max-width: 25rem;
 
   @media (max-width: 768px) {
     max-width: 22rem;
@@ -78,7 +77,13 @@ export const Input = styled.input`
   font-size: 1.125rem;
   color: rgba(0, 0, 0, 0.8);
   outline: none;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
   @media (max-width: 768px) {
     font-size: 1rem;
   }
@@ -90,6 +95,8 @@ export const Input = styled.input`
 
 export const BtnArea = styled.div`
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   margin-top: 1.875rem;
   margin-bottom: 0.625rem;
@@ -105,7 +112,13 @@ export const SubmitButton = styled.input`
   font-size: 1.25rem;
   color: #fff;
   border-radius: 6.25rem;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
   @media (max-width: 768px) {
     font-size: 1.125rem;
     height: 2.875rem;
@@ -130,7 +143,13 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
   @media (max-width: 768px) {
     font-size: 0.875rem;
     height: 2.875rem;
@@ -185,7 +204,7 @@ export const LoginWith = styled.div`
 `;
 
 export const SocialButton = styled.button`
-  width: 100%;
+  width: 80%;
   height: 2.5rem;
   background-color: #fff;
   margin-bottom: 0.625rem;
@@ -196,7 +215,13 @@ export const SocialButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
 
+  &:hover {
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    cursor: pointer;
+    transform: translateY(-2px);
+  }
   @media (max-width: 768px) {
     font-size: 0.875rem;
     height: 2.25rem;

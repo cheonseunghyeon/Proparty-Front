@@ -108,16 +108,14 @@ const Auth = () => {
             <Button type="button" onClick={toggleAccount}>
               {newAccount ? "Sign In" : "Create Account"}
             </Button>
-          </BtnArea>
-          <Text>또는</Text>
-          <LoginWith>
+            <Text>또는</Text>
             <SocialButton onClick={onSocialClick} name="google">
               <img src="/img/Google.png" alt="Google" /> 구글 계정으로 로그인
             </SocialButton>
             <SocialButton onClick={onSocialClick} name="github">
               <img src="/img/GitHub.png" alt="GitHub" /> GitHub로 로그인
             </SocialButton>
-          </LoginWith>
+          </BtnArea>
         </Form>
         {error && <p>{error}</p>}
       </BackSet>

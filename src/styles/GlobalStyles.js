@@ -48,9 +48,15 @@ export const GlobalStyles = (
         }
       }
 
+      @media (min-width: 769px) and (max-width: 1199px) {
+        html {
+          font-size: 85%;
+        }
+      }
+
       @media (max-width: 768px) {
         html {
-          font-size: 110%;
+          font-size: 80%;
         }
       }
       a {
