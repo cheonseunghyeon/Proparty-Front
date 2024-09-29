@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import { Route, Router, Routes } from "react-router-dom";
+import React from "react";
 import Auth from "../components/Auth";
 import Home from "../components/Home";
 import Navigation from "./Navigation";
@@ -23,15 +22,16 @@ import Pros from "components/component/pages/Pros";
 import Teams from "components/component/pages/Teams";
 import { GlobalStyles } from "styles/GlobalStyles";
 import { RouterBody, RouterHead } from "styles/layout/AppRouterStyles";
+import ScrollToTop from "util/ScrollToTop/SrollToTop";
+import { Route, Routes } from "react-router-dom";
 
-// 로그인 여부에 따라 render가 바뀜
-// Router 들만 보이게 함
 const AppRouter = ({ isLoggedIn, userObj, setUserObj }) => {
   return (
     <>
       {GlobalStyles}
       <RouterHead>{isLoggedIn && <Navigation userObj={userObj} />}</RouterHead>
       <RouterBody>
+        <ScrollToTop />
         <Routes>
           {isLoggedIn ? (
             <>
@@ -68,4 +68,5 @@ const AppRouter = ({ isLoggedIn, userObj, setUserObj }) => {
     </>
   );
 };
+
 export default AppRouter;
