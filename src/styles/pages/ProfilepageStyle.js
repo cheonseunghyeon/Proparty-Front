@@ -30,10 +30,13 @@ export const ProfileForm = styled.form`
 `;
 
 export const FormInput = styled.input`
-  padding: 0.625rem;
-  border: 0.0625rem solid #ccc;
-  border-radius: 0.3125rem;
-  font-size: 0.875rem;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid black;
+  text-align: center;
+  background-color: white;
+  color: black;
 `;
 export const ImageButton = styled.input`
   display: flex;
@@ -51,16 +54,14 @@ export const ImageButton = styled.input`
 `;
 
 export const FormButton = styled.input`
-  margin-top: 0.625rem;
-  padding: 0.625rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 6.25rem;
   cursor: pointer;
-  font-size: 0.875rem;
-  &:hover {
-    background-color: #0056b3;
+  width: 100%;
+  padding: 7px 20px;
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  background-color: #04aaff;
+  cursor: pointer;
   }
 `;
 

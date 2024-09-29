@@ -99,13 +99,8 @@ const Profile = ({ userObj, setUserObj }) => {
                   autoFocus
                   placeholder="Display name"
                   value={newDisplayName}
-                  className="formInput"
                 />
-                <FormButton
-                  type="submit"
-                  value="Update Profile"
-                  className="formBtn"
-                />
+                <FormButton type="submit" value="Update Profile" />
               </ProfileForm>
               <LogOutButton onClick={onLogOutClick}>Log Out</LogOutButton>
             </ProfileContainer>
