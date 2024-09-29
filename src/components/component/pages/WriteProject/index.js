@@ -19,7 +19,7 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Buttons2, TextInputBox4, TextInputBox5 } from "../publish/component";
 import projectsData from "../../../data/projectsData.json";
-const Write = () => {
+const WriteProject = () => {
   const [selectedItem, setSelectedItem] = useState("팀 프로젝트");
   const [selectedItems, setSelectedItems] = useState("팀 프로젝트");
   const [text, setText] = useState("");
@@ -71,7 +71,6 @@ const Write = () => {
         console.error("Error creating post:", error);
       });
     projectsData.push(newProject);
-    console.log(projectsData);
     // Clear the input fields
     setTitle("");
     setBody("");
@@ -260,4 +259,4 @@ const Write = () => {
     </Inner>
   );
 };
-export default React.memo(Write);
+export default React.memo(WriteProject);

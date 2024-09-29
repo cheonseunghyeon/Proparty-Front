@@ -57,7 +57,6 @@ const Profile = () => {
   const onsubmit = async (event) => {
     event.preventDefault();
 
-    // 현재 Firebase User 객체 가져오기
     const user = authService.currentUser;
 
     if (!user) {
@@ -67,13 +66,9 @@ const Profile = () => {
 
     if (user.displayName !== newDisplayName) {
       try {
-        // Firebase에서 프로필 업데이트
         await updateProfile(user, { displayName: newDisplayName });
-
-        // Zustand 상태 업데이트
         setUserObj({ ...userObj, displayName: newDisplayName });
 
-        // 상태가 업데이트된 후 홈으로 이동
         navigate("/");
       } catch (error) {
         console.error("프로필 업데이트 오류:", error);

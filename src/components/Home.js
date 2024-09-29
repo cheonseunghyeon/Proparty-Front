@@ -25,9 +25,7 @@ import useUserStore from "store/store";
 
 const Home = () => {
   const { userObj } = useUserStore();
-  const [nweet, setNweet] = useState(""); // 입력한 트윗 상태 관리
   const [nweets, setNweets] = useState([]); // DB에서 가져온 트윗들 저장
-  const [attachment, setAttachment] = useState(""); // 이미지 파일 상태 관리
 
   // Firestore에서 데이터를 가져오는 useEffect
   useEffect(() => {
@@ -71,31 +69,6 @@ const Home = () => {
 
     fetchData(); // 컴포넌트가 처음 렌더링될 때 데이터 가져오기
   }, []);
-
-  // 폼 제출 처리 함수
-  const onSubmit = async (event) => {
-    event.preventDefault(); // 기본 폼 제출 방지
-    let attachmentUrl = ""; // 첨부 파일 URL 초기화
-
-    // 첨부 파일이 있을 경우
-    if (attachment !== "") {
-      const fileRef = ref(storageService, `${userObj.uid}/${uuidv4()}`); // Firebase Storage 참조 생성
-      await uploadString(fileRef, attachment, "data_url");
-      attachmentUrl = await getDownloadURL(fileRef); // 업로드 후 다운로드 URL 가져오기
-    }
-
-    // Firestore에 저장할 데이터 객체
-    const DBTable = {
-      text: nweet,
-      creatorId: userObj.uid,
-      createdAt: Date.now(),
-      attachmentUrl,
-    };
-
-    await addDoc(collection(dbService, "DBTable"), DBTable); // Firestore에 데이터 추가
-    setNweet(""); // 입력 필드 초기화
-    setAttachment(""); // 첨부 파일 초기화
-  };
 
   return (
     <Container>

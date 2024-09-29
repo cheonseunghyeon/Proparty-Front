@@ -16,12 +16,12 @@ import { Charts } from "../main/component";
 import { Link } from "react-router-dom";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import { Buttons2, TextInputBox4, TextInputBox5 } from "../publish/component";
-import TeamData from "../../../data/TeamData.json";
+import comData from "../../../data/com.json";
 import axios from "axios";
-const Write2 = () => {
-  const [selectedItem, setSelectedItem] = useState("팀원");
-  const [selectedItems, setSelectedItems] = useState("팀원");
+import { Buttons2, TextInputBox4, TextInputBox5 } from "../publish/component";
+const WriteCommunity = () => {
+  const [selectedItem, setSelectedItem] = useState("지식 공유 포럼");
+  const [selectedItems, setSelectedItems] = useState("지식 공유 포럼");
   const [text, setText] = useState("");
 
   const handleChange = (value) => {
@@ -33,7 +33,7 @@ const Write2 = () => {
   const handleItemsClick = (item) => {
     setSelectedItems(item);
   };
-  const [selectedOption, setSelectedOption] = useState("프론트엔드");
+  const [selectedOption, setSelectedOption] = useState("option1");
 
   const handleSelectChange = (e) => {
     setSelectedOption(e.target.value);
@@ -52,14 +52,14 @@ const Write2 = () => {
   };
   const handlePublish = () => {
     const newProject = {
-      no: TeamData.length + 1,
+      no: comData.length + 1,
       title: title,
       body: body,
-      stack: selectedOption,
+      stack: "커뮤니티",
       id: "kyr1234",
       test: text,
     };
-    const apiUrl = "http://localhost:8000/api/create_team/";
+    const apiUrl = "http://localhost:8000/api/community/create/";
     axios
       .post(apiUrl, newProject)
       .then((response) => {
@@ -70,8 +70,8 @@ const Write2 = () => {
         // POST 요청 실패 시 에러 핸들링
         console.error("Error creating post:", error);
       });
-    TeamData.push(newProject);
-    console.log(TeamData);
+    comData.push(newProject);
+    console.log(comData);
     // Clear the input fields
     setTitle("");
     setBody("");
@@ -232,12 +232,6 @@ const Write2 = () => {
                 onChange={handleBodyChange}
                 placeholder="프로젝트 설명"
               />
-              <select value={selectedOption} onChange={handleSelectChange}>
-                <option value="프론트엔드">프론트엔드</option>
-                <option value="벡엔드">벡엔드</option>
-                <option value="디자인">디자인</option>
-                <option value="기타">기타</option>
-              </select>
               <ReactQuill
                 value={text}
                 onChange={handleChange}
@@ -262,4 +256,4 @@ const Write2 = () => {
     </Inner>
   );
 };
-export default React.memo(Write2);
+export default React.memo(WriteCommunity);

@@ -24,12 +24,10 @@ const Navigation = () => {
         <NavItem>
           <NavLink to="/Project">팀 프로젝트</NavLink>
         </NavItem>
-
         <NavItem>
           <NavLink to="/Com">커뮤니티</NavLink>
         </NavItem>
         <NavItem>
-          {/* userDisplayName이 없으면 로그인 표시 */}
           <NavLink to="/Vlog">
             {userObj?.displayName
               ? `${userObj.displayName}의 프로필`

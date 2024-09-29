@@ -16,14 +16,22 @@ const Publish = lazy(() => import("components/component/pages/publish"));
 const Detail = lazy(() => import("components/component/pages/detail"));
 const Projects = lazy(() => import("components/component/pages/projects"));
 const Team = lazy(() => import("components/component/pages/Team"));
-const Com = lazy(() => import("components/component/pages/community"));
-const Write = lazy(() => import("components/component/pages/write"));
-const Mains = lazy(() => import("components/component/pages/mains"));
-const Mains2 = lazy(() => import("components/component/pages/ProjectDe"));
-const Mains3 = lazy(() => import("components/component/pages/ComDe"));
-const Write2 = lazy(() => import("components/component/pages/write2"));
-const Write3 = lazy(() => import("components/component/pages/write3"));
-const Mains4 = lazy(() => import("components/component/pages/ComDe"));
+const Com = lazy(() => import("components/component/pages/Com"));
+
+const TeamDetail = lazy(() => import("components/component/pages/TeamDetail"));
+const ProjectDetail = lazy(() =>
+  import("components/component/pages/ProjectDetail")
+);
+const CommunityDetail = lazy(() =>
+  import("components/component/pages/CommunityDetail")
+);
+const WriteProject = lazy(() =>
+  import("components/component/pages/WriteProject")
+);
+const WriteTeam = lazy(() => import("components/component/pages/WriteTeam"));
+const WriteCommunity = lazy(() =>
+  import("components/component/pages/WriteCommunity")
+);
 const Pros = lazy(() => import("components/component/pages/Pros"));
 const Teams = lazy(() => import("components/component/pages/Teams"));
 
@@ -57,16 +65,16 @@ const AppRouter = () => {
                 <Route path="/Publish" element={<Publish />} />
                 <Route path="/Detail" element={<Detail />} />
                 <Route path="/Project" element={<Projects />} />
-                <Route path="/Project/:no" element={<Mains2 />} />
-                <Route path="/Project/0" element={<Mains4 />} />
+                <Route path="/Project/:no" element={<ProjectDetail />} />
+                <Route path="/Project/0" element={<CommunityDetail />} />
                 <Route path="/Team" element={<Team />} />
-                <Route path="/Team/:no" element={<Mains />} />
+                <Route path="/Team/:no" element={<TeamDetail />} />
                 <Route path="/Com" element={<Com />} />
-                <Route path="/Com/:no" element={<Mains3 />} />
-                <Route path="/Write" element={<Write />} />
-                <Route path="/TeamWrite" element={<Write2 />} />
-                <Route path="/ComWrite" element={<Write3 />} />
-                <Route path="/Mains" element={<Mains />} />
+                <Route path="/Com/:no" element={<CommunityDetail />} />
+                <Route path="/Write" element={<WriteProject />} />
+                <Route path="/TeamWrite" element={<WriteTeam />} />
+                <Route path="/ComWrite" element={<WriteCommunity />} />
+                {/* <Route path="/Mains" element={<TeamDetail />} /> */}
                 <Route path="/ProCard" element={<Pros />} />
                 <Route path="/TeamCard" element={<Teams />} />
               </>

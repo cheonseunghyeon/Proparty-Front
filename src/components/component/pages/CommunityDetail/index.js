@@ -7,25 +7,23 @@ import {
   ContainerMidComponent,
   ContainerRightComponent,
   LeftComponent,
+  ProjectDetailText,
+  ProjectDetailText2,
+  ProjectDetailTitle,
 } from "./component";
 import { Charts } from "../main/component";
 import { Link, useParams } from "react-router-dom";
 import "react-quill/dist/quill.snow.css";
 import { Buttons2 } from "../publish/component";
-import TeamData from "../../../data/TeamData.json";
+import comData from "../../../data/com.json";
 import { Inner } from "styles/common/CommonStyles";
-import DOMPurify from "dompurify";
-
-const Mains = () => {
+const CommunityDetail = () => {
   const { no } = useParams(); // `no` 파라미터를 가져옴
-  const selectedTeamMember = TeamData.find(
+  const selectedTeamMember = comData.find(
     (member) => member.no === parseInt(no)
   );
-  const sanitizedHTML = selectedTeamMember
-    ? DOMPurify.sanitize(selectedTeamMember.test)
-    : "";
 
-  const [selectedItems, setSelectedItems] = useState("팀원");
+  const [selectedItems, setSelectedItems] = useState("지식 공유 포럼");
 
   const handleItemsClick = (item) => {
     setSelectedItems(item);
@@ -122,8 +120,8 @@ const Mains = () => {
               </div>
               <div
                 css={css`
-                  color: #999;
-                  font-size: 1.4rem;
+                  color: #000;
+                  font-size: 1.6rem;
                 `}
               >
                 {selectedTeamMember.body}
@@ -133,7 +131,7 @@ const Mains = () => {
           <div
             css={css`
               width: 100%;
-              margin-top: 2rem;
+              margin-top: 1rem;
               padding: 0.5rem;
               display: flex;
               flex-direction: column;
@@ -158,18 +156,59 @@ const Mains = () => {
                 padding: 50px;
               `}
             >
+              <ProjectDetailTitle>
+                소울라이크 게임을 만들어보실분들을 구합니다.
+              </ProjectDetailTitle>
+              <ProjectDetailText>
+                소울라이크 게임을 만들어보실분들을 구합니다.
+              </ProjectDetailText>
+              <ProjectDetailText>
+                퇴사 기념으로 게임한번 만들어 볼까 합니다.
+              </ProjectDetailText>
+              <ProjectDetailText2>
+                기본적으로 3D, 장르는 소울라이크 사용하려는 엔진은 언리얼엔진5
+                입니다.
+              </ProjectDetailText2>
+              <ProjectDetailText>모델러,</ProjectDetailText>
+              <ProjectDetailText>애니메이터,</ProjectDetailText>
               <div
                 css={css`
-                  width: 100%;
-                  padding: 0.5rem;
-                  display: flex;
-                  flex-direction: column;
-                  background-color: white;
-                  border-radius: 20px;
-                  gap: 2rem;
+                  font-size: 1.4rem;
+                  color: black;
+                  font-family: "JAM";
+                  font-style: normal;
+                  font-weight: 300;
+                  gap: 1rem;
+                  padding-bottom: 2rem;
+                  border-bottom: 1px solid black;
                 `}
-                dangerouslySetInnerHTML={{ __html: sanitizedHTML }}
-              ></div>
+              >
+                프로그래머를 모집하고 있습니다.
+              </div>
+              <div
+                css={css`
+                  font-size: 1.4rem;
+                  color: black;
+                  font-family: "JAM";
+                  font-style: normal;
+                  font-weight: 300;
+                  gap: 1rem;
+                `}
+              >
+                작성중인 기획안이 궁금하시면
+              </div>
+              <div
+                css={css`
+                  font-size: 1.4rem;
+                  color: black;
+                  font-family: "JAM";
+                  font-style: normal;
+                  font-weight: 300;
+                  gap: 1rem;
+                `}
+              >
+                연락주시길 바랍니다.
+              </div>
             </div>
             <div
               css={css`
@@ -190,4 +229,4 @@ const Mains = () => {
     </Inner>
   );
 };
-export default React.memo(Mains);
+export default React.memo(CommunityDetail);
