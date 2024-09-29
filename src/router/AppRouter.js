@@ -4,6 +4,7 @@ import ScrollToTop from "util/ScrollToTop/SrollToTop";
 import { Route, Routes } from "react-router-dom";
 import { GlobalStyles } from "styles/GlobalStyles";
 import { RouterBody, RouterHead } from "styles/layout/AppRouterStyles";
+import { useStore } from "zustand";
 
 const Auth = lazy(() => import("../components/Auth"));
 const Home = lazy(() => import("../components/Home"));
@@ -28,7 +29,8 @@ const Teams = lazy(() => import("components/component/pages/Teams"));
 
 const MemoizedNavigation = memo(Navigation);
 
-const AppRouter = ({ isLoggedIn, userObj, setUserObj }) => {
+const AppRouter = () => {
+  const { isLoggedIn, userObj, setUserObj } = useStore();
   return (
     <>
       <GlobalStyles />
