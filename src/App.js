@@ -2,6 +2,7 @@ import AppRouter from "./router/AppRouter";
 import React, { useEffect, useState } from "react";
 import fbase from "./fbase";
 import { authService } from "./fbase";
+import { GlobalStyles } from "styles/GlobalStyles";
 function App() {
   const [init, setInit] = useState(false);
   // firebase가 프로그램을 초기화 하길 기다려야 한다

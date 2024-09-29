@@ -47,7 +47,6 @@ const Pros = () => {
         if (response.ok) {
           const data = await response.json();
           setApiData(data);
-          console.log(data); // API 응답 데이터 처리
         } else {
           console.error("API 요청 실패:", response.statusText);
         }

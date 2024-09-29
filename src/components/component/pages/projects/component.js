@@ -1,183 +1,108 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React, { ChangeEvent } from "react";
+import styled from "@emotion/styled";
 
-export const Inner = ({ children }) => (
-  <section
-    css={css`
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 20.6rem;
-      padding: 10rem;
-      background-color: white;
-    `}
-  >
-    {children}
-  </section>
-);
+export const Inner = styled.section`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20.6rem;
+  padding: 10rem;
+  background-color: white;
+`;
 
-export const Header1 = ({ children, style }) => (
-  <div
-    css={css`
-      font-size: 2.4rem;
-      color: black;
+export const Header1 = styled.div`
+  font-size: 2.4rem;
+  color: black;
+  font-family: "JAM";
+  font-style: normal;
+  border-radius: 1.2rem;
+  gap: 0.8rem;
+`;
 
-      font-family: "JAM";
-      font-style: normal;
-      border-radius: 1.2rem;
-      gap: 0.8rem;
-    `}
-  >
-    {children}
-  </div>
-);
-export const ContainerLeftComponent = ({ children }) => {
-  return (
-    <div
-      css={css`
-        width: 17%;
-        padding: 1rem;
-        padding-top: 3rem;
-        display: flex;
-        flex-direction: column;
-        gap: 3.2rem;
-        border-radius: 10px;
-        background-color: white;
-        font-size: 1.2rem;
-        color: #377dff;
-        font-family: "JAM";
-      `}
-    >
-      {children}
-    </div>
-  );
-};
-export const ContainerRightComponent = ({ children }) => {
-  return (
-    <div
-      css={css`
-        width: 15%;
-        display: flex;
-        flex-direction: column;
-        gap: 3.2rem;
-        font-size: 1.6rem;
-        color: #282c34;
-        font-family: "JAM";
-      `}
-    >
-      {children}
-    </div>
-  );
-};
-export const ContainerMidComponent = ({ children }) => {
-  return (
-    <div
-      css={css`
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        font-size: 1.6rem;
-        gap: 1.2rem;
-        color: #282c34;
-        font-family: "JAM";
-      `}
-    >
-      {children}
-    </div>
-  );
-};
-export const ContainerMember = ({ children }) => {
-  return (
-    <div
-      css={css`
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        gap: 5rem;
-      `}
-    >
-      {children}
-    </div>
-  );
-};
-export const LeftComponent = ({ children }) => {
-  return (
-    <div
-      css={css`
-        padding-left: 0.3rem;
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
-        font-size: 1.6rem;
-        color: lightgray;
-        font-family: "JAM";
-        padding-bottom: 1rem;
-      `}
-    >
-      {children}
-    </div>
-  );
-};
-export const RowText = ({ children }) => {
-  return (
-    <div
-      css={css`
-        display: flex;
-        flex-direction: row;
-        margin-bottom: 1rem;
-        gap: 2rem;
-        border-bottom: 1px solid black;
-      `}
-    >
-      {children}
-    </div>
-  );
-};
-export const RowSubText = ({ children }) => {
-  return (
-    <div
-      css={css`
-        display: flex;
-        flex-direction: row;
-        gap: 2rem;
-        align-items: center;
-      `}
-    >
-      {children}
-    </div>
-  );
-};
-export const RowTestText = ({ children }) => {
-  return (
-    <div
-      css={css`
-        display: flex;
-        flex-direction: row;
-        gap: 2rem;
-        justify-content: space-between;
-        padding-bottom: 2rem; /* Add padding to move the border down */
-        border-bottom: 1px solid lightgray;
-      `}
-    >
-      {children}
-    </div>
-  );
-};
-export const RowContainer = ({ children }) => {
-  return (
-    <div
-      css={css`
-        display: flex;
-        flex-direction: row;
-        gap: 2rem;
-      `}
-    >
-      {children}
-    </div>
-  );
-};
+export const ContainerLeftComponent = styled.div`
+  width: 17%;
+  padding: 1rem;
+  padding-top: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  border-radius: 10px;
+  background-color: white;
+  font-size: 1.2rem;
+  color: #377dff;
+  font-family: "JAM";
+`;
+
+export const ContainerRightComponent = styled.div`
+  width: 15%;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  font-size: 1.6rem;
+  color: #282c34;
+  font-family: "JAM";
+`;
+
+export const ContainerMidComponent = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+  gap: 1.2rem;
+  color: #282c34;
+  font-family: "JAM";
+`;
+
+export const ContainerMember = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+`;
+
+export const LeftComponent = styled.div`
+  padding-left: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  font-size: 1.6rem;
+  color: lightgray;
+  font-family: "JAM";
+  padding-bottom: 1rem;
+`;
+
+export const RowText = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  gap: 2rem;
+  border-bottom: 1px solid black;
+`;
+
+export const RowSubText = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  align-items: center;
+`;
+
+export const RowTestText = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: space-between;
+  padding-bottom: 2rem; /* Add padding to move the border down */
+  border-bottom: 1px solid lightgray;
+`;
+
+export const RowContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+`;
+
 export const MainText = ({ children, onClick, style }) => {
   return (
     <div

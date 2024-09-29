@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { Link } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
-import "../css/styles2.css";
+
 import {
   FormButton,
   FormInput,

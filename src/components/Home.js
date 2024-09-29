@@ -34,7 +34,6 @@ const Home = ({ userObj }) => {
       collection(dbService, "DBTable"),
       orderBy("createdAt", "desc")
     );
-
     // DB에 변경 사항이 있을 때마다 실행
     onSnapshot(q, (snapshot) => {
       const DBArray = snapshot.docs.map((doc) => ({
@@ -60,7 +59,6 @@ const Home = ({ userObj }) => {
         if (response.ok) {
           const data = await response.json();
           setApiData(data); // API 데이터 저장
-          console.log(data); // 데이터 콘솔 출력
         } else {
           console.error("API 요청 실패:", response.statusText);
         }
