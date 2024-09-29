@@ -1,12 +1,11 @@
-import AppRouter from "./router/AppRouter";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import fbase from "./fbase";
 import { authService } from "./fbase";
-import useStore from "./store"; // Zustand 스토어 임포트
-
+import useUserStore from "store/store";
+import AppRouter from "router/AppRouter";
 function App() {
-  const { setUserObj, setIsLoggedIn, setInit, init, isLoggedIn, userObj } =
-    useStore();
-
+  const { userObj, setUserObj, setIsLoggedIn, setInit, init, isLoggedIn } =
+    useUserStore();
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
@@ -21,9 +20,16 @@ function App() {
       }
       setInit(true);
     });
-  }, [setUserObj, setIsLoggedIn, setInit]);
-
-  return <div>{init ? <AppRouter /> : "초기화 중"}</div>;
+  }, []);
+  //
+  return (
+    <div>
+      {init ? (
+        <AppRouter isLoggedIn={isLoggedIn} userObj={userObj} />
+      ) : (
+        "초기화 중"
+      )}
+    </div>
+  );
 }
-
-export default React.memo(App);
+export default App;

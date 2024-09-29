@@ -10,7 +10,6 @@ import {
   FormInput,
   ImageButton,
   LogOutButton,
-  ProfileBody,
   ProfileContainer,
   ProfileForm,
   ProfileImage,
@@ -24,12 +23,14 @@ import {
   MiniroomTitle,
   Page,
 } from "styles/pages/MypageStyles";
+import useUserStore from "store/store";
 
-// 로그아웃 기능 생성
-// 최신 버전은 useNavigate 라는 Hook을 통해서 url 변경 가능
-const Profile = ({ userObj, setUserObj }) => {
+const Profile = () => {
+  const { userObj, setUserObj } = useUserStore(); // Zustand 상태 가져오기
+  const [newDisplayName, setnewDisplayName] = useState(
+    userObj?.displayName || ""
+  );
   const navigate = useNavigate();
-  const [newDisplayName, setnewDisplayName] = useState(userObj.displayName);
 
   const onLogOutClick = () => {
     authService.signOut();
@@ -48,18 +49,31 @@ const Profile = ({ userObj, setUserObj }) => {
       console.log(doc.id, " => ", doc.data());
     });
   };
+
   useEffect(() => {
     getMyNweets();
   }, []);
 
   const onsubmit = async (event) => {
     event.preventDefault();
-    if (userObj.displayName !== newDisplayName) {
+
+    // 현재 Firebase User 객체 가져오기
+    const user = authService.currentUser;
+
+    if (!user) {
+      console.error("로그인된 사용자를 찾을 수 없습니다.");
+      return;
+    }
+
+    if (user.displayName !== newDisplayName) {
       try {
-        await updateProfile(userObj, { displayName: newDisplayName });
+        // Firebase에서 프로필 업데이트
+        await updateProfile(user, { displayName: newDisplayName });
 
-        setUserObj((prev) => ({ ...prev, displayName: newDisplayName }));
+        // Zustand 상태 업데이트
+        setUserObj({ ...userObj, displayName: newDisplayName });
 
+        // 상태가 업데이트된 후 홈으로 이동
         navigate("/");
       } catch (error) {
         console.error("프로필 업데이트 오류:", error);
@@ -128,4 +142,5 @@ const Profile = ({ userObj, setUserObj }) => {
     </BookCover>
   );
 };
+
 export default React.memo(Profile);

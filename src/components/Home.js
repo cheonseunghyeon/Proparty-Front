@@ -21,8 +21,10 @@ import {
   Title3,
 } from "./component/pages/main/component";
 import { Container, Container2, Project } from "./component/emotion/component";
+import useUserStore from "store/store";
 
-const Home = ({ userObj }) => {
+const Home = () => {
+  const { userObj } = useUserStore();
   const [nweet, setNweet] = useState(""); // 입력한 트윗 상태 관리
   const [nweets, setNweets] = useState([]); // DB에서 가져온 트윗들 저장
   const [attachment, setAttachment] = useState(""); // 이미지 파일 상태 관리

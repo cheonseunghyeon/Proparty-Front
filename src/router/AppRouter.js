@@ -1,10 +1,10 @@
 import React, { Suspense, lazy, memo } from "react";
-import Navigation from "./Navigation";
-import ScrollToTop from "util/ScrollToTop/SrollToTop";
 import { Route, Routes } from "react-router-dom";
 import { GlobalStyles } from "styles/GlobalStyles";
 import { RouterBody, RouterHead } from "styles/layout/AppRouterStyles";
-import { useStore } from "zustand";
+import ScrollToTop from "util/ScrollToTop/SrollToTop";
+import Navigation from "./Navigation";
+import useUserStore from "store/store";
 
 const Auth = lazy(() => import("../components/Auth"));
 const Home = lazy(() => import("../components/Home"));
@@ -30,11 +30,13 @@ const Teams = lazy(() => import("components/component/pages/Teams"));
 const MemoizedNavigation = memo(Navigation);
 
 const AppRouter = () => {
-  const { isLoggedIn, userObj, setUserObj } = useStore();
+  const { isLoggedIn, userObj } = useUserStore();
+
   return (
     <>
       <GlobalStyles />
       <RouterHead>
+        {/* isLoggedIn이 true일 때만 Navigation을 렌더링 */}
         {isLoggedIn && <MemoizedNavigation userObj={userObj} />}
       </RouterHead>
       <RouterBody>
@@ -43,14 +45,10 @@ const AppRouter = () => {
           <Routes>
             {isLoggedIn ? (
               <>
-                <Route path="/" element={<Home userObj={userObj} />} />
-                <Route path="/Vlog" element={<Mypage userObj={userObj} />} />
-                <Route
-                  path="/profile"
-                  element={
-                    <Profile userObj={userObj} setUserObj={setUserObj} />
-                  }
-                />
+                {/* 로그인 상태일 때의 라우트 */}
+                <Route path="/" element={<Home />} />
+                <Route path="/Vlog" element={<Mypage />} />
+                <Route path="/profile" element={<Profile />} />
                 <Route
                   path="/Visitor"
                   element={<Visitor userObj={userObj} />}
@@ -73,6 +71,7 @@ const AppRouter = () => {
                 <Route path="/TeamCard" element={<Teams />} />
               </>
             ) : (
+              // 비로그인 상태일 때 Auth 라우트
               <Route path="/" element={<Auth />} />
             )}
           </Routes>
@@ -81,4 +80,5 @@ const AppRouter = () => {
     </>
   );
 };
+
 export default React.memo(AppRouter);

@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Logo, Search } from "components/component/emotion/component";
+import { Logo } from "components/component/emotion/component";
 import {
   Nav,
   NavItems,
   NavItem,
   NavLink,
 } from "styles/layout/NavigationStyles";
+import useUserStore from "store/store";
 
-const Navigation = ({ userObj }) => {
+const Navigation = () => {
+  const { userObj } = useUserStore();
+
   return (
     <Nav>
       <Link to="/">
@@ -26,11 +29,16 @@ const Navigation = ({ userObj }) => {
           <NavLink to="/Com">커뮤니티</NavLink>
         </NavItem>
         <NavItem>
-          <NavLink to="/Vlog">{userObj.displayName}의 프로필</NavLink>
+          {/* userDisplayName이 없으면 로그인 표시 */}
+          <NavLink to="/Vlog">
+            {userObj?.displayName
+              ? `${userObj.displayName}의 프로필`
+              : "로그인해주세요"}
+          </NavLink>
         </NavItem>
       </NavItems>
     </Nav>
   );
 };
 
-export default React.memo(Navigation);
+export default Navigation;

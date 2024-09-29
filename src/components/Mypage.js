@@ -34,8 +34,11 @@ import {
   UpdatedNewsLeftItem,
   HomeContents,
 } from "../styles/pages/MypageStyles";
+import useStore from "store/store";
+import useUserStore from "store/store";
 
-const Mypage = ({ userObj }) => {
+const Mypage = () => {
+  const { userObj } = useUserStore();
   useEffect(() => {
     // 어떤 행동을 취했을 때 DB가 그것을 감지해서 사용 할 수 있도록
     const q = query(
